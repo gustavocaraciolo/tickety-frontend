@@ -141,7 +141,7 @@ const HomePage = () => {
                         <div className="text-center">
                             <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 overflow-hidden">
                                 <Image
-                                    src="/images/icons/search.png"
+                                    src="/images/icons/Activities Blueprint/Search _ binoculars, magnification, vision, seeing, Vector illustration.png"
                                     alt="Buscar Eventos"
                                     width={64}
                                     height={64}
@@ -159,7 +159,7 @@ const HomePage = () => {
                         <div className="text-center">
                             <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 overflow-hidden">
                                 <Image
-                                    src="/images/icons/ticket.png"
+                                    src="/images/icons/Activities Blueprint/Shopping and Retail _ discount tag, price tag, sale, shopping, Vector illustration.png"
                                     alt="Selecionar Ingressos"
                                     width={64}
                                     height={64}
@@ -177,7 +177,7 @@ const HomePage = () => {
                         <div className="text-center">
                             <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 overflow-hidden">
                                 <Image
-                                    src="/images/icons/celebration.png"
+                                    src="/images/icons/Activities Blueprint/Achievement and Success _ celebration, happiness, motivation, success, Vector illustration.png"
                                     alt="Finalizar Compra"
                                     width={64}
                                     height={64}

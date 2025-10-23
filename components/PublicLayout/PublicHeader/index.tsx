@@ -66,7 +66,7 @@ const PublicHeader = () => {
                         <Link href="/shop/cart" className="relative group">
                             <div className="relative p-2 hover:bg-primary-50 rounded-lg transition-colors border border-gray-200 hover:border-primary-300">
                                 <Image
-                                    src="/images/icons/cart-icon.png"
+                                    src="/images/icons/Activities Blueprint/Shopping and Retail _ discount tag, price tag, sale, shopping, Vector illustration.png"
                                     alt="Carrinho"
                                     width={32}
                                     height={32}
