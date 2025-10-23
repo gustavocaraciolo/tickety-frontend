@@ -36,13 +36,13 @@ const CategoriesPage = () => {
                     {categories.map((category) => (
                         <SimpleCard key={category.id} className="p-6 hover:shadow-lg transition-all duration-300 hover:scale-105 group">
                             <div className="flex items-center mb-4">
-                                <div className="w-16 h-16 bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl flex items-center justify-center mr-4 group-hover:from-primary-200 group-hover:to-primary-300 transition-all duration-300">
+                                <div className="w-16 h-16 rounded-xl flex items-center justify-center mr-4 overflow-hidden">
                                     <Image
                                         src={`/images/icons/${category.icon}.png`}
                                         alt={category.categoryName}
-                                        width={32}
-                                        height={32}
-                                        className="w-8 h-8"
+                                        width={64}
+                                        height={64}
+                                        className="w-16 h-16 object-cover"
                                     />
                                 </div>
                                 <div>
