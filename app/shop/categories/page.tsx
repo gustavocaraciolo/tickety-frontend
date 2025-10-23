@@ -34,7 +34,7 @@ const CategoriesPage = () => {
                 {/* Categories Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {categories.map((category) => (
-                        <SimpleCard key={category.id} className="p-6 hover:shadow-lg transition-all duration-300 hover:scale-105 group">
+                        <SimpleCard key={category.id} className="p-6 hover:shadow-lg transition-all duration-300 hover:scale-105 group cursor-pointer flex flex-col h-full">
                             <div className="flex items-center mb-4">
                                 <div className="w-16 h-16 rounded-xl flex items-center justify-center mr-4 overflow-hidden">
                                     <Image
@@ -55,19 +55,21 @@ const CategoriesPage = () => {
                                 </div>
                             </div>
                             
-                            <p className="text-gray-600 mb-6 leading-relaxed">
+                            <p className="text-gray-600 mb-6 leading-relaxed flex-grow">
                                 {category.description}
                             </p>
                             
-                            <Link href={`/shop/events?category=${category.slug}`}>
-                                <Button 
-                                    className="w-full group-hover:bg-primary-600 transition-colors" 
-                                    isPrimary 
-                                    isMedium
-                                >
-                                    Explorar Eventos
-                                </Button>
-                            </Link>
+                            <div className="mt-auto">
+                                <Link href={`/shop/events?category=${category.slug}`}>
+                                    <Button 
+                                        className="w-full group-hover:bg-primary-600 transition-colors" 
+                                        isPrimary 
+                                        isMedium
+                                    >
+                                        Explorar Eventos
+                                    </Button>
+                                </Link>
+                            </div>
                         </SimpleCard>
                     ))}
                 </div>
@@ -112,7 +114,12 @@ function getCategoryNamePT(slug: string): string {
         'education-workshops': 'Educação & Workshops',
         'health-wellness': 'Saúde & Bem-estar',
         'charity-causes': 'Causas Sociais',
-        'family-kids': 'Família & Crianças'
+        'family-kids': 'Família & Crianças',
+        'travel-adventure': 'Viagem & Aventura',
+        'gaming-entertainment': 'Gaming & Entretenimento',
+        'outdoor-nature': 'Ar Livre & Natureza',
+        'creative-design': 'Criativo & Design',
+        'relationships-dating': 'Relacionamentos & Encontros'
     };
     return names[slug] || 'Categoria';
 }
@@ -128,7 +135,12 @@ function getCategoryDescription(slug: string): string {
         'education-workshops': 'Cursos, workshops, palestras, treinamentos e eventos educacionais para desenvolvimento pessoal e profissional.',
         'health-wellness': 'Yoga, meditação, retiros, terapias alternativas e eventos focados no bem-estar físico e mental.',
         'charity-causes': 'Eventos beneficentes, campanhas solidárias, ações sociais e oportunidades de fazer a diferença.',
-        'family-kids': 'Eventos familiares, atividades infantis, brincadeiras educativas e entretenimento para todas as idades.'
+        'family-kids': 'Eventos familiares, atividades infantis, brincadeiras educativas e entretenimento para todas as idades.',
+        'travel-adventure': 'Trekking, camping, escalada, aventuras ao ar livre, viagens em grupo e experiências de exploração únicas.',
+        'gaming-entertainment': 'Torneios de e-sports, lançamentos de jogos, convenções de gaming, reality shows e entretenimento digital.',
+        'outdoor-nature': 'Acampamentos, trilhas, observação de pássaros, fotografia da natureza, yoga ao ar livre e conexão com a natureza.',
+        'creative-design': 'Workshops de arte, design thinking, fotografia criativa, artesanato, ilustração e expressão artística.',
+        'relationships-dating': 'Speed dating, jantares românticos, workshops de relacionamento, encontros temáticos e conexões especiais.'
     };
     return descriptions[slug] || 'Eventos incríveis esperando por você';
 }
@@ -144,7 +156,12 @@ function getCategoryIcon(slug: string): string {
         'education-workshops': 'education',
         'health-wellness': 'wellness',
         'charity-causes': 'charity',
-        'family-kids': 'family'
+        'family-kids': 'family',
+        'travel-adventure': 'travel',
+        'gaming-entertainment': 'gaming',
+        'outdoor-nature': 'outdoor',
+        'creative-design': 'creative',
+        'relationships-dating': 'relationships'
     };
     return icons[slug] || 'calendar';
 }
