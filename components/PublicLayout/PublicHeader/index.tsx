@@ -6,10 +6,12 @@ import Image from "@/components/Image";
 import Button from "@/components/Button";
 import Search from "@/components/Search";
 import Icon from "@/components/Icon";
+import LocationFilter from "@/components/LocationFilter";
 import { useCart } from "@/contexts/CartContext";
 
 const PublicHeader = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isLocationFilterOpen, setIsLocationFilterOpen] = useState(false);
     const { items } = useCart();
     const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -28,39 +30,23 @@ const PublicHeader = () => {
                         />
                     </Link>
 
-                    {/* Desktop Navigation */}
-                    <nav className="hidden md:flex items-center space-x-8">
-                        <Link 
-                            href="/shop/events" 
-                            className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
-                        >
-                            Eventos
-                        </Link>
-                        <Link 
-                            href="/shop/categories" 
-                            className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
-                        >
-                            Categorias
-                        </Link>
-                        <Link 
-                            href="/shop/about" 
-                            className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
-                        >
-                            Sobre
-                        </Link>
-                    </nav>
+                    {/* Location Filter */}
+                    <button 
+                        onClick={() => setIsLocationFilterOpen(true)}
+                        className="hidden md:flex items-center space-x-3 px-4 py-2 border border-gray-300 rounded-full hover:shadow-md transition-all duration-200 hover:border-gray-400"
+                    >
+                        <Image
+                            src="/images/icons/location.png"
+                            alt="Localização"
+                            width={20}
+                            height={20}
+                            className="w-5 h-5 object-cover"
+                        />
+                        <span className="text-gray-900 font-bold text-lg">Onde?</span>
+                    </button>
 
-                    {/* Search and Cart */}
+                    {/* Cart */}
                     <div className="flex items-center space-x-4">
-                        {/* Search */}
-                        <div className="hidden lg:block">
-                            <Search
-                                className="w-64"
-                                placeholder="Buscar eventos..."
-                                value=""
-                                onChange={() => {}}
-                            />
-                        </div>
 
                         {/* Cart */}
                         <Link href="/shop/cart" className="relative group">
@@ -93,32 +79,28 @@ const PublicHeader = () => {
                 {/* Mobile Navigation */}
                 {isMenuOpen && (
                     <div className="md:hidden border-t border-gray-100 py-4">
-                        <nav className="flex flex-col space-y-4">
-                            <Link 
-                                href="/shop/events" 
-                                className="text-gray-600 hover:text-gray-900 font-medium"
-                                onClick={() => setIsMenuOpen(false)}
-                            >
-                                Eventos
-                            </Link>
-                            <Link 
-                                href="/shop/categories" 
-                                className="text-gray-600 hover:text-gray-900 font-medium"
-                                onClick={() => setIsMenuOpen(false)}
-                            >
-                                Categorias
-                            </Link>
-                            <Link 
-                                href="/shop/about" 
-                                className="text-gray-600 hover:text-gray-900 font-medium"
-                                onClick={() => setIsMenuOpen(false)}
-                            >
-                                Sobre
-                            </Link>
-                        </nav>
+                        <button 
+                            onClick={() => setIsLocationFilterOpen(true)}
+                            className="flex items-center space-x-3 px-4 py-2 border border-gray-300 rounded-full hover:shadow-md transition-all duration-200 hover:border-gray-400"
+                        >
+                            <Image
+                                src="/images/icons/location.png"
+                                alt="Localização"
+                                width={20}
+                                height={20}
+                                className="w-5 h-5 object-cover"
+                            />
+                            <span className="text-gray-900 font-bold text-lg">Onde?</span>
+                        </button>
                     </div>
                 )}
             </div>
+            
+            {/* Location Filter Modal */}
+            <LocationFilter 
+                isOpen={isLocationFilterOpen} 
+                onClose={() => setIsLocationFilterOpen(false)} 
+            />
         </header>
     );
 };
