@@ -6,13 +6,72 @@ import Image from "@/components/Image";
 import Button from "@/components/Button";
 import Icon from "@/components/Icon";
 import { expandedEvents } from "@/data/expandedEvents";
+import { useCart } from "@/contexts/CartContext";
 
 const EventDetailsPage = () => {
     const params = useParams();
     const eventId = params.id as string;
     const [activeTab, setActiveTab] = useState<'details' | 'tickets'>('details');
+    const [standardQuantity, setStandardQuantity] = useState(0);
+    const [vipQuantity, setVipQuantity] = useState(0);
+    const { addItem } = useCart();
 
     const event = expandedEvents.find(e => e.id === eventId);
+
+    const handleAddToCart = () => {
+        if (!event) return;
+        
+        if (standardQuantity > 0) {
+            addItem({
+                eventId: event.id,
+                eventTitle: event.title,
+                eventImage: event.image,
+                eventDate: event.date,
+                eventLocation: event.location,
+                ticketType: {
+                    id: 'standard',
+                    name: 'Ingresso Padrão',
+                    price: event.price.min,
+                    currency: event.price.currency,
+                    quantity: standardQuantity,
+                    available: 100,
+                    type: 'general' as const,
+                    benefits: ['Acesso completo ao evento'],
+                    description: 'Acesso completo ao evento'
+                },
+                quantity: standardQuantity
+            });
+        }
+        
+        if (vipQuantity > 0) {
+            addItem({
+                eventId: event.id,
+                eventTitle: event.title,
+                eventImage: event.image,
+                eventDate: event.date,
+                eventLocation: event.location,
+                ticketType: {
+                    id: 'vip',
+                    name: 'Ingresso VIP',
+                    price: event.price.max,
+                    currency: event.price.currency,
+                    quantity: vipQuantity,
+                    available: 30,
+                    type: 'vip' as const,
+                    benefits: ['Acesso VIP', 'Benefícios exclusivos'],
+                    description: 'Acesso VIP com benefícios exclusivos'
+                },
+                quantity: vipQuantity
+            });
+        }
+        
+        // Reset quantities
+        setStandardQuantity(0);
+        setVipQuantity(0);
+    };
+
+    const totalPrice = event ? (standardQuantity * event.price.min) + (vipQuantity * event.price.max) : 0;
+    const hasItems = standardQuantity > 0 || vipQuantity > 0;
 
     if (!event) {
         return (
@@ -206,7 +265,7 @@ const EventDetailsPage = () => {
                                                         Acesso completo ao evento
                                                     </p>
                                                     <div className="flex items-center gap-4 text-body-sm text-gray-500">
-                                                        <span>Disponível: {event.ticketsAvailable || 100}</span>
+                                                        <span>Disponível: 100</span>
                                                     </div>
                                                 </div>
                                                 <div className="text-right">
@@ -218,16 +277,23 @@ const EventDetailsPage = () => {
                                             
                                             <div className="flex items-center justify-between">
                                                 <div className="flex items-center gap-3">
-                                                    <button className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50">
+                                                    <button 
+                                                        className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                                                        onClick={() => setStandardQuantity(Math.max(0, standardQuantity - 1))}
+                                                        disabled={standardQuantity === 0}
+                                                    >
                                                         -
                                                     </button>
-                                                    <span className="w-8 text-center font-medium">0</span>
-                                                    <button className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50">
+                                                    <span className="w-8 text-center font-medium">{standardQuantity}</span>
+                                                    <button 
+                                                        className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50"
+                                                        onClick={() => setStandardQuantity(standardQuantity + 1)}
+                                                    >
                                                         +
                                                     </button>
                                                 </div>
                                                 <div className="text-body-lg font-semibold text-gray-900">
-                                                    R$ 0,00
+                                                    R$ {(standardQuantity * event.price.min).toFixed(2)}
                                                 </div>
                                             </div>
                                         </div>
@@ -243,7 +309,7 @@ const EventDetailsPage = () => {
                                                             Acesso VIP com benefícios exclusivos
                                                         </p>
                                                         <div className="flex items-center gap-4 text-body-sm text-gray-500">
-                                                            <span>Disponível: {Math.floor((event.ticketsAvailable || 100) * 0.3)}</span>
+                                                            <span>Disponível: 30</span>
                                                         </div>
                                                     </div>
                                                     <div className="text-right">
@@ -258,16 +324,23 @@ const EventDetailsPage = () => {
                                                 
                                                 <div className="flex items-center justify-between">
                                                     <div className="flex items-center gap-3">
-                                                        <button className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50">
+                                                        <button 
+                                                            className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                                                            onClick={() => setVipQuantity(Math.max(0, vipQuantity - 1))}
+                                                            disabled={vipQuantity === 0}
+                                                        >
                                                             -
                                                         </button>
-                                                        <span className="w-8 text-center font-medium">0</span>
-                                                        <button className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50">
+                                                        <span className="w-8 text-center font-medium">{vipQuantity}</span>
+                                                        <button 
+                                                            className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50"
+                                                            onClick={() => setVipQuantity(vipQuantity + 1)}
+                                                        >
                                                             +
                                                         </button>
                                                     </div>
                                                     <div className="text-body-lg font-semibold text-gray-900">
-                                                        R$ 0,00
+                                                        R$ {(vipQuantity * event.price.max).toFixed(2)}
                                                     </div>
                                                 </div>
                                             </div>
@@ -275,12 +348,22 @@ const EventDetailsPage = () => {
                                     </div>
                                     
                                     <div className="mt-6 pt-6 border-t border-gray-100">
+                                        <div className="flex items-center justify-between mb-4">
+                                            <span className="text-body-lg font-semibold text-gray-900">
+                                                Total:
+                                            </span>
+                                            <span className="text-body-xl font-bold text-gray-900">
+                                                R$ {totalPrice.toFixed(2)}
+                                            </span>
+                                        </div>
                                         <Button 
                                             className="w-full" 
                                             isPrimary 
                                             isLarge
+                                            disabled={!hasItems}
+                                            onClick={handleAddToCart}
                                         >
-                                            Adicionar ao Carrinho
+                                            {hasItems ? 'Adicionar ao Carrinho' : 'Selecione os ingressos'}
                                         </Button>
                                     </div>
                                 </div>
