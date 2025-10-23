@@ -6,7 +6,7 @@
 export const categoryIcons: Record<string, string> = {
     // Categorias principais (inglês)
     'Music': '/images/icons/Activities Blueprint/Music and Entertainment _ electric guitar, music, rock and roll, music instrument, Vector illustration.png',
-    'Technology': '/images/icons/Activities Blueprint/Utilities and Tools _ desk lamp, work light, task lighting, adjustable lamp, Vector illustration.png',
+    'Technology': '/images/icons/Activities Blueprint/Security and Privacy _ security camera, surveillance, cctv, monitoring, vector illustration.png',
     'Art': '/images/icons/Activities Blueprint/Creative Design _ paint splatter, blue paint, messy painting, creative process.png',
     'Sports': '/images/icons/Activities Blueprint/Sports and Fitness _ soccer cleats, sports equipment, athletic shoes, footwear, Vector illustration.png',
     'Food': '/images/icons/Activities Blueprint/Food and Cuisine _ wine glass, celebration, party, drink, Vector illustration.png',
@@ -21,7 +21,7 @@ export const categoryIcons: Record<string, string> = {
     
     // Categorias em português (usado nos eventos)
     'Música': '/images/icons/Activities Blueprint/Music and Entertainment _ electric guitar, music, rock and roll, music instrument, Vector illustration.png',
-    'Tecnologia': '/images/icons/Activities Blueprint/Utilities and Tools _ desk lamp, work light, task lighting, adjustable lamp, Vector illustration.png',
+    'Tecnologia': '/images/icons/Activities Blueprint/Security and Privacy _ security camera, surveillance, cctv, monitoring, vector illustration.png',
     'Arte': '/images/icons/Activities Blueprint/Creative Design _ paint splatter, blue paint, messy painting, creative process.png',
     'Esportes': '/images/icons/Activities Blueprint/Sports and Fitness _ soccer cleats, sports equipment, athletic shoes, footwear, Vector illustration.png',
     'Gastronomia': '/images/icons/Activities Blueprint/Food and Cuisine _ wine glass, celebration, party, drink, Vector illustration.png',
@@ -38,7 +38,7 @@ export const categoryIcons: Record<string, string> = {
     'business-networking': '/images/icons/Activities Blueprint/Business and Finance _ dollar sign, currency, exchange, risk, investment.png',
     'sports-fitness': '/images/icons/Activities Blueprint/Sports and Fitness _ soccer cleats, sports equipment, athletic shoes, footwear, Vector illustration.png',
     'arts-culture': '/images/icons/Activities Blueprint/Creative Design _ paint splatter, blue paint, messy painting, creative process.png',
-    'technology': '/images/icons/Activities Blueprint/Utilities and Tools _ desk lamp, work light, task lighting, adjustable lamp, Vector illustration.png',
+    'technology': '/images/icons/Activities Blueprint/Security and Privacy _ security camera, surveillance, cctv, monitoring, vector illustration.png',
     'food-drink': '/images/icons/Activities Blueprint/Food and Cuisine _ wine glass, celebration, party, drink, Vector illustration.png',
     'education-workshops': '/images/icons/Activities Blueprint/Education and training _ open book, literature, learning, knowledge, Vector illustration.png',
     'health-wellness': '/images/icons/Activities Blueprint/Health and Wellness _ yoga, meditation, mindfulness, serenity, health.png',
