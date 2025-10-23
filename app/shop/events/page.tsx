@@ -7,7 +7,7 @@ import CategoryFilter from "@/components/CategoryFilter";
 import EventCard from "@/components/EventCard";
 import Pagination from "@/components/Pagination";
 import Image from "@/components/Image";
-import { upcomingEvents } from "@/data/publicEvents";
+import { expandedEvents } from "@/data/expandedEvents";
 import { tableContent as categoriesData } from "@/templates/Events/CategoriesPage/content";
 import { getCategoryIcon } from "@/utils/categoryIcons";
 
@@ -22,7 +22,7 @@ const EventsPage = () => {
 
     // Filter events based on search and category
     const filteredEvents = useMemo(() => {
-        let filtered = upcomingEvents;
+        let filtered = expandedEvents;
 
         // Filter by search query
         if (searchQuery) {
@@ -174,7 +174,11 @@ const EventsPage = () => {
                 {/* Pagination */}
                 {totalPages > 1 && (
                     <div className="flex justify-center">
-                        <Pagination />
+                        <Pagination 
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            onPageChange={setCurrentPage}
+                        />
                     </div>
                 )}
             </div>

@@ -84,7 +84,7 @@ export const expandedEvents: PublicEvent[] = [
         title: 'Electronic Music Festival',
         description: 'Festival de música eletrônica com os melhores DJs nacionais e internacionais. Uma experiência única de som e luz.',
         shortDescription: 'Festival de música eletrônica',
-        image: 'https://images.unsplash.com/photo-1571266022943-4d2a4b0b0b0b?w=800&h=600&fit=crop&crop=center',
+        image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop&crop=center',
         date: '2024-08-10',
         time: '22:00',
         location: 'Parque da Cidade, Brasília',
