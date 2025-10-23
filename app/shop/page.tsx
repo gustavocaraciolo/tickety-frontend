@@ -139,8 +139,14 @@ const HomePage = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="text-center">
-                            <div className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                                <div className="w-8 h-8 bg-primary-500 rounded-lg"></div>
+                            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 overflow-hidden">
+                                <Image
+                                    src="/images/icons/search.png"
+                                    alt="Buscar Eventos"
+                                    width={64}
+                                    height={64}
+                                    className="w-16 h-16 object-cover"
+                                />
                             </div>
                             <h3 className="text-body-xl font-semibold text-gray-900 mb-3">
                                 1. Escolha seu Evento
@@ -151,8 +157,14 @@ const HomePage = () => {
                         </div>
 
                         <div className="text-center">
-                            <div className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                                <div className="w-8 h-8 bg-primary-500 rounded-lg"></div>
+                            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 overflow-hidden">
+                                <Image
+                                    src="/images/icons/ticket.png"
+                                    alt="Selecionar Ingressos"
+                                    width={64}
+                                    height={64}
+                                    className="w-16 h-16 object-cover"
+                                />
                             </div>
                             <h3 className="text-body-xl font-semibold text-gray-900 mb-3">
                                 2. Selecione os Ingressos
@@ -163,8 +175,14 @@ const HomePage = () => {
                         </div>
 
                         <div className="text-center">
-                            <div className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                                <div className="w-8 h-8 bg-primary-500 rounded-lg"></div>
+                            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 overflow-hidden">
+                                <Image
+                                    src="/images/icons/celebration.png"
+                                    alt="Finalizar Compra"
+                                    width={64}
+                                    height={64}
+                                    className="w-16 h-16 object-cover"
+                                />
                             </div>
                             <h3 className="text-body-xl font-semibold text-gray-900 mb-3">
                                 3. Finalize a Compra
