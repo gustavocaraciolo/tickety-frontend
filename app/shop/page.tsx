@@ -9,6 +9,7 @@ import EventCard from "@/components/EventCard";
 import ElegantCarousel from "@/components/ElegantCarousel";
 import { featuredEvents, upcomingEvents } from "@/data/expandedEvents";
 import { tableContent as categoriesData } from "@/templates/Events/CategoriesPage/content";
+import SimpleCard from "@/components/SimpleCard";
 
 const HomePage = () => {
     const [searchQuery, setSearchQuery] = useState("");
@@ -18,7 +19,12 @@ const HomePage = () => {
         window.location.href = `/shop/events?search=${encodeURIComponent(searchQuery)}`;
     };
 
-    const popularCategories = categoriesData.slice(0, 6);
+    const popularCategories = categoriesData.slice(0, 6).map(category => ({
+        ...category,
+        categoryName: getCategoryNamePT(category.slug),
+        description: getCategoryDescription(category.slug),
+        icon: getCategoryIcon(category.slug)
+    }));
 
     return (
         <div className="min-h-screen">
@@ -67,26 +73,54 @@ const HomePage = () => {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {popularCategories.map((category) => (
-                            <Link 
-                                key={category.slug}
-                                href={`/shop/events?category=${category.slug}`}
-                                className="group"
-                            >
-                                <div className="bg-white border border-gray-100 rounded-xl p-6 text-center hover:shadow-md transition-shadow group-hover:border-primary-200">
-                                    <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-200 transition-colors">
-                                        <div className="w-6 h-6 bg-primary-500 rounded"></div>
+                            <SimpleCard key={category.id} className="p-6 hover:shadow-lg transition-all duration-300 hover:scale-105 group cursor-pointer flex flex-col h-full">
+                                <div className="flex items-center mb-4">
+                                    <div className="w-16 h-16 rounded-xl flex items-center justify-center mr-4 overflow-hidden">
+                                        <Image
+                                            src={`/images/icons/${category.icon}.png`}
+                                            alt={category.categoryName}
+                                            width={64}
+                                            height={64}
+                                            className="w-16 h-16 object-cover"
+                                        />
                                     </div>
-                                    <h3 className="text-body-md font-semibold text-gray-900 mb-1">
-                                        {category.categoryName}
-                                    </h3>
-                                    <p className="text-body-sm text-gray-500">
-                                        {category.eventsCount} eventos
-                                    </p>
+                                    <div>
+                                        <h3 className="text-lg font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
+                                            {category.categoryName}
+                                        </h3>
+                                        <p className="text-sm text-gray-500">
+                                            {category.eventsCount} eventos disponíveis
+                                        </p>
+                                    </div>
                                 </div>
-                            </Link>
+                                
+                                <p className="text-gray-600 mb-6 leading-relaxed flex-grow">
+                                    {category.description}
+                                </p>
+                                
+                                <div className="mt-auto">
+                                    <Link href={`/shop/events?category=${category.slug}`}>
+                                        <Button 
+                                            className="w-full group-hover:bg-primary-600 transition-colors" 
+                                            isPrimary 
+                                            isMedium
+                                        >
+                                            Explorar Eventos
+                                        </Button>
+                                    </Link>
+                                </div>
+                            </SimpleCard>
                         ))}
+                    </div>
+
+                    <div className="text-center mt-8">
+                        <Link href="/shop/categories">
+                            <Button isSecondary isLarge>
+                                Ver Todas as Categorias
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -162,5 +196,69 @@ const HomePage = () => {
         </div>
     );
 };
+
+// Helper functions
+function getCategoryNamePT(slug: string): string {
+    const names: Record<string, string> = {
+        'music': 'Música',
+        'business-networking': 'Negócios & Networking',
+        'sports-fitness': 'Esportes & Fitness',
+        'arts-culture': 'Arte & Cultura',
+        'technology': 'Tecnologia',
+        'food-drink': 'Gastronomia & Bebidas',
+        'education-workshops': 'Educação & Workshops',
+        'health-wellness': 'Saúde & Bem-estar',
+        'charity-causes': 'Causas Sociais',
+        'family-kids': 'Família & Crianças',
+        'travel-adventure': 'Viagem & Aventura',
+        'gaming-entertainment': 'Gaming & Entretenimento',
+        'outdoor-nature': 'Ar Livre & Natureza',
+        'creative-design': 'Criativo & Design',
+        'relationships-dating': 'Relacionamentos & Encontros'
+    };
+    return names[slug] || 'Categoria';
+}
+
+function getCategoryDescription(slug: string): string {
+    const descriptions: Record<string, string> = {
+        'music': 'Concertos, festivais, shows e eventos musicais de todos os gêneros. Rock, pop, jazz, clássica e muito mais.',
+        'business-networking': 'Conferências, workshops, networking e eventos corporativos para profissionais e empreendedores.',
+        'sports-fitness': 'Corridas, maratonas, competições esportivas, yoga, crossfit e eventos de fitness para todos os níveis.',
+        'arts-culture': 'Exposições, teatro, dança, arte contemporânea, museus e eventos culturais enriquecedores.',
+        'technology': 'Conferências tech, hackathons, meetups, workshops de programação e eventos de inovação digital.',
+        'food-drink': 'Degustações, festivais gastronômicos, wine tastings, culinária internacional e experiências gastronômicas únicas.',
+        'education-workshops': 'Cursos, workshops, palestras, treinamentos e eventos educacionais para desenvolvimento pessoal e profissional.',
+        'health-wellness': 'Yoga, meditação, retiros, terapias alternativas e eventos focados no bem-estar físico e mental.',
+        'charity-causes': 'Eventos beneficentes, campanhas solidárias, ações sociais e oportunidades de fazer a diferença.',
+        'family-kids': 'Eventos familiares, atividades infantis, brincadeiras educativas e entretenimento para todas as idades.',
+        'travel-adventure': 'Trekking, camping, escalada, aventuras ao ar livre, viagens em grupo e experiências de exploração únicas.',
+        'gaming-entertainment': 'Torneios de e-sports, lançamentos de jogos, convenções de gaming, reality shows e entretenimento digital.',
+        'outdoor-nature': 'Acampamentos, trilhas, observação de pássaros, fotografia da natureza, yoga ao ar livre e conexão com a natureza.',
+        'creative-design': 'Workshops de arte, design thinking, fotografia criativa, artesanato, ilustração e expressão artística.',
+        'relationships-dating': 'Speed dating, jantares românticos, workshops de relacionamento, encontros temáticos e conexões especiais.'
+    };
+    return descriptions[slug] || 'Eventos incríveis esperando por você';
+}
+
+function getCategoryIcon(slug: string): string {
+    const icons: Record<string, string> = {
+        'music': 'music',
+        'business-networking': 'business',
+        'sports-fitness': 'sports',
+        'arts-culture': 'arts',
+        'technology': 'technology',
+        'food-drink': 'food',
+        'education-workshops': 'education',
+        'health-wellness': 'wellness',
+        'charity-causes': 'charity',
+        'family-kids': 'family',
+        'travel-adventure': 'travel',
+        'gaming-entertainment': 'gaming',
+        'outdoor-nature': 'outdoor',
+        'creative-design': 'creative',
+        'relationships-dating': 'relationships'
+    };
+    return icons[slug] || 'calendar';
+}
 
 export default HomePage;
