@@ -4,6 +4,7 @@ import SimpleCard from "@/components/SimpleCard";
 import Button from "@/components/Button";
 import Image from "@/components/Image";
 import Link from "next/link";
+import { getCategoryIcon } from "@/utils/categoryIcons";
 
 const CategoriesPage = () => {
     const categories = tableContent.map(category => ({
@@ -38,7 +39,7 @@ const CategoriesPage = () => {
                             <div className="flex items-center mb-4">
                                 <div className="w-16 h-16 rounded-xl flex items-center justify-center mr-4 overflow-hidden">
                                     <Image
-                                        src={`/images/icons/${category.icon}.png`}
+                                        src={category.icon}
                                         alt={category.categoryName}
                                         width={64}
                                         height={64}
@@ -145,25 +146,5 @@ function getCategoryDescription(slug: string): string {
     return descriptions[slug] || 'Eventos incríveis esperando por você';
 }
 
-function getCategoryIcon(slug: string): string {
-    const icons: Record<string, string> = {
-        'music': 'music',
-        'business-networking': 'business',
-        'sports-fitness': 'sports',
-        'arts-culture': 'arts',
-        'technology': 'technology',
-        'food-drink': 'food',
-        'education-workshops': 'education',
-        'health-wellness': 'wellness',
-        'charity-causes': 'charity',
-        'family-kids': 'family',
-        'travel-adventure': 'travel',
-        'gaming-entertainment': 'gaming',
-        'outdoor-nature': 'outdoor',
-        'creative-design': 'creative',
-        'relationships-dating': 'relationships'
-    };
-    return icons[slug] || 'calendar';
-}
 
 export default CategoriesPage;

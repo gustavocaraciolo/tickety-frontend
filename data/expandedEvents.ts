@@ -226,7 +226,7 @@ export const expandedEvents: PublicEvent[] = [
         organizer: 'LIESA',
         price: { min: 200, max: 800, currency: 'BRL' },
         status: 'sold-out',
-        featured: false,
+        featured: true,
         rating: 4.9,
         reviewsCount: 2500,
         ticketsAvailable: 0

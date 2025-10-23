@@ -6,6 +6,7 @@ import Image from "@/components/Image";
 import Button from "@/components/Button";
 import Icon from "@/components/Icon";
 import { PublicEvent } from "@/types/event";
+import { getCategoryIcon } from "@/utils/categoryIcons";
 
 interface ElegantCarouselProps {
     events: PublicEvent[];
@@ -64,15 +65,15 @@ const ElegantCarousel = ({ events, className }: ElegantCarouselProps) => {
     const getStatusColor = (status: string) => {
         switch (status) {
             case 'active':
-                return 'bg-success-100 text-success-600';
+                return 'status-green';
             case 'sold-out':
-                return 'bg-error-100 text-error-600';
+                return 'status-red';
             case 'cancelled':
-                return 'bg-error-100 text-error-600';
+                return 'status-red';
             case 'upcoming':
-                return 'bg-primary-100 text-primary-600';
+                return 'status-blue';
             default:
-                return 'bg-gray-100 text-gray-600';
+                return 'status-gray';
         }
     };
 
@@ -117,7 +118,13 @@ const ElegantCarousel = ({ events, className }: ElegantCarouselProps) => {
                             {/* Category Badge */}
                             <div className="mb-4">
                                 <span className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-body-sm font-medium">
-                                    <Icon name="tag" className="w-3 h-3 fill-white" />
+                                    <Image
+                                        src={getCategoryIcon(currentEvent.category)}
+                                        alt={currentEvent.category}
+                                        width={16}
+                                        height={16}
+                                        className="w-4 h-4 object-cover"
+                                    />
                                     {currentEvent.category}
                                 </span>
                             </div>
@@ -161,7 +168,7 @@ const ElegantCarousel = ({ events, className }: ElegantCarouselProps) => {
 
                             {/* Status and Action */}
                             <div className="flex items-center gap-4">
-                                <span className={`px-3 py-1 rounded-full text-body-sm font-medium ${getStatusColor(currentEvent.status)}`}>
+                                <span className={`status ${getStatusColor(currentEvent.status)}`}>
                                     {getStatusText(currentEvent.status)}
                                 </span>
                                 

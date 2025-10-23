@@ -3,6 +3,7 @@ import Image from "@/components/Image";
 import Button from "@/components/Button";
 import Icon from "@/components/Icon";
 import { PublicEvent } from "@/types/event";
+import { getCategoryIcon } from "@/utils/categoryIcons";
 
 type EventCardProps = {
     event: PublicEvent;
@@ -10,6 +11,7 @@ type EventCardProps = {
 };
 
 const EventCard = ({ event, className }: EventCardProps) => {
+
     const formatDate = (dateString: string) => {
         const date = new Date(dateString);
         return date.toLocaleDateString('pt-BR', {
@@ -84,7 +86,13 @@ const EventCard = ({ event, className }: EventCardProps) => {
             <div className="p-4">
                 {/* Category */}
                 <div className="flex items-center gap-2 mb-2">
-                    <Icon name="tag" className="w-4 h-4 fill-gray-400" />
+                    <Image
+                        src={getCategoryIcon(event.category)}
+                        alt={event.category}
+                        width={16}
+                        height={16}
+                        className="w-4 h-4 object-cover"
+                    />
                     <span className="text-body-sm text-gray-500">{event.category}</span>
                 </div>
 

@@ -6,8 +6,10 @@ import Search from "@/components/Search";
 import CategoryFilter from "@/components/CategoryFilter";
 import EventCard from "@/components/EventCard";
 import Pagination from "@/components/Pagination";
+import Image from "@/components/Image";
 import { upcomingEvents } from "@/data/publicEvents";
 import { tableContent as categoriesData } from "@/templates/Events/CategoriesPage/content";
+import { getCategoryIcon } from "@/utils/categoryIcons";
 
 const EventsPage = () => {
     const searchParams = useSearchParams();
@@ -93,7 +95,7 @@ const EventsPage = () => {
                                     name: cat.categoryName,
                                     slug: cat.slug,
                                     description: '',
-                                    icon: '',
+                                    icon: getCategoryIcon(cat.slug),
                                     color: '#1565ff',
                                     eventCount: cat.eventsCount
                                 }))}
@@ -140,8 +142,14 @@ const EventsPage = () => {
                         </div>
                     ) : (
                         <div className="text-center py-12">
-                            <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                                <div className="w-8 h-8 bg-gray-400 rounded"></div>
+                            <div className="w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <Image
+                                    src="/images/icons/Activities Blueprint/Search _ binoculars, magnification, vision, seeing, Vector illustration.png"
+                                    alt="Nenhum evento encontrado"
+                                    width={64}
+                                    height={64}
+                                    className="w-16 h-16 object-cover"
+                                />
                             </div>
                             <h3 className="text-body-xl font-semibold text-gray-900 mb-2">
                                 Nenhum evento encontrado
