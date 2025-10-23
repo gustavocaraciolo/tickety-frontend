@@ -29,6 +29,7 @@ const CheckoutPage = () => {
         cardCvv: '',
         installments: 1
     });
+    const [errors, setErrors] = useState<{[key: string]: string}>({});
 
     const fees = totalPrice * 0.1; // 10% fee
     const total = totalPrice + fees;
@@ -57,6 +58,14 @@ const CheckoutPage = () => {
             ...prev,
             [field]: value
         }));
+        
+        // Clear error when user starts typing
+        if (errors[field]) {
+            setErrors(prev => ({
+                ...prev,
+                [field]: ''
+            }));
+        }
     };
 
     const handlePaymentInfoChange = (field: keyof PaymentInfo, value: string | number) => {
@@ -68,20 +77,39 @@ const CheckoutPage = () => {
 
     const handleNextStep = () => {
         if (currentStep === 1) {
+            // Clear previous errors
+            setErrors({});
+            
             // Validate customer info
-            if (!customerInfo.firstName || !customerInfo.lastName || !customerInfo.email || !customerInfo.phone) {
-                alert('Por favor, preencha todos os campos obrigatórios.');
-                return;
+            const requiredFields = ['firstName', 'lastName', 'email', 'phone'];
+            const newErrors: {[key: string]: string} = {};
+            
+            requiredFields.forEach(field => {
+                const value = customerInfo[field as keyof CustomerInfo];
+                if (!value || value.trim() === '') {
+                    newErrors[field] = 'Este campo é obrigatório';
+                }
+            });
+            
+            // Additional email validation
+            if (customerInfo.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerInfo.email)) {
+                newErrors.email = 'Por favor, insira um email válido';
             }
+            
+            if (Object.keys(newErrors).length > 0) {
+                setErrors(newErrors);
+                return; // Don't advance if there are errors
+            }
+            
             setCurrentStep(2);
         } else if (currentStep === 2) {
             // Validate payment info
             if (paymentInfo.method === 'credit-card') {
                 if (!paymentInfo.cardNumber || !paymentInfo.cardName || !paymentInfo.cardExpiry || !paymentInfo.cardCvv) {
-                    alert('Por favor, preencha todos os dados do cartão.');
-                    return;
+                    return; // Don't advance if payment fields are missing
                 }
             }
+            
             setCurrentStep(3);
         }
     };
@@ -121,40 +149,64 @@ const CheckoutPage = () => {
                         <div className="bg-white border border-gray-100 rounded-2xl p-6">
                             {/* Step 1: Customer Information */}
                             {currentStep === 1 && (
-                                <div>
+                                <div className="animate-fade-in-up">
                                     <h2 className="text-body-xl font-semibold text-gray-900 mb-6">
                                         Informações Pessoais
                                     </h2>
                                     
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                                        <Field
-                                            label="Nome"
-                                            required
-                                            value={customerInfo.firstName}
-                                            onChange={(e) => handleCustomerInfoChange('firstName', e.target.value)}
-                                        />
-                                        <Field
-                                            label="Sobrenome"
-                                            required
-                                            value={customerInfo.lastName}
-                                            onChange={(e) => handleCustomerInfoChange('lastName', e.target.value)}
-                                        />
+                                        <div>
+                                            <Field
+                                                label="Nome"
+                                                required
+                                                value={customerInfo.firstName}
+                                                onChange={(e) => handleCustomerInfoChange('firstName', e.target.value)}
+                                                error={!!errors.firstName}
+                                            />
+                                            {errors.firstName && (
+                                                <p className="text-error-100 text-body-sm mt-1">{errors.firstName}</p>
+                                            )}
+                                        </div>
+                                        <div>
+                                            <Field
+                                                label="Sobrenome"
+                                                required
+                                                value={customerInfo.lastName}
+                                                onChange={(e) => handleCustomerInfoChange('lastName', e.target.value)}
+                                                error={!!errors.lastName}
+                                            />
+                                            {errors.lastName && (
+                                                <p className="text-error-100 text-body-sm mt-1">{errors.lastName}</p>
+                                            )}
+                                        </div>
                                     </div>
                                     
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                                        <Field
-                                            label="Email"
-                                            type="email"
-                                            required
-                                            value={customerInfo.email}
-                                            onChange={(e) => handleCustomerInfoChange('email', e.target.value)}
-                                        />
-                                        <Field
-                                            label="Telefone"
-                                            required
-                                            value={customerInfo.phone}
-                                            onChange={(e) => handleCustomerInfoChange('phone', e.target.value)}
-                                        />
+                                        <div>
+                                            <Field
+                                                label="Email"
+                                                type="email"
+                                                required
+                                                value={customerInfo.email}
+                                                onChange={(e) => handleCustomerInfoChange('email', e.target.value)}
+                                                error={!!errors.email}
+                                            />
+                                            {errors.email && (
+                                                <p className="text-error-100 text-body-sm mt-1">{errors.email}</p>
+                                            )}
+                                        </div>
+                                        <div>
+                                            <Field
+                                                label="Telefone"
+                                                required
+                                                value={customerInfo.phone}
+                                                onChange={(e) => handleCustomerInfoChange('phone', e.target.value)}
+                                                error={!!errors.phone}
+                                            />
+                                            {errors.phone && (
+                                                <p className="text-error-100 text-body-sm mt-1">{errors.phone}</p>
+                                            )}
+                                        </div>
                                     </div>
                                     
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -176,7 +228,7 @@ const CheckoutPage = () => {
 
                             {/* Step 2: Payment Information */}
                             {currentStep === 2 && (
-                                <div>
+                                <div className="animate-fade-in-up">
                                     <h2 className="text-body-xl font-semibold text-gray-900 mb-6">
                                         Informações de Pagamento
                                     </h2>
@@ -288,7 +340,7 @@ const CheckoutPage = () => {
 
                             {/* Step 3: Confirmation */}
                             {currentStep === 3 && (
-                                <div>
+                                <div className="animate-fade-in-up">
                                     <h2 className="text-body-xl font-semibold text-gray-900 mb-6">
                                         Confirmação do Pedido
                                     </h2>

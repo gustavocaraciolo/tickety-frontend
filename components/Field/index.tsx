@@ -9,6 +9,7 @@ type FieldProps = {
     type?: string;
     required?: boolean;
     note?: string;
+    error?: boolean;
 };
 
 const Field = ({
@@ -19,6 +20,7 @@ const Field = ({
     type,
     required,
     note,
+    error,
     ...inputProps
 }: FieldProps &
     React.InputHTMLAttributes<HTMLInputElement> &
@@ -28,7 +30,6 @@ const Field = ({
     const isOverLimit = currentLength > maxLength;
     const [showPassword, setShowPassword] = useState(false);
 
-    const error = false;
 
     return (
         <div className={`${className || ""}`}>
@@ -69,7 +70,24 @@ const Field = ({
                                     : "password"
                                 : type || "text"
                         }
-                        {...inputProps}
+                        value={inputProps.value}
+                        onChange={inputProps.onChange}
+                        placeholder={inputProps.placeholder}
+                        disabled={inputProps.disabled}
+                        maxLength={inputProps.maxLength}
+                        minLength={inputProps.minLength}
+                        name={inputProps.name}
+                        id={inputProps.id}
+                        autoComplete={inputProps.autoComplete}
+                        autoFocus={inputProps.autoFocus}
+                        readOnly={inputProps.readOnly}
+                        required={inputProps.required}
+                        tabIndex={inputProps.tabIndex}
+                        onBlur={inputProps.onBlur}
+                        onFocus={inputProps.onFocus}
+                        onKeyDown={inputProps.onKeyDown}
+                        onKeyUp={inputProps.onKeyUp}
+                        onKeyPress={inputProps.onKeyPress}
                     />
                 )}
                 {type === "password" && (

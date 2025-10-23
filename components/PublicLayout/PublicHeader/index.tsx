@@ -34,14 +34,14 @@ const PublicHeader = () => {
                     {/* Location Filter */}
                     <button 
                         onClick={() => setIsLocationFilterOpen(true)}
-                        className="hidden md:flex items-center space-x-3 px-4 py-2 border border-gray-300 rounded-full hover:shadow-md transition-all duration-200 hover:border-gray-400"
+                        className="hidden md:flex items-center space-x-3 px-4 py-2 border border-gray-200 rounded-full hover:shadow-md transition-all duration-200 hover:bg-gray-50"
                     >
                         <Image
-                            src="/images/icons/location.png"
+                            src="/images/icons/Target.png"
                             alt="Localização"
-                            width={20}
-                            height={20}
-                            className="w-5 h-5 object-cover"
+                            width={44}
+                            height={44}
+                            className="w-11 h-11 object-cover"
                         />
                         <span className="text-gray-900 font-bold text-lg">Onde?</span>
                     </button>
@@ -82,14 +82,14 @@ const PublicHeader = () => {
                     <div className="md:hidden border-t border-gray-100 py-4">
                         <button 
                             onClick={() => setIsLocationFilterOpen(true)}
-                            className="flex items-center space-x-3 px-4 py-2 border border-gray-300 rounded-full hover:shadow-md transition-all duration-200 hover:border-gray-400"
+                            className="flex items-center space-x-3 px-4 py-2 border border-gray-200 rounded-full hover:shadow-md transition-all duration-200 hover:bg-gray-50"
                         >
                             <Image
-                                src="/images/icons/location.png"
+                                src="/images/icons/Target.png"
                                 alt="Localização"
-                                width={20}
-                                height={20}
-                                className="w-5 h-5 object-cover"
+                                width={44}
+                                height={44}
+                                className="w-11 h-11 object-cover"
                             />
                             <span className="text-gray-900 font-bold text-lg">Onde?</span>
                         </button>

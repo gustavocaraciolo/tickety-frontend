@@ -65,7 +65,7 @@ const CartPage = () => {
                                 </h2>
                                 <button
                                     onClick={clearCart}
-                                    className="text-body-sm text-error-100 hover:text-error-200 transition-colors"
+                                    className="text-body-sm text-error-100 hover:text-error-200 transition-colors border border-error-200 hover:border-error-300 rounded-lg px-3 py-1"
                                 >
                                     Limpar carrinho
                                 </button>
