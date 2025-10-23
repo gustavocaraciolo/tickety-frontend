@@ -5,6 +5,7 @@ import CartItem from "@/components/CartItem";
 import OrderSummary from "@/components/OrderSummary";
 import Button from "@/components/Button";
 import Link from "next/link";
+import Image from "next/image";
 
 const CartPage = () => {
     const { items, totalPrice, clearCart } = useCart();
@@ -16,8 +17,14 @@ const CartPage = () => {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center">
                 <div className="text-center">
-                    <div className="w-24 h-24 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                        <div className="w-12 h-12 bg-gray-400 rounded"></div>
+                    <div className="w-24 h-24 flex items-center justify-center mx-auto mb-6">
+                        <Image
+                            src="/images/icons/Activities Blueprint/Shopping and Retail _ discount tag, price tag, sale, shopping, Vector illustration.png"
+                            alt="Carrinho vazio"
+                            width={96}
+                            height={96}
+                            className="w-24 h-24 object-cover"
+                        />
                     </div>
                     <h1 className="text-2xl font-bold text-gray-900 mb-4">
                         Seu carrinho está vazio

@@ -7,6 +7,7 @@ import Field from "@/components/Field";
 import Select from "@/components/Select";
 import Modal from "@/components/Modal";
 import Icon from "@/components/Icon";
+import { SelectOption } from "@/types/select";
 
 interface LocationFilterProps {
     isOpen: boolean;
@@ -15,62 +16,62 @@ interface LocationFilterProps {
 
 const LocationFilter = ({ isOpen, onClose }: LocationFilterProps) => {
     const router = useRouter();
-    const [selectedCountry, setSelectedCountry] = useState(null);
-    const [selectedState, setSelectedState] = useState(null);
-    const [selectedDate, setSelectedDate] = useState(null);
+    const [selectedCountry, setSelectedCountry] = useState<SelectOption | null>(null);
+    const [selectedState, setSelectedState] = useState<SelectOption | null>(null);
+    const [selectedDate, setSelectedDate] = useState<SelectOption | null>(null);
 
     const countries = [
-        { id: "br", name: "Brasil" },
-        { id: "ao", name: "Angola" },
-        { id: "mz", name: "Moçambique" }
+        { id: 1, name: "Brasil" },
+        { id: 2, name: "Angola" },
+        { id: 3, name: "Moçambique" }
     ];
 
     const states = {
-        br: [
-            { id: "sp", name: "São Paulo" },
-            { id: "rj", name: "Rio de Janeiro" },
-            { id: "mg", name: "Minas Gerais" },
-            { id: "rs", name: "Rio Grande do Sul" },
-            { id: "pr", name: "Paraná" },
-            { id: "sc", name: "Santa Catarina" },
-            { id: "ba", name: "Bahia" },
-            { id: "go", name: "Goiás" },
-            { id: "pe", name: "Pernambuco" },
-            { id: "ce", name: "Ceará" }
+        1: [
+            { id: 1, name: "São Paulo" },
+            { id: 2, name: "Rio de Janeiro" },
+            { id: 3, name: "Minas Gerais" },
+            { id: 4, name: "Rio Grande do Sul" },
+            { id: 5, name: "Paraná" },
+            { id: 6, name: "Santa Catarina" },
+            { id: 7, name: "Bahia" },
+            { id: 8, name: "Goiás" },
+            { id: 9, name: "Pernambuco" },
+            { id: 10, name: "Ceará" }
         ],
-        ao: [
-            { id: "luanda", name: "Luanda" },
-            { id: "huambo", name: "Huambo" },
-            { id: "lobito", name: "Lobito" },
-            { id: "benguela", name: "Benguela" },
-            { id: "lubango", name: "Lubango" },
-            { id: "malanje", name: "Malanje" },
-            { id: "namibe", name: "Namibe" },
-            { id: "cabinda", name: "Cabinda" },
-            { id: "uige", name: "Uíge" },
-            { id: "kuito", name: "Kuito" }
+        2: [
+            { id: 11, name: "Luanda" },
+            { id: 12, name: "Huambo" },
+            { id: 13, name: "Lobito" },
+            { id: 14, name: "Benguela" },
+            { id: 15, name: "Lubango" },
+            { id: 16, name: "Malanje" },
+            { id: 17, name: "Namibe" },
+            { id: 18, name: "Cabinda" },
+            { id: 19, name: "Uíge" },
+            { id: 20, name: "Kuito" }
         ],
-        mz: [
-            { id: "maputo", name: "Maputo" },
-            { id: "beira", name: "Beira" },
-            { id: "nampula", name: "Nampula" },
-            { id: "chimoio", name: "Chimoio" },
-            { id: "tete", name: "Tete" },
-            { id: "quelimane", name: "Quelimane" },
-            { id: "xai-xai", name: "Xai-Xai" },
-            { id: "inhambane", name: "Inhambane" },
-            { id: "lichinga", name: "Lichinga" },
-            { id: "pemba", name: "Pemba" }
+        3: [
+            { id: 21, name: "Maputo" },
+            { id: 22, name: "Beira" },
+            { id: 23, name: "Nampula" },
+            { id: 24, name: "Chimoio" },
+            { id: 25, name: "Tete" },
+            { id: 26, name: "Quelimane" },
+            { id: 27, name: "Xai-Xai" },
+            { id: 28, name: "Inhambane" },
+            { id: 29, name: "Lichinga" },
+            { id: 30, name: "Pemba" }
         ]
     };
 
     const dateOptions = [
-        { id: "today", name: "Hoje" },
-        { id: "tomorrow", name: "Amanhã" },
-        { id: "this-week", name: "Esta Semana" },
-        { id: "this-month", name: "Este Mês" },
-        { id: "next-month", name: "Próximo Mês" },
-        { id: "custom", name: "Data Personalizada" }
+        { id: 1, name: "Hoje" },
+        { id: 2, name: "Amanhã" },
+        { id: 3, name: "Esta Semana" },
+        { id: 4, name: "Este Mês" },
+        { id: 5, name: "Próximo Mês" },
+        { id: 6, name: "Data Personalizada" }
     ];
 
     const handleApply = () => {
@@ -78,13 +79,13 @@ const LocationFilter = ({ isOpen, onClose }: LocationFilterProps) => {
         const params = new URLSearchParams();
         
         if (selectedCountry) {
-            params.append('country', selectedCountry.id);
+            params.append('country', selectedCountry.id.toString());
         }
         if (selectedState) {
-            params.append('state', selectedState.id);
+            params.append('state', selectedState.id.toString());
         }
         if (selectedDate) {
-            params.append('date', selectedDate.id);
+            params.append('date', selectedDate.id.toString());
         }
         
         // Redirecionar para página de eventos com filtros
@@ -106,7 +107,7 @@ const LocationFilter = ({ isOpen, onClose }: LocationFilterProps) => {
     return (
         <Modal open={isOpen} onClose={onClose}>
             <div className="p-4">
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-1">
                     <h2 className="text-xl font-semibold text-gray-900">
                         Filtros de Localização
                     </h2>
@@ -118,7 +119,7 @@ const LocationFilter = ({ isOpen, onClose }: LocationFilterProps) => {
                     </button>
                 </div>
 
-                <div className="space-y-6">
+                <div className="space-y-6 mt-6">
                     {/* País */}
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -162,7 +163,7 @@ const LocationFilter = ({ isOpen, onClose }: LocationFilterProps) => {
                     </div>
 
                     {/* Data Personalizada */}
-                    {selectedDate && selectedDate.id === "custom" && (
+                    {selectedDate && selectedDate.id === 6 && (
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">
                                 Data Específica
@@ -182,7 +183,7 @@ const LocationFilter = ({ isOpen, onClose }: LocationFilterProps) => {
                     <Button
                         onClick={handleApply}
                         isPrimary
-                        isMedium
+                        isLarge
                     >
                         Aplicar Filtros
                     </Button>
