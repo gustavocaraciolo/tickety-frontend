@@ -6,7 +6,8 @@ import Image from "@/components/Image";
 import Button from "@/components/Button";
 import Search from "@/components/Search";
 import EventCard from "@/components/EventCard";
-import { featuredEvents, upcomingEvents } from "@/data/publicEvents";
+import ElegantCarousel from "@/components/ElegantCarousel";
+import { featuredEvents, upcomingEvents } from "@/data/expandedEvents";
 import { tableContent as categoriesData } from "@/templates/Events/CategoriesPage/content";
 
 const HomePage = () => {
@@ -21,68 +22,9 @@ const HomePage = () => {
 
     return (
         <div className="min-h-screen">
-            {/* Hero Section */}
-            <section className="bg-gradient-to-br from-primary-50 to-primary-100 py-16">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center max-w-4xl mx-auto">
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                            Descubra os Melhores Eventos
-                            <span className="block text-primary-600">da Sua Cidade</span>
-                        </h1>
-                        <p className="text-body-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                            Encontre e compre ingressos para shows, festivais, palestras, workshops e muito mais. 
-                            Milhares de eventos esperando por você.
-                        </p>
-                        
-                        {/* Search Bar */}
-                        <div className="max-w-2xl mx-auto mb-8">
-                            <div className="flex gap-3">
-                                <Search
-                                    className="flex-1"
-                                    placeholder="Buscar eventos, artistas, locais..."
-                                    value={searchQuery}
-                                    onChange={(e) => setSearchQuery(e.target.value)}
-                                />
-                                <Button 
-                                    isPrimary 
-                                    isLarge
-                                    onClick={handleSearch}
-                                    className="px-8"
-                                >
-                                    Buscar
-                                </Button>
-                            </div>
-                        </div>
-
-                        {/* Quick Stats */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-                            <div className="text-center">
-                                <div className="text-3xl font-bold text-primary-600 mb-1">
-                                    500+
-                                </div>
-                                <div className="text-body-sm text-gray-600">
-                                    Eventos Disponíveis
-                                </div>
-                            </div>
-                            <div className="text-center">
-                                <div className="text-3xl font-bold text-primary-600 mb-1">
-                                    50K+
-                                </div>
-                                <div className="text-body-sm text-gray-600">
-                                    Usuários Ativos
-                                </div>
-                            </div>
-                            <div className="text-center">
-                                <div className="text-3xl font-bold text-primary-600 mb-1">
-                                    98%
-                                </div>
-                                <div className="text-body-sm text-gray-600">
-                                    Satisfação
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            {/* Hero Section with Carousel */}
+            <section className="relative">
+                <ElegantCarousel events={featuredEvents} />
             </section>
 
             {/* Featured Events */}

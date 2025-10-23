@@ -63,15 +63,15 @@ const PublicHeader = () => {
                         </div>
 
                         {/* Cart */}
-                        <Link href="/shop/cart" className="relative">
+                        <Link href="/shop/cart" className="relative group">
                             <Button
                                 isSquare
                                 isMedium
-                                className="relative"
+                                className="relative hover:bg-primary-50 transition-colors"
                             >
-                                <Icon name="shopping-cart" />
+                                <Icon name="cart" className="fill-gray-600 group-hover:fill-primary-600 transition-colors" />
                                 {totalItems > 0 && (
-                                    <span className="absolute -top-2 -right-2 bg-primary-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                                    <span className="absolute -top-2 -right-2 bg-primary-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold animate-pulse">
                                         {totalItems}
                                     </span>
                                 )}

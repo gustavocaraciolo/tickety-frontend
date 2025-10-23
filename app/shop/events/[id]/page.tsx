@@ -5,15 +5,14 @@ import { useParams } from "next/navigation";
 import Image from "@/components/Image";
 import Button from "@/components/Button";
 import Icon from "@/components/Icon";
-import TicketSelector from "@/components/TicketSelector";
-import { getEventDetails } from "@/data/eventDetails";
+import { expandedEvents } from "@/data/expandedEvents";
 
 const EventDetailsPage = () => {
     const params = useParams();
     const eventId = params.id as string;
     const [activeTab, setActiveTab] = useState<'details' | 'tickets'>('details');
 
-    const event = getEventDetails(eventId);
+    const event = expandedEvents.find(e => e.id === eventId);
 
     if (!event) {
         return (
@@ -165,10 +164,7 @@ const EventDetailsPage = () => {
                                                         {event.location}
                                                     </div>
                                                     <div className="text-body-sm text-gray-600">
-                                                        {event.address}
-                                                    </div>
-                                                    <div className="text-body-sm text-gray-500">
-                                                        {event.city}
+                                                        {event.location}
                                                     </div>
                                                 </div>
                                             </div>
@@ -180,15 +176,6 @@ const EventDetailsPage = () => {
                                             Organizador
                                         </h3>
                                         <div className="flex items-center gap-3">
-                                            {event.organizerLogo && (
-                                                <Image
-                                                    src={event.organizerLogo}
-                                                    alt={event.organizer}
-                                                    width={40}
-                                                    height={40}
-                                                    className="rounded-lg"
-                                                />
-                                            )}
                                             <div>
                                                 <div className="font-medium text-gray-900">
                                                     {event.organizer}
@@ -203,14 +190,100 @@ const EventDetailsPage = () => {
                             )}
 
                             {activeTab === 'tickets' && (
-                                <TicketSelector
-                                    eventId={event.id}
-                                    eventTitle={event.title}
-                                    eventImage={event.image}
-                                    eventDate={event.date}
-                                    eventLocation={event.location}
-                                    tickets={event.tickets}
-                                />
+                                <div className="bg-white border border-gray-100 rounded-2xl p-6">
+                                    <h3 className="text-body-xl font-semibold text-gray-900 mb-6">
+                                        Ingressos Disponíveis
+                                    </h3>
+                                    
+                                    <div className="space-y-4">
+                                        <div className="border border-gray-100 rounded-xl p-4">
+                                            <div className="flex justify-between items-start mb-3">
+                                                <div className="flex-1">
+                                                    <h4 className="text-body-lg font-semibold text-gray-900 mb-1">
+                                                        Ingresso Padrão
+                                                    </h4>
+                                                    <p className="text-body-sm text-gray-600 mb-2">
+                                                        Acesso completo ao evento
+                                                    </p>
+                                                    <div className="flex items-center gap-4 text-body-sm text-gray-500">
+                                                        <span>Disponível: {event.ticketsAvailable || 100}</span>
+                                                    </div>
+                                                </div>
+                                                <div className="text-right">
+                                                    <div className="text-body-xl font-semibold text-gray-900">
+                                                        R$ {event.price.min.toFixed(2)}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center gap-3">
+                                                    <button className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50">
+                                                        -
+                                                    </button>
+                                                    <span className="w-8 text-center font-medium">0</span>
+                                                    <button className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50">
+                                                        +
+                                                    </button>
+                                                </div>
+                                                <div className="text-body-lg font-semibold text-gray-900">
+                                                    R$ 0,00
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        {event.price.min !== event.price.max && (
+                                            <div className="border border-gray-100 rounded-xl p-4">
+                                                <div className="flex justify-between items-start mb-3">
+                                                    <div className="flex-1">
+                                                        <h4 className="text-body-lg font-semibold text-gray-900 mb-1">
+                                                            Ingresso VIP
+                                                        </h4>
+                                                        <p className="text-body-sm text-gray-600 mb-2">
+                                                            Acesso VIP com benefícios exclusivos
+                                                        </p>
+                                                        <div className="flex items-center gap-4 text-body-sm text-gray-500">
+                                                            <span>Disponível: {Math.floor((event.ticketsAvailable || 100) * 0.3)}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div className="text-right">
+                                                        <div className="text-body-xl font-semibold text-gray-900">
+                                                            R$ {event.price.max.toFixed(2)}
+                                                        </div>
+                                                        <span className="text-body-sm text-primary-500 font-medium">
+                                                            VIP
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center gap-3">
+                                                        <button className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50">
+                                                            -
+                                                        </button>
+                                                        <span className="w-8 text-center font-medium">0</span>
+                                                        <button className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50">
+                                                            +
+                                                        </button>
+                                                    </div>
+                                                    <div className="text-body-lg font-semibold text-gray-900">
+                                                        R$ 0,00
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                    
+                                    <div className="mt-6 pt-6 border-t border-gray-100">
+                                        <Button 
+                                            className="w-full" 
+                                            isPrimary 
+                                            isLarge
+                                        >
+                                            Adicionar ao Carrinho
+                                        </Button>
+                                    </div>
+                                </div>
                             )}
                         </div>
                     </div>
