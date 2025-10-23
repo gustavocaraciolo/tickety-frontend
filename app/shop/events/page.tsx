@@ -105,7 +105,7 @@ const EventsPage = () => {
                         {/* Search Button */}
                         <button
                             onClick={handleSearch}
-                            className="px-6 py-3 bg-primary-500 text-white rounded-xl font-medium hover:bg-primary-600 transition-colors"
+                            className="h-13 px-6 bg-primary-500 text-white rounded-xl font-semibold text-body-lg hover:bg-primary-600 transition-colors"
                         >
                             Buscar
                         </button>

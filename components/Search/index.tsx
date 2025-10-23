@@ -24,7 +24,7 @@ const Search = ({
                 />
             </button>
             <input
-                className={`w-full h-10 pl-9 pr-3 border border-gray-100 shadow-xs rounded-[0.625rem] text-body-md font-medium text-gray-900 transition-colors placeholder:text-gray-500 outline-none focus:border-primary-500 focus:bg-primary-50 ${
+                className={`w-full h-13 pl-9 pr-3 border border-gray-100 shadow-xs rounded-xl text-body-lg font-medium text-gray-900 transition-colors placeholder:text-gray-500 outline-none focus:border-primary-500 focus:bg-primary-50 ${
                     classInput || ""
                 }`}
                 type="text"

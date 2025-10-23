@@ -31,7 +31,6 @@ const CategoryFilter = ({
         <div className={`relative ${className || ""}`}>
             <Button
                 isSecondary
-                isMedium
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full justify-between"
             >
