@@ -3,7 +3,7 @@ export const navigation = [
         title: "Início",
         items: [
             {
-                title: "Painel",
+                title: "Dashboard",
                 icon: "home",
                 href: "/",
             },
