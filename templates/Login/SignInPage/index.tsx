@@ -14,22 +14,22 @@ const SignInPage = () => {
 
     return (
         <Login
-            title="Welcome Back"
-            description="Glad to see you again. Log in to your account."
+            title="Bem-vindo de Volta"
+            description="Ficamos felizes em vê-lo novamente. Faça login em sua conta."
             image="/images/icons/profile.svg"
         >
             <div className="flex flex-col gap-4 max-md:gap-3">
                 <Field
-                    label="Email Address"
-                    placeholder="Enter your email"
+                    label="Endereço de Email"
+                    placeholder="Digite seu email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                 />
                 <Field
-                    label="Password"
-                    placeholder="Enter your password"
+                    label="Senha"
+                    placeholder="Digite sua senha"
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -37,7 +37,7 @@ const SignInPage = () => {
                 />
                 <div className="flex justify-between items-center">
                     <Checkbox
-                        label="Keep me login"
+                        label="Manter-me logado"
                         checked={remember}
                         onChange={(value) => setRemember(value)}
                     />
@@ -45,7 +45,7 @@ const SignInPage = () => {
                         className="text-body-md font-medium text-primary-400 transition-colors hover:text-primary-600"
                         href="/forgot-password"
                     >
-                        Forgot Password?
+                        Esqueceu a Senha?
                     </Link>
                 </div>
             </div>
@@ -55,15 +55,15 @@ const SignInPage = () => {
                 as="link"
                 href="/"
             >
-                Login
+                Entrar
             </Button>
             <div className="mt-8 text-center text-body-lg text-gray-500 max-md:mt-5">
-                Don’t have an account?{" "}
+                Não tem uma conta?{" "}
                 <Link
                     className="font-medium text-primary-400 transition-colors hover:text-primary-600"
                     href="/create-account"
                 >
-                    Register
+                    Cadastrar
                 </Link>
             </div>
         </Login>

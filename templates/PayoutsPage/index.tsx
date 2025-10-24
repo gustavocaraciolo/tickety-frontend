@@ -10,10 +10,10 @@ import { stats } from "./stats";
 
 const PayoutsPage = () => {
     return (
-        <Layout title="Payouts">
-            <Breadcrumbs items={["Home", "Payouts"]}>
+        <Layout title="Pagamentos">
+            <Breadcrumbs items={["Início", "Pagamentos"]}>
                 <Button className="max-md:w-full" isSecondary isMedium>
-                    Export CSV
+                    Exportar CSV
                 </Button>
             </Breadcrumbs>
             <Cards items={stats} />

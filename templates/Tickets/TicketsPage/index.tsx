@@ -16,21 +16,21 @@ const TicketsPage = () => {
 
     return (
         <>
-            <Layout title="Tickets">
-                <Breadcrumbs items={["Management", "Tickets"]}>
+            <Layout title="Ingressos">
+                <Breadcrumbs items={["Gerenciamento", "Ingressos"]}>
                     <Button
                         isPrimary
                         isMedium
                         onClick={() => setIsModalOpen(true)}
                     >
-                        Create New Ticket
+                        Criar Novo Ingresso
                     </Button>
                 </Breadcrumbs>
                 <Cards items={stats} />
                 <TicketsTable />
             </Layout>
             <Modal
-                title="New Ticket"
+                title="Novo Ingresso"
                 open={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 isSlidePanel

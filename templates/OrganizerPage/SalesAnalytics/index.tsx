@@ -12,8 +12,8 @@ import Widget from "@/components/Widget";
 import { data } from "./data";
 
 const legend = [
-    { label: "Revenue", color: "#E8F0FF" },
-    { label: "Tickets Sold", color: "#1565FF" },
+    { label: "Receita", color: "#E8F0FF" },
+    { label: "Ingressos Vendidos", color: "#1565FF" },
 ];
 
 const SalesAnalytics = ({}) => {
@@ -28,7 +28,7 @@ const SalesAnalytics = ({}) => {
 
     return (
         <Widget
-            title="Sales Analytics"
+            title="Análise de Vendas"
             rightContent={
                 <div className="flex gap-3 max-md:w-full">
                     {legend.map((item, index) => (

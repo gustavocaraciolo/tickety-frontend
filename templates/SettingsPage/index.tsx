@@ -20,17 +20,17 @@ const SettingsPage = () => {
     const [activeId, setActiveId] = useState(0);
 
     return (
-        <Layout title="Settings">
+        <Layout title="Configurações">
             <Breadcrumbs
                 className="max-md:hidden"
-                items={["Other", "Settings"]}
+                items={["Outros", "Configurações"]}
             >
                 <div className="flex gap-3">
                     <Button className="min-w-30" isSecondary isMedium>
-                        Cancel
+                        Cancelar
                     </Button>
                     <Button className="min-w-30" isPrimary isMedium>
-                        Save Change
+                        Salvar Alterações
                     </Button>
                 </div>
             </Breadcrumbs>
@@ -63,10 +63,10 @@ const SettingsPage = () => {
                 </div>
                 <div className="hidden gap-4 border-t border-gray-100 pt-6 px-6 max-md:flex">
                     <Button className="flex-1" isSecondary isMedium>
-                        Cancel
+                        Cancelar
                     </Button>
                     <Button className="flex-1" isPrimary isMedium>
-                        Save Change
+                        Salvar Alterações
                     </Button>
                 </div>
             </div>

@@ -35,27 +35,27 @@ const General = ({}) => {
     return (
         <>
             <Item
-                title="Account Details"
-                description="Your users will use this information to contact you."
+                title="Detalhes da Conta"
+                description="Seus usuários usarão essas informações para entrar em contato com você."
             >
                 <div className="flex flex-col gap-4">
                     <Field
-                        label="Company Name"
-                        placeholder="Enter company name"
+                        label="Nome da Empresa"
+                        placeholder="Digite o nome da empresa"
                         type="text"
                         value={companyName}
                         onChange={(e) => setCompanyName(e.target.value)}
                         required
                     />
                     <Select
-                        label="Payment Method"
+                        label="Método de Pagamento"
                         value={industry}
                         onChange={setIndustry}
                         options={industries}
                         required
                     />
                     <Select
-                        label="Currency"
+                        label="Moeda"
                         value={currency}
                         onChange={setCurrency}
                         options={currencies}
@@ -64,28 +64,28 @@ const General = ({}) => {
                 </div>
             </Item>
             <Item
-                title="Address"
-                description="This address will appear on your invoice."
+                title="Endereço"
+                description="Este endereço aparecerá na sua fatura."
             >
                 <div className="flex flex-col gap-4">
                     <Field
-                        label="Address Name"
-                        placeholder="Enter address name"
+                        label="Nome do Endereço"
+                        placeholder="Digite o nome do endereço"
                         type="text"
                         value={addressName}
                         onChange={(e) => setAddressName(e.target.value)}
                         required
                     />
                     <Select
-                        label="Country or Region"
+                        label="País ou Região"
                         value={country}
                         onChange={setCountry}
                         options={countries}
                         required
                     />
                     <Field
-                        label="City"
-                        placeholder="Enter city"
+                        label="Cidade"
+                        placeholder="Digite a cidade"
                         type="text"
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
@@ -94,8 +94,8 @@ const General = ({}) => {
                     <div className="flex gap-4 max-md:flex-col">
                         <Field
                             className="grow"
-                            label="Address"
-                            placeholder="Enter address"
+                            label="Endereço"
+                            placeholder="Digite o endereço"
                             type="text"
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
@@ -103,8 +103,8 @@ const General = ({}) => {
                         />
                         <Field
                             className="shrink-0 w-36 max-md:w-full"
-                            label="Postal Code"
-                            placeholder="Enter code"
+                            label="Código Postal"
+                            placeholder="Digite o código"
                             type="text"
                             value={postalCode}
                             onChange={(e) => setPostalCode(e.target.value)}

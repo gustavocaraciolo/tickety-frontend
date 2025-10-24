@@ -1,38 +1,38 @@
 export const navigation = [
     {
         id: 0,
-        title: "General",
+        title: "Geral",
     },
     {
         id: 1,
-        title: "Plan & Pricing",
+        title: "Plano e Preços",
     },
     {
         id: 2,
-        title: "My Account",
+        title: "Minha Conta",
     },
     {
         id: 3,
-        title: "Payment & Blling",
+        title: "Pagamento e Cobrança",
     },
     {
         id: 4,
-        title: "Tax & Duties",
+        title: "Impostos e Taxas",
     },
     {
         id: 5,
-        title: "Link Account",
+        title: "Vincular Conta",
     },
     {
         id: 6,
-        title: "Time & Language",
+        title: "Hora e Idioma",
     },
     {
         id: 7,
-        title: "Password",
+        title: "Senha",
     },
     {
         id: 8,
-        title: "Notifications",
+        title: "Notificações",
     },
 ];

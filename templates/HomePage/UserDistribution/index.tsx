@@ -13,7 +13,7 @@ const UserDistribution = ({}) => {
     return (
         <Widget
             className="shrink-0 w-108 max-4xl:w-88 max-2xl:w-70 max-lg:w-full"
-            title="User Distribution"
+            title="Distribuição de Usuários"
         >
             <div className="p-5">
                 <div className="relative">

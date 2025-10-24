@@ -1,30 +1,30 @@
 export const stats = [
     {
-        title: "Total Tickets Sold",
+        title: "Total de Ingressos Vendidos",
         value: "2,130",
         percentage: 10.5,
         image: "/images/icons/dollar.svg",
-        tooltip: "Description Total Tickets Sold",
+        tooltip: "Descrição Total de Ingressos Vendidos",
     },
     {
-        title: "Total Revenue",
+        title: "Receita Total",
         value: "$78,500",
         percentage: 10.5,
         image: "/images/icons/clock.svg",
-        tooltip: "Description Total Revenue",
+        tooltip: "Descrição Receita Total",
     },
     {
-        title: "Upcoming Events",
+        title: "Eventos Próximos",
         value: "5",
         percentage: 10.5,
         image: "/images/icons/check.svg",
-        tooltip: "Description Upcoming Events",
+        tooltip: "Descrição Eventos Próximos",
     },
     {
-        title: "Check-ins Completed",
+        title: "Check-ins Concluídos",
         value: "1,480",
         percentage: 10.5,
         image: "/images/icons/clock.svg",
-        tooltip: "Description Check-ins Completed",
+        tooltip: "Descrição Check-ins Concluídos",
     },
 ];

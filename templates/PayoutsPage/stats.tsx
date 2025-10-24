@@ -1,30 +1,30 @@
 export const stats = [
     {
-        title: "Total Payouts",
+        title: "Total de Pagamentos",
         value: "$325,000",
         percentage: 10.5,
         image: "/images/icons/dollar.svg",
-        tooltip: "Description Total Payouts",
+        tooltip: "Descrição Total de Pagamentos",
     },
     {
-        title: "Pending Requests",
+        title: "Solicitações Pendentes",
         value: "15",
         percentage: 10.5,
         image: "/images/icons/clock.svg",
-        tooltip: "Description Pending Requests",
+        tooltip: "Descrição Solicitações Pendentes",
     },
     {
-        title: "Approved This Month",
+        title: "Aprovados Este Mês",
         value: "$12,000",
         percentage: -10.5,
         image: "/images/icons/check.svg",
-        tooltip: "Description Approved This Month",
+        tooltip: "Descrição Aprovados Este Mês",
     },
     {
-        title: "Rejected Requests",
+        title: "Solicitações Rejeitadas",
         value: "3",
         percentage: 10.5,
         image: "/images/icons/close.svg",
-        tooltip: "Description Rejected Requests",
+        tooltip: "Descrição Solicitações Rejeitadas",
     },
 ];

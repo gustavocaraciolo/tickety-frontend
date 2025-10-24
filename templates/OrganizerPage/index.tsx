@@ -18,11 +18,11 @@ const OrganizerPage = () => {
 
     return (
         <>
-            <Layout title="Calendars">
-                <Breadcrumbs items={["Home", "Calendars"]}>
+            <Layout title="Calendários">
+                <Breadcrumbs items={["Início", "Calendários"]}>
                     <div className="flex gap-3">
                         <Button className="max-md:flex-1" isSecondary isMedium>
-                            Generate Reports
+                            Gerar Relatórios
                         </Button>
                         <Button
                             className="max-md:flex-1"
@@ -30,7 +30,7 @@ const OrganizerPage = () => {
                             isMedium
                             onClick={() => setIsModalOpen(true)}
                         >
-                            Create Event
+                            Criar Evento
                         </Button>
                     </div>
                 </Breadcrumbs>
@@ -44,13 +44,13 @@ const OrganizerPage = () => {
                 </div>
             </Layout>
             <Modal
-                title="Create New Event"
+                title="Criar Novo Evento"
                 open={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 isSlidePanel
                 contentFooter={
                     <Button className="min-w-30" isPrimary isMedium>
-                        Create
+                        Criar
                     </Button>
                 }
             >

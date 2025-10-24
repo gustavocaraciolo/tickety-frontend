@@ -10,34 +10,34 @@ const LinkAccount = ({}) => {
 
     return (
         <Item
-            title="Link Account"
-            description="Your customers will use this information to contact you."
+            title="Vincular Conta"
+            description="Seus clientes usarão essas informações para entrar em contato com você."
         >
             <div className="flex flex-col gap-4">
                 <Field
                     label="Instagram"
-                    placeholder="Enter instagram"
+                    placeholder="Digite o Instagram"
                     type="text"
                     value={linkInstagram}
                     onChange={(e) => setLinkInstagram(e.target.value)}
                 />
                 <Field
                     label="Facebook"
-                    placeholder="Enter facebook"
+                    placeholder="Digite o Facebook"
                     type="text"
                     value={linkFacebook}
                     onChange={(e) => setLinkFacebook(e.target.value)}
                 />
                 <Field
                     label="Twitter"
-                    placeholder="Enter twitter"
+                    placeholder="Digite o Twitter"
                     type="text"
                     value={linkTwitter}
                     onChange={(e) => setLinkTwitter(e.target.value)}
                 />
                 <Field
                     label="YouTube"
-                    placeholder="Enter youTube"
+                    placeholder="Digite o YouTube"
                     type="text"
                     value={linkYouTube}
                     onChange={(e) => setLinkYouTube(e.target.value)}

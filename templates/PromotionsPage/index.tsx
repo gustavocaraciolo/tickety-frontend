@@ -16,22 +16,22 @@ const PromotionsPage = () => {
 
     return (
         <>
-            <Layout title="Promotions">
-                <Breadcrumbs items={["Management", "Promotions"]}>
+            <Layout title="Promoções">
+                <Breadcrumbs items={["Gerenciamento", "Promoções"]}>
                     <Button
                         className="max-md:w-full"
                         isPrimary
                         isMedium
                         onClick={() => setIsModalOpen(true)}
                     >
-                        Add Promotion
+                        Adicionar Promoção
                     </Button>
                 </Breadcrumbs>
                 <Cards items={stats} />
                 <PromotionsTable />
             </Layout>
             <Modal
-                title="Add Promotion"
+                title="Adicionar Promoção"
                 open={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 isSlidePanel

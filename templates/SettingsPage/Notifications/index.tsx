@@ -6,54 +6,54 @@ const Notifications = ({}) => {
     const [pushNotifications, setPushNotifications] = useState([
         {
             id: 0,
-            title: "Transaction Confirmation",
+            title: "Confirmação de Transação",
             description:
-                "Sent automatically to the customer after they place their order.",
+                "Enviada automaticamente ao cliente após ele fazer o pedido.",
             value: true,
             onChange: (value: boolean) =>
                 handlePushNotificationsChange(0, value),
         },
         {
             id: 1,
-            title: "Transaction Edited",
+            title: "Transação Editada",
             description:
-                "Sent to the customer after their order is edited (if you select this option).",
+                "Enviada ao cliente após seu pedido ser editado (se você selecionar esta opção).",
             value: false,
             onChange: (value: boolean) =>
                 handlePushNotificationsChange(1, value),
         },
         {
             id: 2,
-            title: "Transaction Invoice",
+            title: "Fatura de Transação",
             description:
-                "Sent to the customer when the order has an outstanding balance.",
+                "Enviada ao cliente quando o pedido tem saldo pendente.",
             value: true,
             onChange: (value: boolean) =>
                 handlePushNotificationsChange(2, value),
         },
         {
             id: 3,
-            title: "Transaction Cancelled",
+            title: "Transação Cancelada",
             description:
-                "Sent automatically to the customer if their order is cancelled (if you select this option).",
+                "Enviada automaticamente ao cliente se seu pedido for cancelado (se você selecionar esta opção).",
             value: true,
             onChange: (value: boolean) =>
                 handlePushNotificationsChange(3, value),
         },
         {
             id: 4,
-            title: "Transaction Refund",
+            title: "Reembolso de Transação",
             description:
-                "Sent automatically to the customer if their order is refunded (if you select this option).",
+                "Enviada automaticamente ao cliente se seu pedido for reembolsado (se você selecionar esta opção).",
             value: true,
             onChange: (value: boolean) =>
                 handlePushNotificationsChange(4, value),
         },
         {
             id: 5,
-            title: "Payment Error",
+            title: "Erro de Pagamento",
             description:
-                "Sent automatically to the customer if their payment can’t be processed during checkout.",
+                "Enviada automaticamente ao cliente se o pagamento não puder ser processado durante o checkout.",
             value: false,
             onChange: (value: boolean) =>
                 handlePushNotificationsChange(5, value),
@@ -68,8 +68,8 @@ const Notifications = ({}) => {
 
     return (
         <Item
-            title="Push Notifications"
-            description="Get alerts for new orders, order processingupdates, and when orders are completed or canceled."
+            title="Notificações Push"
+            description="Receba alertas para novos pedidos, atualizações de processamento de pedidos e quando os pedidos são concluídos ou cancelados."
         >
             <div className="flex flex-col gap-4 max-md:gap-0">
                 {pushNotifications.map((item) => (

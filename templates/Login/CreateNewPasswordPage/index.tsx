@@ -11,22 +11,22 @@ const CreateNewPasswordPage = () => {
 
     return (
         <Login
-            title="Create New Password"
-            description="Please enter a new password. Your new password must be different from previous password."
+            title="Criar Nova Senha"
+            description="Digite uma nova senha. Sua nova senha deve ser diferente da senha anterior."
             image="/images/icons/lock.svg"
         >
             <div className="flex flex-col gap-4 max-md:gap-3">
                 <Field
-                    label="New Password"
-                    placeholder="Enter new password"
+                    label="Nova Senha"
+                    placeholder="Digite a nova senha"
                     type="password"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                     required
                 />
                 <Field
-                    label="Confirm New Password"
-                    placeholder="Confirm new password"
+                    label="Confirmar Nova Senha"
+                    placeholder="Confirme a nova senha"
                     type="password"
                     value={confirmNewPassword}
                     onChange={(e) => setConfirmNewPassword(e.target.value)}
@@ -39,7 +39,7 @@ const CreateNewPasswordPage = () => {
                 as="link"
                 href="/sign-in"
             >
-                Reset Password
+                Redefinir Senha
             </Button>
         </Login>
     );

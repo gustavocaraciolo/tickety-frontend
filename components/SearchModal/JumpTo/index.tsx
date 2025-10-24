@@ -6,7 +6,7 @@ import { items } from "./items";
 const JumpTo = ({}) => (
     <div className="px-1 py-4">
         <div className="mb-2 px-3 text-body-sm font-semibold text-gray-500">
-            JUMP TO
+            IR PARA
         </div>
         <div className="">
             {items.map((item, index) => (

@@ -26,7 +26,7 @@ const TopSellingEvents = ({}) => {
                     <div className="flex flex-col gap-2">
                         <div className="flex justify-between items-center gap-2">
                             <div className="font-medium text-gray-400">
-                                Ticket Sold
+                                Ingressos Vendidos
                             </div>
                             <div className="font-semibold text-primary-500">
                                 {payload[0].value}
@@ -46,7 +46,7 @@ const TopSellingEvents = ({}) => {
     };
 
     return (
-        <Widget className="grow" title="Top Selling Events">
+        <Widget className="grow" title="Eventos Mais Vendidos">
             <div className="h-103 pt-5 pr-5 pb-4 max-md:h-98">
                 <ResponsiveContainer width="100%" height="100%">
                     <BarChart

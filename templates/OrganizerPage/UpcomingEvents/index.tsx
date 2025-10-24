@@ -15,16 +15,16 @@ const UpcomingEvents = ({}) => {
     return (
         <Table
             className="mt-6"
-            title="Upcoming Events"
+            title="Eventos Próximos"
             search={search}
             setSearch={(e) => setSearch(e.target.value)}
             selectAll={selectAll}
             onSelectAll={handleSelectAll}
             cellsThead={[
-                "Event Name",
-                "Date & Time",
+                "Nome do Evento",
+                "Data e Hora",
                 "Status",
-                "Tickets Sold",
+                "Ingressos Vendidos",
                 "",
             ]}
             isShortHead

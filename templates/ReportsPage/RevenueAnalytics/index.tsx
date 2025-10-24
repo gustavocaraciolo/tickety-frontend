@@ -16,14 +16,14 @@ import Percentage from "@/components/Percentage";
 import { data } from "./data";
 
 const durationOptions = [
-    { id: 1, name: "Month" },
-    { id: 2, name: "Week" },
-    { id: 3, name: "Day" },
+    { id: 1, name: "Mês" },
+    { id: 2, name: "Semana" },
+    { id: 3, name: "Dia" },
 ];
 
 const legend = [
-    { label: "This period", color: "#1565FF" },
-    { label: "Last period", color: "#B6CFFF" },
+    { label: "Este período", color: "#1565FF" },
+    { label: "Período anterior", color: "#B6CFFF" },
 ];
 
 const RevenueAnalytics = ({}) => {
@@ -68,7 +68,7 @@ const RevenueAnalytics = ({}) => {
     return (
         <Widget
             className="mt-6"
-            title="Revenue Analytics"
+            title="Análise de Receita"
             selectOptions={durationOptions}
             selectValue={duration}
             selectOnChange={setDuration}
@@ -77,7 +77,7 @@ const RevenueAnalytics = ({}) => {
                 <div className="flex items-center max-md:mb-2">
                     <div className="text-h4">$1,302.00</div>
                     <Percentage className="ml-2" value={-8.5} isSimple />
-                    <div className="ml-1.5 text-gray-500">from last period</div>
+                    <div className="ml-1.5 text-gray-500">do período anterior</div>
                 </div>
                 <div className="flex gap-3 ml-auto">
                     {legend.map((item, index) => (

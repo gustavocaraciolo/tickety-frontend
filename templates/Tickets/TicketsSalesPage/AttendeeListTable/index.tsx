@@ -15,17 +15,17 @@ const AttendeeListTable = ({}) => {
     return (
         <Table
             className="mt-6"
-            title="Attendee List Table"
+            title="Tabela de Lista de Participantes"
             search={search}
             setSearch={(e) => setSearch(e.target.value)}
             selectAll={selectAll}
             onSelectAll={handleSelectAll}
             cellsThead={[
-                "Name",
+                "Nome",
                 "Email",
-                "Ticket Type",
-                "Purchase Date",
-                "Check-in Status",
+                "Tipo de Ingresso",
+                "Data da Compra",
+                "Status de Check-in",
                 "",
             ]}
             isNumber

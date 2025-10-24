@@ -10,10 +10,10 @@ import { stats } from "./stats";
 
 const ReviewsPage = () => {
     return (
-        <Layout title="Reviews">
-            <Breadcrumbs items={["Management", "Reviews"]}>
+        <Layout title="Avaliações">
+            <Breadcrumbs items={["Gerenciamento", "Avaliações"]}>
                 <Button className="max-md:w-full" isSecondary isMedium>
-                    Export CSV
+                    Exportar CSV
                 </Button>
             </Breadcrumbs>
             <Cards items={stats} />

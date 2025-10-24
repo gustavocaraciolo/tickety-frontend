@@ -10,9 +10,9 @@ const timeZones = [
 ];
 
 const languages = [
-    { id: 0, name: "English (United States)" },
-    { id: 1, name: "Spanish (Mexico)" },
-    { id: 2, name: "French (Canada)" },
+    { id: 0, name: "Português (Brasil)" },
+    { id: 1, name: "English (United States)" },
+    { id: 2, name: "Español (México)" },
 ];
 
 const TimeAndLanguage = ({}) => {
@@ -22,23 +22,23 @@ const TimeAndLanguage = ({}) => {
     return (
         <>
             <Item
-                title="Time"
-                description="Set your preferred time zone to ensure that all activities align with your local time."
+                title="Hora"
+                description="Defina seu fuso horário preferido para garantir que todas as atividades se alinhem com sua hora local."
             >
                 <Select
-                    label="Time Zone"
-                    note="The current time is 3:45 PM."
+                    label="Fuso Horário"
+                    note="A hora atual é 15:45."
                     value={timeZone}
                     onChange={setTimeZone}
                     options={timeZones}
                 />
             </Item>
             <Item
-                title="Set you language"
-                description="Choose the language. All text and communication will be displayed in the language you select."
+                title="Definir seu idioma"
+                description="Escolha o idioma. Todo o texto e comunicação serão exibidos no idioma que você selecionar."
             >
                 <Select
-                    label="Language"
+                    label="Idioma"
                     value={language}
                     onChange={setLanguage}
                     options={languages}

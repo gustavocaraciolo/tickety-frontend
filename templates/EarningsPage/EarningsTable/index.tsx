@@ -14,17 +14,17 @@ const EarningsTable = ({}) => {
     return (
         <Table
             className="mt-6"
-            title="Earnings Table"
+            title="Tabela de Ganhos"
             search={search}
             setSearch={(e) => setSearch(e.target.value)}
             selectAll={selectAll}
             onSelectAll={handleSelectAll}
             cellsThead={[
-                "Event Name",
-                "Tickets Sold",
-                "Revenue",
-                "Platform Fee",
-                "Net Earnings",
+                "Nome do Evento",
+                "Ingressos Vendidos",
+                "Receita",
+                "Taxa da Plataforma",
+                "Ganhos Líquidos",
                 "Status",
             ]}
             isNumber

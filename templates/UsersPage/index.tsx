@@ -25,11 +25,11 @@ const UsersPage = () => {
 
     return (
         <>
-            <Layout title="Users">
-                <Breadcrumbs items={["Management", "Users"]}>
+            <Layout title="Usuários">
+                <Breadcrumbs items={["Gerenciamento", "Usuários"]}>
                     <div className="flex items-center gap-3">
                         <Button className="max-md:flex-1" isSecondary isMedium>
-                            Export CSV
+                            Exportar CSV
                         </Button>
                         <Button
                             className="max-md:flex-1"
@@ -40,24 +40,24 @@ const UsersPage = () => {
                                 setNewUser(true);
                             }}
                         >
-                            Add New User
+                            Adicionar Novo Usuário
                         </Button>
                     </div>
                 </Breadcrumbs>
                 <Table
                     className="mt-6"
-                    title="User Table"
+                    title="Tabela de Usuários"
                     search={search}
                     setSearch={(e) => setSearch(e.target.value)}
                     selectAll={selectAll}
                     onSelectAll={handleSelectAll}
                     cellsThead={[
-                        "Name",
+                        "Nome",
                         "Email",
-                        "Phone Number",
-                        "Role",
+                        "Número de Telefone",
+                        "Função",
                         "Status",
-                        "Actions",
+                        "Ações",
                     ]}
                     isNumber
                     isPagination
@@ -80,9 +80,9 @@ const UsersPage = () => {
                             <td>
                                 <div
                                     className={`status ${
-                                        item.status === "Pending"
+                                        item.status === "Pendente"
                                             ? "status-yellow"
-                                            : item.status === "Banned"
+                                            : item.status === "Banido"
                                             ? "status-red"
                                             : "status-green"
                                     }`}
@@ -112,7 +112,7 @@ const UsersPage = () => {
                 </Table>
             </Layout>
             <Modal
-                title={newUser ? "Add New User" : "Update User"}
+                title={newUser ? "Adicionar Novo Usuário" : "Atualizar Usuário"}
                 open={isModalOpen}
                 onClose={() => {
                     setIsModalOpen(false);
@@ -125,14 +125,14 @@ const UsersPage = () => {
                         isPrimary
                         isMedium
                     >
-                        {newUser ? "Add User" : "Update"}
+                        {newUser ? "Adicionar Usuário" : "Atualizar"}
                     </Button>
                 }
             >
                 <Details />
             </Modal>
             <ModalDelete
-                content="Are you sure you want to delete this event?"
+                content="Tem certeza que deseja excluir este usuário?"
                 open={isModalDeleteOpen}
                 onClose={() => setIsModalDeleteOpen(false)}
                 onDelete={() => setIsModalDeleteOpen(false)}

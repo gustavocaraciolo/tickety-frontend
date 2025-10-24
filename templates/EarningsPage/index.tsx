@@ -16,28 +16,28 @@ const EarningsPage = () => {
 
     return (
         <>
-            <Layout title="Earnings">
-                <Breadcrumbs items={["Management", "Earnings"]}>
+            <Layout title="Ganhos">
+                <Breadcrumbs items={["Gerenciamento", "Ganhos"]}>
                     <Button
                         className="max-md:w-full"
                         isPrimary
                         isMedium
                         onClick={() => setIsModalOpen(true)}
                     >
-                        Request Payout
+                        Solicitar Pagamento
                     </Button>
                 </Breadcrumbs>
                 <Cards items={stats} />
                 <EarningsTable />
             </Layout>
             <Modal
-                title="Payout Request"
+                title="Solicitação de Pagamento"
                 open={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 isSlidePanel
                 contentFooter={
                     <Button className="min-w-30" isPrimary isMedium>
-                        Submit
+                        Enviar
                     </Button>
                 }
             >

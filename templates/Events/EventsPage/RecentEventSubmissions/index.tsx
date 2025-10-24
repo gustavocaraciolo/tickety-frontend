@@ -15,18 +15,18 @@ const RecentEventSubmissions = ({}) => {
 
     return (
         <Table
-            title="Recent Event Submissions"
+            title="Submissões Recentes de Eventos"
             search={search}
             setSearch={(e) => setSearch(e.target.value)}
             selectAll={selectAll}
             onSelectAll={handleSelectAll}
             cellsThead={[
-                "Event Title",
-                "Organizer",
-                "Category",
+                "Título do Evento",
+                "Organizador",
+                "Categoria",
                 "Status",
-                "Tickets Sold",
-                "Start Date",
+                "Ingressos Vendidos",
+                "Data de Início",
                 "",
             ]}
             isNumber

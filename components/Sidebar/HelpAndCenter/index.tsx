@@ -6,13 +6,13 @@ const HelpAndCenter = ({}) => (
         <div className="absolute left-1/2 -top-6 flex justify-center items-center w-12 h-12 -translate-x-1/2 rounded-full bg-primary-500 border-[0.25rem] border-white">
             <Icon className="!size-6 fill-white" name="headphone" />
         </div>
-        <div className="mb-1 text-h6">Help & Center</div>
+        <div className="mb-1 text-h6">Central de Ajuda</div>
         <div className="-mx-1 mb-4 text-body-sm">
-            Having difficulty in Ticketing.<br></br>Please contact us for
-            further inquiries
+            Tendo dificuldades com a Bilheteria?<br></br>Entre em contato conosco para
+            mais informações
         </div>
         <Button className="w-full" isWhite isMedium as="link" href="/">
-            Got to help center
+            Ir para central de ajuda
         </Button>
     </div>
 );

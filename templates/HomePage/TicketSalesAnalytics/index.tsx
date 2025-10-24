@@ -14,14 +14,14 @@ import Percentage from "@/components/Percentage";
 import { data } from "./data";
 
 const durationOptions = [
-    { id: 1, name: "Month" },
-    { id: 2, name: "Week" },
-    { id: 3, name: "Day" },
+    { id: 1, name: "Mês" },
+    { id: 2, name: "Semana" },
+    { id: 3, name: "Dia" },
 ];
 
 const legend = [
-    { label: "Total Event", color: "#1565FF" },
-    { label: "Ticket Sold", color: "#DFE1E7" },
+    { label: "Total de Eventos", color: "#1565FF" },
+    { label: "Ingressos Vendidos", color: "#DFE1E7" },
 ];
 
 const TicketSalesAnalytics = ({}) => {
@@ -41,7 +41,7 @@ const TicketSalesAnalytics = ({}) => {
                     <div className="flex flex-col gap-2">
                         <div className="flex justify-between items-center gap-2">
                             <div className="font-medium text-gray-400">
-                                Total Event
+                                Total de Eventos
                             </div>
                             <div className="font-semibold text-primary-500">
                                 {payload[0].value}
@@ -49,7 +49,7 @@ const TicketSalesAnalytics = ({}) => {
                         </div>
                         <div className="flex justify-between items-center gap-2">
                             <div className="font-medium text-gray-400">
-                                Ticket Sold
+                                Ingressos Vendidos
                             </div>
                             <div className="font-semibold">
                                 {payload[1].value}
@@ -65,7 +65,7 @@ const TicketSalesAnalytics = ({}) => {
     return (
         <Widget
             className="grow"
-            title="Ticket Sales Analytics"
+            title="Análise de Vendas de Ingressos"
             selectOptions={durationOptions}
             selectValue={duration}
             selectOnChange={setDuration}
@@ -75,7 +75,7 @@ const TicketSalesAnalytics = ({}) => {
                     <div className="text-h4">324</div>
                     <Percentage className="ml-2" value={-4.5} isSimple />
                     <div className="ml-1.5 text-gray-500">
-                        Last updated: Jun 16, 2025
+                        Última atualização: 16 de jun, 2025
                     </div>
                 </div>
                 <div className="flex gap-3 ml-auto max-md:mt-2">

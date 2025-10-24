@@ -9,29 +9,29 @@ const MyAccount = ({}) => {
 
     return (
         <Item
-            title="Account Details"
-            description="View and update your account details, profile, and more."
+            title="Detalhes da Conta"
+            description="Visualize e atualize os detalhes da sua conta, perfil e mais."
         >
             <div className="flex flex-col gap-4">
                 <Field
-                    label="Full Name"
-                    placeholder="Enter full name"
+                    label="Nome Completo"
+                    placeholder="Digite o nome completo"
                     type="text"
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     required
                 />
                 <Field
-                    label="Email Address"
-                    placeholder="Enter email address"
+                    label="Endereço de Email"
+                    placeholder="Digite o endereço de email"
                     type="email"
                     value={emailAddress}
                     onChange={(e) => setEmailAddress(e.target.value)}
                     required
                 />
                 <Field
-                    label="Phone Number (optional)"
-                    placeholder="Enter phone number"
+                    label="Número de Telefone (opcional)"
+                    placeholder="Digite o número de telefone"
                     type="tel"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}

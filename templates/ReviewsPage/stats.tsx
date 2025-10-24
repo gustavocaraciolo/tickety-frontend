@@ -1,30 +1,30 @@
 export const stats = [
     {
-        title: "Average Rating",
+        title: "Avaliação Média",
         value: "4.6 / 5",
         percentage: 10.5,
         image: "/images/icons/star.png",
-        tooltip: "Description Average Rating",
+        tooltip: "Descrição Avaliação Média",
     },
     {
-        title: "Total Reviews",
+        title: "Total de Avaliações",
         value: "324",
         percentage: 10.5,
         image: "/images/icons/review.svg",
-        tooltip: "Description Total Reviews",
+        tooltip: "Descrição Total de Avaliações",
     },
     {
-        title: "Positive Reviews",
+        title: "Avaliações Positivas",
         value: "296",
         percentage: 10.5,
         image: "/images/icons/like.svg",
-        tooltip: "Description Positive Reviews",
+        tooltip: "Descrição Avaliações Positivas",
     },
     {
-        title: "Negative Reviews",
+        title: "Avaliações Negativas",
         value: "28",
         percentage: 10.5,
         image: "/images/icons/dislike.svg",
-        tooltip: "Description Negative Reviews",
+        tooltip: "Descrição Avaliações Negativas",
     },
 ];

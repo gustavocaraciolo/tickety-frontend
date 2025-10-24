@@ -24,30 +24,30 @@ const CategoriesPage = () => {
 
     return (
         <>
-            <Layout title="Categories">
-                <Breadcrumbs items={["Management", "Events", "Categories"]}>
+            <Layout title="Categorias">
+                <Breadcrumbs items={["Gerenciamento", "Eventos", "Categorias"]}>
                     <Button
                         className="max-md:w-full"
                         isPrimary
                         isMedium
                         onClick={() => setIsModalNewCategory(true)}
                     >
-                        Add New Category
+                        Adicionar Nova Categoria
                     </Button>
                 </Breadcrumbs>
                 <Table
                     className="mt-6"
-                    title="Categories Table"
+                    title="Tabela de Categorias"
                     search={search}
                     setSearch={(e) => setSearch(e.target.value)}
                     selectAll={selectAll}
                     onSelectAll={handleSelectAll}
                     cellsThead={[
-                        "Category Name",
+                        "Nome da Categoria",
                         "Slug",
-                        "Events Count",
+                        "Contagem de Eventos",
                         "Status",
-                        "Actions",
+                        "Ações",
                     ]}
                     isNumber
                     isPagination
@@ -90,13 +90,13 @@ const CategoriesPage = () => {
                 onDelete={() => setIsModalDeleteOpen(false)}
             />
             <Modal
-                title="New Category"
+                title="Nova Categoria"
                 open={isModalNewCategory}
                 onClose={() => setIsModalNewCategory(false)}
                 isSlidePanel
                 contentFooter={
                     <Button className="min-w-30" isPrimary isMedium>
-                        Submit
+                        Enviar
                     </Button>
                 }
             >

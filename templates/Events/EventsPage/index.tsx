@@ -11,10 +11,10 @@ import { stats } from "./stats";
 
 const EventsPage = () => {
     return (
-        <Layout title="Events">
-            <Breadcrumbs items={["Management", "Events"]}>
+        <Layout title="Eventos">
+            <Breadcrumbs items={["Gerenciamento", "Eventos"]}>
                 <Button className="max-md:w-full" isSecondary isMedium>
-                    Export CSV
+                    Exportar CSV
                 </Button>
             </Breadcrumbs>
             <div className="flex gap-6 mb-6 max-md:flex-col">

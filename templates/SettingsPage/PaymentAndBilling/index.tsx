@@ -10,24 +10,24 @@ const PaymentAndBilling = ({}) => {
     return (
         <>
             <Item
-                title="Payment"
-                description="Manage your payment methods securely. Add, update, or remove your credit/debit cards."
+                title="Pagamento"
+                description="Gerencie seus métodos de pagamento com segurança. Adicione, atualize ou remova seus cartões de crédito/débito."
             >
                 <Payment />
             </Item>
             <Item
-                title="Billing"
-                description="Review and update your billing information to ensure accurate and timely payments."
+                title="Cobrança"
+                description="Revise e atualize suas informações de cobrança para garantir pagamentos precisos e pontuais."
             >
                 <Plan />
             </Item>
             <Item
-                title="Email address"
-                description="Invoice will be sent to this email address."
+                title="Endereço de email"
+                description="A fatura será enviada para este endereço de email."
             >
                 <Field
-                    label="Email Address"
-                    placeholder="Enter email address"
+                    label="Endereço de Email"
+                    placeholder="Digite o endereço de email"
                     type="email"
                     value={emailAddress}
                     onChange={(e) => setEmailAddress(e.target.value)}

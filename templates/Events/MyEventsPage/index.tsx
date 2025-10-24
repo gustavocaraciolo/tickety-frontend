@@ -15,28 +15,28 @@ const MyEventsPage = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     return (
         <>
-            <Layout title="My Events">
-                <Breadcrumbs items={["Management", "My Events"]}>
+            <Layout title="Meus Eventos">
+                <Breadcrumbs items={["Gerenciamento", "Meus Eventos"]}>
                     <Button
                         className="max-md:w-full"
                         isPrimary
                         isMedium
                         onClick={() => setIsModalOpen(true)}
                     >
-                        Create Event
+                        Criar Evento
                     </Button>
                 </Breadcrumbs>
                 <Cards items={stats} />
                 <EventsTable />
             </Layout>
             <Modal
-                title="Create New Event"
+                title="Criar Novo Evento"
                 open={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 isSlidePanel
                 contentFooter={
                     <Button className="min-w-30" isPrimary isMedium>
-                        Create
+                        Criar
                     </Button>
                 }
             >

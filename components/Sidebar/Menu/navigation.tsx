@@ -1,69 +1,69 @@
 export const navigation = [
     {
-        title: "Home",
+        title: "Início",
         items: [
             {
-                title: "Dashboard",
+                title: "Painel",
                 icon: "home",
                 href: "/",
             },
             {
-                title: "Calendars",
+                title: "Calendários",
                 icon: "calendar",
                 href: "/organizer",
             },
             {
-                title: "Promotions",
+                title: "Promoções",
                 icon: "sale",
                 href: "/promotions",
             },
             {
-                title: "Payouts",
+                title: "Pagamentos",
                 icon: "bank",
                 href: "/payouts",
             },
         ],
     },
     {
-        title: "Management",
+        title: "Gerenciamento",
         items: [
             {
-                title: "Users",
+                title: "Usuários",
                 icon: "user",
                 href: "/users",
             },
             {
-                title: "Events",
+                title: "Eventos",
                 icon: "music",
                 href: "/events",
             },
             {
-                title: "Tickets",
+                title: "Ingressos",
                 icon: "ticket",
                 href: "/tickets",
             },
             {
-                title: "Earnings",
+                title: "Ganhos",
                 icon: "coins",
                 href: "/earnings",
             },
             {
-                title: "Reviews",
+                title: "Avaliações",
                 icon: "message",
                 href: "/reviews",
             },
         ],
     },
     {
-        title: "Other",
+        title: "Outros",
         items: [
             {
-                title: "Reports",
+                title: "Relatórios",
                 icon: "chart",
                 href: "/reports",
             },
             {
-                title: "Settings",
+                title: "Configurações",
                 icon: "gear",
                 href: "/settings",
             },

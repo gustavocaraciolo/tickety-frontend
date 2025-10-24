@@ -18,18 +18,18 @@ const PayoutsTable = ({}) => {
         <>
             <Table
                 className="mt-6"
-                title="Payouts Table"
+                title="Tabela de Pagamentos"
                 search={search}
                 setSearch={(e) => setSearch(e.target.value)}
                 selectAll={selectAll}
                 onSelectAll={handleSelectAll}
                 cellsThead={[
-                    "Organizer",
-                    "Amount",
-                    "Requested On",
+                    "Organizador",
+                    "Valor",
+                    "Solicitado Em",
                     "Status",
-                    "Processed On",
-                    "Actions",
+                    "Processado Em",
+                    "Ações",
                 ]}
                 isNumber
                 isPagination

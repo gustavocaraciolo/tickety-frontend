@@ -18,18 +18,18 @@ const EventsTable = ({}) => {
         <>
             <Table
                 className="mt-6"
-                title="Events Table"
+                title="Tabela de Eventos"
                 search={search}
                 setSearch={(e) => setSearch(e.target.value)}
                 selectAll={selectAll}
                 onSelectAll={handleSelectAll}
                 cellsThead={[
-                    "Event Name",
-                    "Date & Time",
+                    "Nome do Evento",
+                    "Data e Hora",
                     "Status",
-                    "Tickets Sold",
-                    "Revenue",
-                    "Actions",
+                    "Ingressos Vendidos",
+                    "Receita",
+                    "Ações",
                 ]}
                 isNumber
                 isPagination

@@ -1,30 +1,30 @@
 export const stats = [
     {
-        title: "Total Revenue",
+        title: "Receita Total",
         value: "$187,200",
         percentage: 10.5,
         image: "/images/icons/dollar.svg",
-        tooltip: "Description Total Revenue",
+        tooltip: "Descrição Receita Total",
     },
     {
-        title: "Total Payouts",
+        title: "Total de Pagamentos",
         value: "$154,750",
         percentage: 10.5,
         image: "/images/icons/clock.svg",
-        tooltip: "Description Total Payouts",
+        tooltip: "Descrição Total de Pagamentos",
     },
     {
-        title: "Pending Payouts",
+        title: "Pagamentos Pendentes",
         value: "$12,450",
         percentage: 10.5,
         image: "/images/icons/check.svg",
-        tooltip: "Description Pending Payouts",
+        tooltip: "Descrição Pagamentos Pendentes",
     },
     {
-        title: "Available Balance",
+        title: "Saldo Disponível",
         value: "$20,000",
         percentage: 10.5,
         image: "/images/icons/clock.svg",
-        tooltip: "Description Available Balance",
+        tooltip: "Descrição Saldo Disponível",
     },
 ];

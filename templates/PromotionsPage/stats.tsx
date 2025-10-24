@@ -1,23 +1,23 @@
 export const stats = [
     {
-        title: "Discount Codes Active",
+        title: "Códigos de Desconto Ativos",
         value: "24",
         percentage: 10.5,
         image: "/images/icons/sale.svg",
-        tooltip: "Description Discount Codes Active",
+        tooltip: "Descrição Códigos de Desconto Ativos",
     },
     {
-        title: "Referral Links Created",
+        title: "Links de Indicação Criados",
         value: "11",
         percentage: 10.5,
         image: "/images/icons/check.svg",
-        tooltip: "Description Referral Links Created",
+        tooltip: "Descrição Links de Indicação Criados",
     },
     {
-        title: "Sales from Promotions",
+        title: "Vendas de Promoções",
         value: "$4,800",
         percentage: 10.5,
         image: "/images/icons/dollar.svg",
-        tooltip: "Description Sales from Promotions",
+        tooltip: "Descrição Vendas de Promoções",
     },
 ];

@@ -11,10 +11,10 @@ import { stats } from "./stats";
 
 const HomePage = () => {
     return (
-        <Layout title="Sales Reports">
-            <Breadcrumbs items={["Home", "Sales Reports"]}>
+        <Layout title="Relatórios de Vendas">
+            <Breadcrumbs items={["Início", "Relatórios de Vendas"]}>
                 <Button className="max-md:w-full" isSecondary isMedium>
-                    Export CSV
+                    Exportar CSV
                 </Button>
             </Breadcrumbs>
             <Cards items={stats} />

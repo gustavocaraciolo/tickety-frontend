@@ -1,23 +1,23 @@
 export const stats = [
     {
-        title: "Published",
+        title: "Publicados",
         value: "24",
         percentage: 10.5,
         image: "/images/icons/check.svg",
-        tooltip: "Description Published",
+        tooltip: "Descrição Publicados",
     },
     {
-        title: "Draft",
+        title: "Rascunho",
         value: "17",
         percentage: -10.5,
         image: "/images/icons/minus.svg",
-        tooltip: "Description Draft",
+        tooltip: "Descrição Rascunho",
     },
     {
-        title: "Rejected",
+        title: "Rejeitados",
         value: "8",
         percentage: 10.5,
         image: "/images/icons/close.svg",
-        tooltip: "Description Rejected",
+        tooltip: "Descrição Rejeitados",
     },
 ];

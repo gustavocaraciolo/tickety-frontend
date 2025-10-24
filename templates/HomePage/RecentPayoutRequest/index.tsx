@@ -18,18 +18,18 @@ const RecentPayoutRequest = ({}) => {
         <>
             <Table
                 className="mt-6"
-                title="Recent Payout Request"
+                title="Solicitações Recentes de Pagamento"
                 search={search}
                 setSearch={(e) => setSearch(e.target.value)}
                 selectAll={selectAll}
                 onSelectAll={handleSelectAll}
                 cellsThead={[
-                    "Organizer",
-                    "Amount",
-                    "Requested On",
+                    "Organizador",
+                    "Valor",
+                    "Solicitado Em",
                     "Status",
-                    "Processed On",
-                    "Actions",
+                    "Processado Em",
+                    "Ações",
                 ]}
                 isNumber
             >

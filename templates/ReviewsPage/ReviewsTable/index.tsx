@@ -16,17 +16,17 @@ const ReviewsTable = ({}) => {
     return (
         <Table
             className="mt-6"
-            title="Reviews Table"
+            title="Tabela de Avaliações"
             search={search}
             setSearch={(e) => setSearch(e.target.value)}
             selectAll={selectAll}
             onSelectAll={handleSelectAll}
             cellsThead={[
-                "Attendee Name",
-                "Event Name",
-                "Rating",
-                "Date",
-                "Visibility",
+                "Nome do Participante",
+                "Nome do Evento",
+                "Avaliação",
+                "Data",
+                "Visibilidade",
                 "",
             ]}
             isNumber

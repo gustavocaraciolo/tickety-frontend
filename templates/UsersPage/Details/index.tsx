@@ -4,9 +4,9 @@ import Select from "@/components/Select";
 import { SelectOption } from "@/types/select";
 
 const roles = [
-    { id: 0, name: "Admin" },
-    { id: 1, name: "Organizer" },
-    { id: 2, name: "Attendee" },
+    { id: 0, name: "Administrador" },
+    { id: 1, name: "Organizador" },
+    { id: 2, name: "Participante" },
 ];
 
 const Details = ({}) => {
@@ -19,39 +19,39 @@ const Details = ({}) => {
     return (
         <div className="flex flex-col gap-4">
             <Field
-                label="Name"
-                placeholder="Enter name"
+                label="Nome"
+                placeholder="Digite o nome"
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
             />
             <Field
-                label="Email Address"
-                placeholder="Enter email address"
+                label="Endereço de Email"
+                placeholder="Digite o endereço de email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
             />
             <Field
-                label="Phone Number"
-                placeholder="Enter phone number"
+                label="Número de Telefone"
+                placeholder="Digite o número de telefone"
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 required
             />
             <Field
-                label="Password"
-                placeholder="Enter password"
+                label="Senha"
+                placeholder="Digite a senha"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
             />
             <Select
-                label="Role"
+                label="Função"
                 className="min-w-14.5"
                 value={role}
                 onChange={setRole}

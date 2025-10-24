@@ -20,42 +20,42 @@ const TaxAndDuties = ({}) => {
     return (
         <>
             <Item
-                title="Tax & duties"
-                description="Review the taxes and duties associated with your purchases and subscriptions."
+                title="Impostos e taxas"
+                description="Revise os impostos e taxas associados às suas compras e assinaturas."
             >
                 <Table />
             </Item>
             <Item
-                title="Tax from review"
-                description="Manage where you collect taxes and duties. Check with a tax expert if you're unsure where you have a tax obligation."
+                title="Impostos da revisão"
+                description="Gerencie onde você coleta impostos e taxas. Consulte um especialista em impostos se não tiver certeza de onde tem uma obrigação fiscal."
             >
                 <div className="flex flex-col gap-4">
                     <Field
-                        label="Full Name"
-                        placeholder="Enter full name"
+                        label="Nome Completo"
+                        placeholder="Digite o nome completo"
                         type="text"
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
                         required
                     />
                     <Select
-                        label="Treaty Country"
+                        label="País do Tratado"
                         value={country}
                         onChange={setCountry}
                         options={countries}
                         required
                     />
                     <Field
-                        label="Permanent Residence"
-                        placeholder="Enter residence"
+                        label="Residência Permanente"
+                        placeholder="Digite a residência"
                         type="text"
                         value={permanentResidence}
                         onChange={(e) => setPermanentResidence(e.target.value)}
                         required
                     />
                     <Field
-                        label="Mailing Address"
-                        placeholder="Enter address"
+                        label="Endereço de Correspondência"
+                        placeholder="Digite o endereço"
                         type="email"
                         value={mailingAddress}
                         onChange={(e) => setMailingAddress(e.target.value)}

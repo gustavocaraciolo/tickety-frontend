@@ -1,30 +1,30 @@
 export const stats = [
     {
-        title: "Total Revenue",
+        title: "Receita Total",
         value: "$350,000",
         percentage: 10.5,
         image: "/images/icons/dollar.svg",
-        tooltip: "Description Total Revenue",
+        tooltip: "Descrição Receita Total",
     },
     {
-        title: "Tickets Sold",
+        title: "Ingressos Vendidos",
         value: "48,120",
         percentage: -10.5,
         image: "/images/icons/sale.svg",
-        tooltip: "Description Tickets Sold",
+        tooltip: "Descrição Ingressos Vendidos",
     },
     {
-        title: "Refunded Amount",
+        title: "Valor Reembolsado",
         value: "$4,200",
         percentage: 10.5,
         image: "/images/icons/refresh.svg",
-        tooltip: "Description Refunded Amount",
+        tooltip: "Descrição Valor Reembolsado",
     },
     {
-        title: "Payouts Issued",
+        title: "Pagamentos Emitidos",
         value: "$120,500",
         percentage: 10.5,
         image: "/images/icons/clock.svg",
-        tooltip: "Description Payouts Issued",
+        tooltip: "Descrição Pagamentos Emitidos",
     },
 ];

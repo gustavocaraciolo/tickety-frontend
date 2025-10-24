@@ -10,13 +10,13 @@ const ForgotPasswordPage = () => {
 
     return (
         <Login
-            title="Forgot Password"
-            description="Enter your email address and we’ll send you password reset instructions."
+            title="Esqueceu a Senha"
+            description="Digite seu endereço de email e enviaremos instruções para redefinir sua senha."
             image="/images/icons/lock.svg"
         >
             <Field
-                label="Email Address"
-                placeholder="Enter your email"
+                label="Endereço de Email"
+                placeholder="Digite seu email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -28,12 +28,12 @@ const ForgotPasswordPage = () => {
                 as="link"
                 href="/create-new-password"
             >
-                Forgot Password
+                Esqueceu a Senha
             </Button>
             <div className="mt-8 text-center text-body-lg max-md:mt-5">
-                <div className="text-gray-500">Don’t have access anymore?</div>
+                <div className="text-gray-500">Não tem mais acesso?</div>
                 <button className="font-medium text-primary-400 transition-colors hover:text-primary-600">
-                    Try another method
+                    Tentar outro método
                 </button>
             </div>
         </Login>

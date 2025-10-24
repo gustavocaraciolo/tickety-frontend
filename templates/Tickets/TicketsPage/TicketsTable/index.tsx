@@ -15,18 +15,18 @@ const TicketsTable = ({}) => {
     return (
         <Table
             className="mt-6"
-            title="Tickets Table"
+            title="Tabela de Ingressos"
             search={search}
             setSearch={(e) => setSearch(e.target.value)}
             selectAll={selectAll}
             onSelectAll={handleSelectAll}
             cellsThead={[
-                "Ticket Name",
-                "Price",
-                "Quantity",
-                "Sold",
-                "Sales Status",
-                "Visibility",
+                "Nome do Ingresso",
+                "Preço",
+                "Quantidade",
+                "Vendidos",
+                "Status de Vendas",
+                "Visibilidade",
                 "",
             ]}
             isNumber

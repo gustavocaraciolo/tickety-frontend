@@ -14,10 +14,10 @@ const VerificationPage = () => {
 
     return (
         <Login
-            title="OTP Verification"
+            title="Verificação OTP"
             description={
                 <>
-                    We have sent a verification code to email address&nbsp;
+                    Enviamos um código de verificação para o endereço de email&nbsp;
                     <span className="block font-medium text-gray-900">
                         johndoe@examle.com
                     </span>
@@ -68,10 +68,10 @@ const VerificationPage = () => {
                 as="link"
                 href="/"
             >
-                Verify
+                Verificar
             </Button>
             <div className="mt-8 text-center text-body-lg text-gray-500 max-md:mt-5">
-                Resend code in{" "}
+                Reenviar código em{" "}
                 <span className="font-medium text-primary-400">00:37</span>
             </div>
         </Login>

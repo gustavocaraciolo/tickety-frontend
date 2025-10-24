@@ -21,9 +21,9 @@ const Logout = ({ onClose }: Props) => {
                     </svg>
                 </div>
             </div>
-            <div className="mb-2 text-h4 max-md:text-h5">Logout</div>
+            <div className="mb-2 text-h4 max-md:text-h5">Sair</div>
             <div className="mb-8 text-body-lg text-gray-500 max-md:mb-5 max-md:text-body-md">
-                Are you sure want to Logout to Tickety?
+                Tem certeza que deseja sair do Tickety?
             </div>
             <div className="flex gap-4 max-md:flex-col max-md:gap-3">
                 <Button
@@ -31,7 +31,7 @@ const Logout = ({ onClose }: Props) => {
                     isSecondary
                     onClick={onClose}
                 >
-                    Cancel
+                    Cancelar
                 </Button>
                 <Button
                     className="flex-1 max-md:flex-auto max-md:!h-10 !text-body-md"
@@ -39,7 +39,7 @@ const Logout = ({ onClose }: Props) => {
                     as="link"
                     href="/sign-in"
                 >
-                    Yes, Logout
+                    Sim, Sair
                 </Button>
             </div>
         </div>

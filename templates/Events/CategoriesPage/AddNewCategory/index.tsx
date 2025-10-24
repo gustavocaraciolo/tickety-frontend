@@ -4,8 +4,8 @@ import Select from "@/components/Select";
 import { SelectOption } from "@/types/select";
 
 const statuses = [
-    { id: 0, name: "Active" },
-    { id: 1, name: "Inactive" },
+    { id: 0, name: "Ativo" },
+    { id: 1, name: "Inativo" },
 ];
 
 const AddNewCategory = ({}) => {
@@ -17,8 +17,8 @@ const AddNewCategory = ({}) => {
     return (
         <div className="flex flex-col gap-4">
             <Field
-                label="Category Name"
-                placeholder="Enter category name"
+                label="Nome da Categoria"
+                placeholder="Digite o nome da categoria"
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -26,15 +26,15 @@ const AddNewCategory = ({}) => {
             />
             <Field
                 label="Slug"
-                placeholder="Enter slug"
+                placeholder="Digite o slug"
                 type="text"
                 value={slug}
                 onChange={(e) => setSlug(e.target.value)}
                 required
             />
             <Field
-                label="Events Count"
-                placeholder="Enter events count"
+                label="Contagem de Eventos"
+                placeholder="Digite a contagem de eventos"
                 type="number"
                 value={eventsCount}
                 onChange={(e) => setEventsCount(e.target.value)}

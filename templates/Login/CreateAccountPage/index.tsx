@@ -13,30 +13,30 @@ const CreateAccountPage = () => {
 
     return (
         <Login
-            title="Create New Account"
-            description="Enter your details to sing up"
+            title="Criar Nova Conta"
+            description="Digite seus dados para se cadastrar"
             image="/images/icons/profile.svg"
         >
             <div className="flex flex-col gap-4 max-md:gap-3">
                 <Field
-                    label="Full Name"
-                    placeholder="Enter your name"
+                    label="Nome Completo"
+                    placeholder="Digite seu nome"
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
                 />
                 <Field
-                    label="Email Address"
-                    placeholder="Enter your email"
+                    label="Endereço de Email"
+                    placeholder="Digite seu email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                 />
                 <Field
-                    label="Password"
-                    placeholder="Enter your password"
+                    label="Senha"
+                    placeholder="Digite sua senha"
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -49,15 +49,15 @@ const CreateAccountPage = () => {
                 as="link"
                 href="/verification"
             >
-                Regiater
+                Cadastrar
             </Button>
             <div className="mt-8 text-center text-body-lg text-gray-500 max-md:mt-5">
-                Already have an account?{" "}
+                Já tem uma conta?{" "}
                 <Link
                     className="font-medium text-primary-400 transition-colors hover:text-primary-600"
                     href="/sign-in"
                 >
-                    Login
+                    Entrar
                 </Link>
             </div>
         </Login>

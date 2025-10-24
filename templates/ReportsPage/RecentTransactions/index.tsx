@@ -15,17 +15,17 @@ const RecentTransactions = ({}) => {
     return (
         <Table
             className="mt-6"
-            title="Recent Transactions"
+            title="Transações Recentes"
             search={search}
             setSearch={(e) => setSearch(e.target.value)}
             selectAll={selectAll}
             onSelectAll={handleSelectAll}
             cellsThead={[
-                "Name",
+                "Nome",
                 "Email",
-                "Ticket Type",
-                "Purchase Date",
-                "Check-in Status",
+                "Tipo de Ingresso",
+                "Data da Compra",
+                "Status de Check-in",
                 "",
             ]}
             isNumber
