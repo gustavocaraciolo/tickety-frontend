@@ -17,19 +17,19 @@ const Filter = ({ isShortButton }: Props) => {
     const [checkboxes, setCheckboxes] = useState([
         {
             id: 0,
-            label: "Approved",
+            label: "Aprovado",
             checked: false,
             onChange: (value: boolean) => handleCheckboxChange(0, value),
         },
         {
             id: 1,
-            label: "Pending",
+            label: "Pendente",
             checked: false,
             onChange: (value: boolean) => handleCheckboxChange(1, value),
         },
         {
             id: 2,
-            label: "Rejected",
+            label: "Rejeitado",
             checked: false,
             onChange: (value: boolean) => handleCheckboxChange(2, value),
         },
@@ -54,7 +54,7 @@ const Filter = ({ isShortButton }: Props) => {
                     className="!size-4 fill-gray-400 transition-colors group-hover:fill-gray-900 group-[[data-open]]:fill-gray-900"
                     name="filter"
                 />
-                Filter
+                Filtro
             </PopoverButton>
             <PopoverPanel
                 className="[--anchor-gap:0.5rem] z-20 flex flex-col gap-4 w-72 p-5 border border-gray-100 rounded-2xl bg-white shadow-[0_1rem_2rem_-0.0625rem_rgba(128,136,151,0.20)] transition duration-200 ease-out origin-top data-closed:scale-95 data-closed:opacity-0 max-md:[--anchor-offset:4.375rem]"
@@ -65,7 +65,7 @@ const Filter = ({ isShortButton }: Props) => {
                 {({ close }) => (
                     <>
                         <div className="">
-                            <div className="mb-2 font-semibold">Amount, $</div>
+                            <div className="mb-2 font-semibold">Valor, $</div>
                             <div className="flex gap-2">
                                 <Field
                                     classInput="!h-10 !text-body-md"
@@ -88,7 +88,7 @@ const Filter = ({ isShortButton }: Props) => {
                             </div>
                         </div>
                         <div className="">
-                            <div className="mb-2 font-semibold">Date</div>
+                            <div className="mb-2 font-semibold">Data</div>
                             <div className="flex gap-2">
                                 <Field
                                     classInput="!h-10 !text-body-md"
@@ -128,7 +128,7 @@ const Filter = ({ isShortButton }: Props) => {
                                 isMedium
                                 onClick={() => close()}
                             >
-                                Clear
+                                Limpar
                             </Button>
                             <Button
                                 className="flex-1"
@@ -136,7 +136,7 @@ const Filter = ({ isShortButton }: Props) => {
                                 isMedium
                                 onClick={() => close()}
                             >
-                                Apply
+                                Aplicar
                             </Button>
                         </div>
                     </>

@@ -25,7 +25,7 @@ const ModalDelete = ({ open, onClose, content, onDelete }: Props) => {
                     </svg>
                 </div>
             </div>
-            <div className="mb-2 text-h4 max-md:text-h5">Confirm Delete</div>
+            <div className="mb-2 text-h4 max-md:text-h5">Confirmar Exclusão</div>
             <div className="mb-8 text-body-lg text-gray-500 max-md:mb-5 max-md:text-body-md">
                 {content}
             </div>
@@ -35,14 +35,14 @@ const ModalDelete = ({ open, onClose, content, onDelete }: Props) => {
                     isSecondary
                     onClick={onClose}
                 >
-                    Cancel
+                    Cancelar
                 </Button>
                 <Button
                     className="flex-1 max-md:flex-auto max-md:!h-10 !text-body-md"
                     isRed
                     onClick={onDelete}
                 >
-                    Delete
+                    Excluir
                 </Button>
             </div>
         </Modal>

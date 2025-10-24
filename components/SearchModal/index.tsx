@@ -45,7 +45,7 @@ const SearchModal = ({
                     onClick={() => setIsModalOpen(true)}
                 >
                     <Icon className="fill-gray-400" name="search" />
-                    <div className="text-gray-500">Search</div>
+                    <div className="text-gray-500">Buscar</div>
                     <div className="flex gap-1 ml-auto">
                         <div className="flex justify-center items-center size-5 rounded-sm bg-gray-50">
                             <Image
@@ -78,7 +78,7 @@ const SearchModal = ({
                         className="w-full h-14 pl-12 pr-3 border-b border-gray-100 shadow-xs rounded-t-2xl text-body-md font-medium text-gray-900 transition-colors placeholder:text-gray-200 outline-none focus:border-primary-500 focus:bg-primary-50"
                         type="text"
                         name="search"
-                        placeholder="Search"
+                        placeholder="Buscar"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         autoComplete="off"

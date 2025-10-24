@@ -77,7 +77,7 @@ const Modal = ({
                                 isMedium
                                 onClick={onClose}
                             >
-                                Cancel
+                                Cancelar
                             </Button>
                             {contentFooter}
                         </div>

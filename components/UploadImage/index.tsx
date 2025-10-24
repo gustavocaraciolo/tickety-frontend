@@ -78,7 +78,7 @@ const UploadImage = ({
                             <div className="">{fileSize}</div>
                         </div>
                         <div className="flex items-center gap-2">
-                            <div className="font-medium">Upload Completed</div>
+                            <div className="font-medium">Upload Concluído</div>
                             <button
                                 className="size-6 bg-white/32 rounded-full transition-colors text-0 hover:bg-white/42"
                                 onClick={handleRemove}
@@ -93,9 +93,9 @@ const UploadImage = ({
                 </div>
             ) : (
                 <div className="relative flex justify-center items-center h-19 border border-gray-100 rounded-xl text-body-lg text-gray-300">
-                    Drag & Drop your files or{" "}
+                    Arraste e solte seus arquivos ou{" "}
                     <span className="ml-1.25 font-medium text-primary-500">
-                        Browse
+                        Navegar
                     </span>
                     <input
                         ref={inputRef}

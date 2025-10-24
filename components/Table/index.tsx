@@ -57,7 +57,7 @@ const Table = ({
                         className="w-64 max-lg:hidden"
                         value={search}
                         onChange={setSearch}
-                        placeholder="Search"
+                        placeholder="Buscar"
                     />
                     <Filter isShortButton={isShortHead} />
                     <SortBy isShortButton={isShortHead} />
@@ -94,13 +94,13 @@ const Table = ({
                 <div className="flex items-center px-5 py-4 max-md:justify-between max-md:px-4">
                     <div className="font-medium">
                         <div className="max-md:hidden">
-                            Showing 1 to 10 of, 500 results
+                            Mostrando 1 a 10 de 500 resultados
                         </div>
-                        <div className="hidden max-md:block">Page 2 of 12</div>
+                        <div className="hidden max-md:block">Página 2 de 12</div>
                     </div>
                     <div className="flex items-center mx-auto max-md:hidden">
                         <div className="flex items-center h-8 px-2 border border-r-0 border-gray-100 rounded-l-lg text-body-sm font-medium">
-                            Per page
+                            Por página
                         </div>
                         <Select
                             className="min-w-14.5"

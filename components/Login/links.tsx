@@ -1,16 +1,16 @@
 export const links = [
     {
-        title: "Privacy",
+        title: "Privacidade",
         icon: "lock",
         href: "/",
     },
     {
-        title: "Terms",
+        title: "Termos",
         icon: "document",
         href: "/",
     },
     {
-        title: "Get help",
+        title: "Obter ajuda",
         icon: "question",
         href: "/",
     },

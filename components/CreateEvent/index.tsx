@@ -15,18 +15,18 @@ const CreateEvent = ({}) => {
 
     return (
         <div className="flex flex-col gap-4">
-            <UploadImage label="Thumbnail" onChange={handleChange} required />
+            <UploadImage label="Miniatura" onChange={handleChange} required />
             <Field
-                label="Title"
-                placeholder="Enter title"
+                label="Título"
+                placeholder="Digite o título"
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
             />
             <Field
-                label="Description"
-                placeholder="Enter description"
+                label="Descrição"
+                placeholder="Digite a descrição"
                 type="text"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
@@ -34,16 +34,16 @@ const CreateEvent = ({}) => {
                 textarea
             />
             <Field
-                label="Location"
-                placeholder="Enter location"
+                label="Local"
+                placeholder="Digite o local"
                 type="text"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 required
             />
             <Field
-                label="Date"
-                placeholder="Enter date"
+                label="Data"
+                placeholder="Digite a data"
                 type="text"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}

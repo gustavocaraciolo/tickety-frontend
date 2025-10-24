@@ -15,20 +15,20 @@ const Control = ({}) => (
                 </div>
             </div>
             <div className="text-body-sm font-medium text-gray-500">
-                Navigate
+                Navegar
             </div>
         </div>
         <div className="flex items-center gap-2">
             <div className="flex justify-center items-center h-5.5 px-1.75 rounded-md bg-white border border-gray-50 text-[0.625rem] font-medium text-gray-500">
                 Enter
             </div>
-            <div className="text-body-sm font-medium text-gray-500">Select</div>
+            <div className="text-body-sm font-medium text-gray-500">Selecionar</div>
         </div>
         <div className="flex items-center gap-2">
             <div className="flex justify-center items-center h-5.5 px-1.75 rounded-md bg-white border border-gray-50 text-[0.625rem] font-medium text-gray-500">
                 Esc
             </div>
-            <div className="text-body-sm font-medium text-gray-500">Quit</div>
+            <div className="text-body-sm font-medium text-gray-500">Sair</div>
         </div>
     </div>
 );

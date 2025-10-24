@@ -3,10 +3,10 @@ import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import Icon from "@/components/Icon";
 
 const sortingOptions = [
-    { id: 1, name: "By name (A → Z)" },
-    { id: 2, name: "By name (Z → A)" },
-    { id: 3, name: "Oldest → Newest" },
-    { id: 4, name: "Newest → Oldest" },
+    { id: 1, name: "Por nome (A → Z)" },
+    { id: 2, name: "Por nome (Z → A)" },
+    { id: 3, name: "Mais antigo → Mais novo" },
+    { id: 4, name: "Mais novo → Mais antigo" },
 ];
 
 type Props = {
@@ -33,7 +33,7 @@ const SortBy = ({ isShortButton }: Props) => {
                     className="!size-4 fill-gray-400 transition-colors group-hover:fill-gray-900 group-[[data-open]]:fill-gray-900"
                     name="sorting"
                 />
-                Sort by
+                Ordenar por
             </PopoverButton>
             <PopoverPanel
                 className="[--anchor-gap:0.5rem] z-20 flex flex-col gap-0.5 w-54 p-2 border border-gray-100 rounded-2xl bg-white shadow-[0_1rem_2rem_-0.0625rem_rgba(128,136,151,0.20)] transition duration-200 ease-out origin-top data-closed:scale-95 data-closed:opacity-0"

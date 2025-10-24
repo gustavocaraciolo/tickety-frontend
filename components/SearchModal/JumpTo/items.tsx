@@ -1,16 +1,16 @@
 export const items = [
     {
-        title: "My Events",
+        title: "Meus Eventos",
         icon: "music",
         href: "/events/my-events",
     },
     {
-        title: "Ticket Sales",
+        title: "Vendas de Ingressos",
         icon: "ticket",
         href: "/tickets/sales",
     },
     {
-        title: "My Balance",
+        title: "Meu Saldo",
         icon: "wallet",
         href: "/earnings",
     },
