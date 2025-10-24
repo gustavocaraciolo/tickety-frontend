@@ -76,8 +76,8 @@ const TicketModal = ({ isOpen, onClose, ticketData }: Props) => {
                         </div>
                     </div>
                     {/* Ícones decorativos */}
-                    <div className="absolute top-4 right-4 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-                        <div className="text-white text-xl">🎫</div>
+                    <div className="absolute top-2 right-2 w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
+                        <div className="text-white text-3xl">🎫</div>
                     </div>
                     <div className="absolute bottom-4 left-4 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                         <div className="text-white text-sm">✓</div>
