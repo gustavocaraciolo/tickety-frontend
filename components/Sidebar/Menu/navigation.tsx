@@ -52,6 +52,11 @@ export const navigation = [
                 icon: "message",
                 href: "/reviews",
             },
+            {
+                title: "Meus Ingressos",
+                icon: "ticket",
+                href: "/my-tickets",
+            },
         ],
     },
     {

@@ -107,3 +107,15 @@ export interface ReviewsTableType {
     date: string;
     visibility: string;
 }
+
+export interface MyTicketsType {
+    id: number;
+    eventName: string;
+    organizer: string;
+    ticketType: string;
+    eventDate: string;
+    eventTime: string;
+    status: string;
+    price: string;
+    eventImage: string;
+}
