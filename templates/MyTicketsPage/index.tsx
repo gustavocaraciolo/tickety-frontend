@@ -6,7 +6,6 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import Button from "@/components/Button";
 import Table from "@/components/Table";
 import TableRow from "@/components/TableRow";
-import Action from "@/components/Action";
 import { useSelection } from "@/hooks/useSelection";
 import { MyTicketsType } from "@/types/table";
 import Stats from "@/components/Stats";
@@ -113,20 +112,21 @@ const MyTicketsPage = () => {
                             </div>
                         </td>
                         <td className="w-33">
-                            <div className="flex items-center gap-2">
-                                <Action isView />
-                                <Action
+                            <div className="flex items-center justify-center">
+                                <button
+                                    className="flex items-center justify-center w-10 h-10 hover:bg-gray-100 rounded-lg transition-colors"
                                     onClick={() => {
                                         setSelectedTicket(item);
                                         setIsTicketModalOpen(true);
                                     }}
-                                />
-                                <Action
-                                    isRemove
-                                    onClick={() => {
-                                        // Lógica para cancelar ingresso
-                                    }}
-                                />
+                                    title="Visualizar Ingresso"
+                                >
+                                    <img
+                                        src="/images/icons/ticket-icon.png"
+                                        alt="Ingresso"
+                                        className="w-6 h-6"
+                                    />
+                                </button>
                             </div>
                         </td>
                     </TableRow>
