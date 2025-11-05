@@ -7,7 +7,7 @@ interface SimpleCardProps {
 
 const SimpleCard = ({ className, children }: SimpleCardProps) => {
     return (
-        <div className={`bg-white border border-gray-200 rounded-lg shadow-sm ${className || ""}`}>
+        <div className={`border border-gray-200 rounded-lg shadow-sm bg-white ${className || ""}`}>
             {children}
         </div>
     );

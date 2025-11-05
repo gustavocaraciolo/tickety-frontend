@@ -31,6 +31,7 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<{ success: boolean; message: string }>;
   register: (data: RegisterData) => Promise<{ success: boolean; message: string }>;
   logout: () => Promise<void>;
+  refreshUser: () => Promise<void>;
   isAuthenticated: boolean;
 }
 
@@ -61,7 +62,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const token = localStorage.getItem('auth_token');
       if (token) {
         const response = await apiClient.getMe();
-        if (response.success) {
+        if (response.success && response.data) {
           setUser(response.data);
         } else {
           localStorage.removeItem('auth_token');
@@ -78,21 +79,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const login = async (email: string, password: string) => {
     try {
       const response = await apiClient.login(email, password);
-      if (response.success) {
+      if (response.success && response.data) {
         setUser(response.data.user);
         return { success: true, message: 'Login successful' };
       } else {
-        return { success: false, message: response.message || 'Login failed' };
+        return { success: false, message: response.message || 'Falha no login' };
       }
     } catch (error: any) {
-      return { success: false, message: error.message || 'Login failed' };
+      return { success: false, message: error.message || 'Falha no login' };
     }
   };
 
   const register = async (data: RegisterData) => {
     try {
       const response = await apiClient.register(data);
-      if (response.success) {
+      if (response.success && response.data) {
         setUser(response.data.user);
         return { success: true, message: 'Registration successful' };
       } else {
@@ -113,12 +114,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const refreshUser = async () => {
+    try {
+      const response = await apiClient.getMe();
+      if (response.success && response.data) {
+        setUser(response.data);
+      }
+    } catch (error) {
+      console.error('Failed to refresh user:', error);
+    }
+  };
+
   const value = {
     user,
     loading,
     login,
     register,
     logout,
+    refreshUser,
     isAuthenticated: !!user,
   };
 

@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Breadcrumbs from "@/components/Breadcrumbs";
-import SimpleCard from "@/components/SimpleCard";
 import Button from "@/components/Button";
 import Icon from "@/components/Icon";
 import Link from "next/link";
@@ -14,7 +12,7 @@ const FAQPage = () => {
     const faqCategories = [
         {
             title: "Compra de Ingressos",
-            icon: "shopping-cart",
+            icon: "cart",
             questions: [
                 {
                     id: 1,
@@ -77,7 +75,7 @@ const FAQPage = () => {
         },
         {
             title: "Suporte",
-            icon: "help-circle",
+            icon: "question",
             questions: [
                 {
                     id: 10,
@@ -115,19 +113,14 @@ const FAQPage = () => {
     })).filter(category => category.questions.length > 0);
 
     return (
-        <div className="min-h-screen bg-gray-50">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                {/* Breadcrumbs */}
-                <Breadcrumbs
-                    items={["Home", "FAQ"]}
-                />
-
+        <div className="min-h-screen bg-white">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
                 {/* Header */}
-                <div className="text-center mb-12">
-                    <h1 className="text-4xl font-bold text-gray-900 mb-6">
+                <div className="mb-12 text-center">
+                    <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
                         Perguntas Frequentes
                     </h1>
-                    <p className="text-xl text-gray-600 mb-8">
+                    <p className="text-lg text-gray-600 mb-8">
                         Encontre respostas para as dúvidas mais comuns sobre nossa plataforma
                     </p>
 
@@ -139,7 +132,7 @@ const FAQPage = () => {
                                 placeholder="Buscar perguntas..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full px-4 py-3 pl-10 pr-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                className="w-full px-4 py-3 pl-11 pr-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors bg-white"
                             />
                             <Icon name="search" className="absolute left-3 top-3.5 w-5 h-5 text-gray-400" />
                         </div>
@@ -147,53 +140,59 @@ const FAQPage = () => {
                 </div>
 
                 {/* FAQ Categories */}
-                {filteredCategories.map((category, categoryIndex) => (
-                    <div key={categoryIndex} className="mb-12">
-                        <div className="flex items-center mb-6">
-                            <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-                                <Icon name={category.icon} className="w-5 h-5 text-blue-600" />
+                <div className="space-y-12">
+                    {filteredCategories.map((category, categoryIndex) => (
+                        <div key={categoryIndex}>
+                            <div className="flex items-center mb-6">
+                                <div className="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center mr-4 border border-gray-100">
+                                    <Icon name={category.icon} className="w-5 h-5 text-gray-600" />
+                                </div>
+                                <h2 className="text-2xl font-semibold text-gray-900">
+                                    {category.title}
+                                </h2>
                             </div>
-                            <h2 className="text-2xl font-bold text-gray-900">
-                                {category.title}
-                            </h2>
-                        </div>
 
-                        <div className="space-y-4">
-                            {category.questions.map((item) => (
-                                <SimpleCard key={item.id} className="overflow-hidden">
-                                    <button
-                                        onClick={() => toggleItem(item.id)}
-                                        className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
-                                    >
-                                        <span className="font-medium text-gray-900">
-                                            {item.question}
-                                        </span>
-                                        <Icon 
-                                            name={openItems.includes(item.id) ? "chevron-up" : "chevron-down"} 
-                                            className="w-5 h-5 text-gray-500 flex-shrink-0 ml-4"
-                                        />
-                                    </button>
-                                    
-                                    {openItems.includes(item.id) && (
-                                        <div className="px-6 pb-4">
-                                            <div className="border-t border-gray-200 pt-4">
-                                                <p className="text-gray-600 leading-relaxed">
+                            <div className="space-y-3">
+                                {category.questions.map((item) => (
+                                    <div key={item.id} className="border border-gray-100 rounded-lg overflow-hidden">
+                                        <button
+                                            onClick={() => toggleItem(item.id)}
+                                            className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                                        >
+                                            <span className="font-medium text-gray-900 pr-4">
+                                                {item.question}
+                                            </span>
+                                            <svg 
+                                                className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform ${
+                                                    openItems.includes(item.id) ? 'rotate-180' : ''
+                                                }`}
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                            >
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </button>
+                                        
+                                        {openItems.includes(item.id) && (
+                                            <div className="px-6 pb-4 border-t border-gray-100">
+                                                <p className="pt-4 text-gray-600 leading-relaxed">
                                                     {item.answer}
                                                 </p>
                                             </div>
-                                        </div>
-                                    )}
-                                </SimpleCard>
-                            ))}
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
 
                 {/* No Results */}
                 {searchQuery && filteredCategories.length === 0 && (
-                    <SimpleCard className="p-8 text-center">
-                        <Icon name="search" className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    <div className="text-center py-12">
+                        <Icon name="search" className="w-12 h-12 text-gray-300 mx-auto mb-4" />
+                        <h3 className="text-lg font-medium text-gray-900 mb-2">
                             Nenhuma pergunta encontrada
                         </h3>
                         <p className="text-gray-600 mb-4">
@@ -205,31 +204,31 @@ const FAQPage = () => {
                         >
                             Limpar Busca
                         </Button>
-                    </SimpleCard>
+                    </div>
                 )}
 
                 {/* Contact CTA */}
-                <div className="mt-16">
-                    <SimpleCard className="p-8 bg-blue-50 border-blue-200 text-center">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                <div className="mt-16 pt-8 border-t border-gray-100">
+                    <div className="text-center">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-3">
                             Não encontrou o que procura?
                         </h2>
                         <p className="text-gray-600 mb-6">
                             Nossa equipe de suporte está pronta para ajudar você
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Link href="/shop/contact">
+                            <Link href="/contact">
                                 <Button isPrimary isLarge>
                                     Entrar em Contato
                                 </Button>
                             </Link>
-                            <Link href="/shop/help">
+                            <Link href="/help">
                                 <Button isSecondary isLarge>
                                     Central de Ajuda
                                 </Button>
                             </Link>
                         </div>
-                    </SimpleCard>
+                    </div>
                 </div>
             </div>
         </div>

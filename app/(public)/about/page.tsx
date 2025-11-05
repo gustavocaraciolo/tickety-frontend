@@ -1,5 +1,3 @@
-import Breadcrumbs from "@/components/Breadcrumbs";
-import SimpleCard from "@/components/SimpleCard";
 import Button from "@/components/Button";
 import Icon from "@/components/Icon";
 import Link from "next/link";
@@ -7,14 +5,14 @@ import Link from "next/link";
 const AboutPage = () => {
     const stats = [
         { label: "Eventos Realizados", value: "10,000+", icon: "calendar" },
-        { label: "Usuários Ativos", value: "50,000+", icon: "users" },
-        { label: "Organizadores", value: "2,500+", icon: "user-check" },
-        { label: "Países", value: "25+", icon: "globe" }
+        { label: "Usuários Ativos", value: "50,000+", icon: "user" },
+        { label: "Organizadores", value: "2,500+", icon: "user" },
+        { label: "Países", value: "25+", icon: "location" }
     ];
 
     const values = [
         {
-            icon: "shield-check",
+            icon: "lock",
             title: "Segurança",
             description: "Garantimos a segurança de todos os dados e transações dos nossos usuários."
         },
@@ -24,12 +22,12 @@ const AboutPage = () => {
             description: "Somos apaixonados por conectar pessoas através de experiências incríveis."
         },
         {
-            icon: "zap",
+            icon: "refresh",
             title: "Inovação",
             description: "Sempre buscamos novas tecnologias para melhorar a experiência dos usuários."
         },
         {
-            icon: "users",
+            icon: "user",
             title: "Comunidade",
             description: "Construímos uma comunidade forte de organizadores e participantes."
         }
@@ -59,16 +57,11 @@ const AboutPage = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gray-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                {/* Breadcrumbs */}
-                <Breadcrumbs
-                    items={["Home", "Sobre"]}
-                />
-
+        <div className="min-h-screen bg-white">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
                 {/* Hero Section */}
-                <div className="text-center mb-16">
-                    <h1 className="text-4xl font-bold text-gray-900 mb-6">
+                <div className="mb-20 text-center">
+                    <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
                         Sobre o Tickety
                     </h1>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -78,98 +71,102 @@ const AboutPage = () => {
                 </div>
 
                 {/* Stats Section */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
                     {stats.map((stat, index) => (
-                        <SimpleCard key={index} className="p-6 text-center">
-                            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                                <Icon name={stat.icon} className="w-6 h-6 text-blue-600" />
+                        <div key={index} className="text-center p-6 border border-gray-100 rounded-lg">
+                            <div className="mx-auto mb-4">
+                                <Icon name={stat.icon} className="w-6 h-6 text-gray-600" />
                             </div>
                             <div className="text-3xl font-bold text-gray-900 mb-2">
                                 {stat.value}
                             </div>
-                            <div className="text-gray-600">
+                            <div className="text-sm text-gray-600">
                                 {stat.label}
                             </div>
-                        </SimpleCard>
+                        </div>
                     ))}
                 </div>
 
                 {/* Mission, Vision, Values */}
-                <div className="grid md:grid-cols-3 gap-8 mb-16">
-                    <SimpleCard className="p-8 text-center">
-                        <div className="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-6">
-                            <Icon name="target" className="w-8 h-8 text-green-600" />
+                <div className="grid md:grid-cols-3 gap-8 mb-20">
+                    <div className="text-center">
+                        <div className="mx-auto mb-6">
+                            <Icon name="check" className="w-8 h-8 text-gray-600" />
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                        <h3 className="text-2xl font-semibold text-gray-900 mb-4">
                             Nossa Missão
                         </h3>
-                        <p className="text-gray-600">
+                        <p className="text-gray-600 leading-relaxed">
                             Democratizar o acesso a eventos culturais, esportivos e de entretenimento, 
                             conectando pessoas através de experiências transformadoras.
                         </p>
-                    </SimpleCard>
+                    </div>
 
-                    <SimpleCard className="p-8 text-center">
-                        <div className="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-6">
-                            <Icon name="eye" className="w-8 h-8 text-purple-600" />
+                    <div className="text-center">
+                        <div className="mx-auto mb-6">
+                            <Icon name="eye" className="w-8 h-8 text-gray-600" />
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                        <h3 className="text-2xl font-semibold text-gray-900 mb-4">
                             Nossa Visão
                         </h3>
-                        <p className="text-gray-600">
+                        <p className="text-gray-600 leading-relaxed">
                             Ser a plataforma global de referência em venda de ingressos, 
                             reconhecida pela excelência e inovação.
                         </p>
-                    </SimpleCard>
+                    </div>
 
-                    <SimpleCard className="p-8 text-center">
-                        <div className="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-6">
-                            <Icon name="star" className="w-8 h-8 text-orange-600" />
+                    <div className="text-center">
+                        <div className="mx-auto mb-6">
+                            <Icon name="star" className="w-8 h-8 text-gray-600" />
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                        <h3 className="text-2xl font-semibold text-gray-900 mb-4">
                             Nossos Valores
                         </h3>
-                        <p className="text-gray-600">
+                        <p className="text-gray-600 leading-relaxed">
                             Transparência, inovação, segurança e compromisso com a 
                             satisfação dos nossos usuários.
                         </p>
-                    </SimpleCard>
+                    </div>
                 </div>
 
+                <div className="border-t border-gray-100 mb-20"></div>
+
                 {/* Values Grid */}
-                <div className="mb-16">
-                    <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+                <div className="mb-20">
+                    <h2 className="text-3xl font-semibold text-gray-900 text-center mb-12">
                         Nossos Valores em Ação
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {values.map((value, index) => (
-                            <SimpleCard key={index} className="p-6 text-center">
-                                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                                    <Icon name={value.icon} className="w-6 h-6 text-blue-600" />
+                            <div key={index} className="text-center p-6 border border-gray-100 rounded-lg">
+                                <div className="mx-auto mb-4">
+                                    <Icon name={value.icon} className="w-6 h-6 text-gray-600" />
                                 </div>
-                                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                                <h3 className="text-lg font-medium text-gray-900 mb-2">
                                     {value.title}
                                 </h3>
-                                <p className="text-gray-600 text-sm">
+                                <p className="text-sm text-gray-600">
                                     {value.description}
                                 </p>
-                            </SimpleCard>
+                            </div>
                         ))}
                     </div>
                 </div>
 
+                <div className="border-t border-gray-100 mb-20"></div>
+
                 {/* How It Works */}
-                <div className="mb-16">
-                    <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+                <div className="mb-20">
+                    <h2 className="text-3xl font-semibold text-gray-900 text-center mb-12">
                         Como Funciona
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {howItWorks.map((step, index) => (
                             <div key={index} className="text-center">
-                                <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-xl font-bold">
+                                <div className="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-xl font-bold">
                                     {step.step}
                                 </div>
-                                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                                <h3 className="text-xl font-medium text-gray-900 mb-4">
                                     {step.title}
                                 </h3>
                                 <p className="text-gray-600">
@@ -180,10 +177,12 @@ const AboutPage = () => {
                     </div>
                 </div>
 
+                <div className="border-t border-gray-100"></div>
+
                 {/* CTA Section */}
-                <div className="text-center">
-                    <SimpleCard className="p-8 bg-blue-50 border-blue-200">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                <div className="mt-16 pt-8">
+                    <div className="text-center">
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-3">
                             Pronto para Descobrir Eventos Incríveis?
                         </h2>
                         <p className="text-gray-600 mb-6">
@@ -195,13 +194,13 @@ const AboutPage = () => {
                                     Explorar Eventos
                                 </Button>
                             </Link>
-                            <Link href="/shop/contact">
+                            <Link href="/contact">
                                 <Button isSecondary isLarge>
                                     Entrar em Contato
                                 </Button>
                             </Link>
                         </div>
-                    </SimpleCard>
+                    </div>
                 </div>
             </div>
         </div>

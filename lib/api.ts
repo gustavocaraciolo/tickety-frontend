@@ -1,5 +1,12 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001/api';
 
+interface ApiResponse<T = any> {
+  success: boolean;
+  message?: string;
+  data?: T;
+  errors?: Record<string, string | string[]>;
+}
+
 class ApiClient {
   private baseURL: string;
   private token: string | null = null;
@@ -23,16 +30,16 @@ class ApiClient {
     }
   }
 
-  private async request<T>(
+  private async request<T = any>(
     endpoint: string,
     options: RequestInit = {}
-  ): Promise<T> {
+  ): Promise<ApiResponse<T>> {
     const url = `${this.baseURL}${endpoint}`;
     
-    const headers: HeadersInit = {
+    const headers: Record<string, string> = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      ...options.headers,
+      ...(options.headers as Record<string, string> || {}),
     };
 
     if (this.token) {
@@ -70,17 +77,29 @@ class ApiClient {
     });
   }
 
-  async login(email: string, password: string) {
-    const response = await this.request('/login', {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-    });
-    
-    if (response.success && response.data.token) {
-      this.setToken(response.data.token);
+  async login(email: string, password: string): Promise<ApiResponse<{ user: any; token: string }>> {
+    try {
+      const response = await this.request<{ user: any; token: string }>('/login', {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+      });
+      
+      if (response.success && response.data?.token) {
+        this.setToken(response.data.token);
+      }
+      
+      return response;
+    } catch (error: any) {
+      // Se o erro já tem uma mensagem do backend, retornar ela
+      if (error.message) {
+        return {
+          success: false,
+          message: error.message,
+        };
+      }
+      // Se não, lançar o erro novamente
+      throw error;
     }
-    
-    return response;
   }
 
   async logout() {
@@ -91,8 +110,77 @@ class ApiClient {
     return response;
   }
 
-  async getMe() {
+  async forgotPassword(email: string) {
+    try {
+      const response = await this.request('/forgot-password', {
+        method: 'POST',
+        body: JSON.stringify({ email }),
+      });
+      return response;
+    } catch (error: any) {
+      if (error.message) {
+        return {
+          success: false,
+          message: error.message,
+        };
+      }
+      throw error;
+    }
+  }
+
+  async getMe(): Promise<ApiResponse<any>> {
     return this.request('/user');
+  }
+
+  async updateProfile(data: {
+    name: string;
+    email: string;
+    phone?: string;
+    country_id?: number;
+    state_id?: number;
+  }): Promise<ApiResponse<any>> {
+    return this.request('/user/profile', {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    });
+  }
+
+  async updateOrganizerProfile(data: {
+    company_name?: string;
+    bio?: string;
+    website?: string;
+    tax_id?: string;
+    social_links?: {
+      facebook?: string;
+      instagram?: string;
+      twitter?: string;
+      linkedin?: string;
+    };
+  }): Promise<ApiResponse<any>> {
+    return this.request('/user/organizer-profile', {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    });
+  }
+
+  async updatePassword(data: {
+    current_password: string;
+    new_password: string;
+    new_password_confirmation: string;
+  }): Promise<ApiResponse<any>> {
+    return this.request('/user/password', {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    });
+  }
+
+  async updateLanguage(data: {
+    preferred_language: string;
+  }): Promise<ApiResponse<any>> {
+    return this.request('/user/language', {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    });
   }
 
   // Dashboard endpoints

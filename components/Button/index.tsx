@@ -1,11 +1,13 @@
 import React from "react";
 import Link, { LinkProps } from "next/link";
 import Icon from "@/components/Icon";
+import Spinner from "@/components/Spinner";
 
 type CommonProps = {
     className?: string;
     icon?: string;
     children?: React.ReactNode;
+    isLoading?: boolean;
     isPrimary?: boolean;
     isSecondary?: boolean;
     isRed?: boolean;
@@ -36,6 +38,7 @@ const Button: React.FC<ButtonProps> = ({
     className,
     icon,
     children,
+    isLoading,
     isPrimary,
     isSecondary,
     isRed,
@@ -50,10 +53,11 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
     const isLink = as === "link";
     const Component: React.ElementType = isLink ? Link : as;
+    const disabled = isLoading || (props as React.ButtonHTMLAttributes<HTMLButtonElement>).disabled;
 
     return (
         <Component
-            className={`inline-flex items-center justify-center gap-2 h-13 px-3.75 border rounded-xl text-body-lg font-semibold transition-all cursor-pointer disabled:pointer-events-none max-md:h-12 ${
+            className={`inline-flex items-center justify-center gap-2 h-13 px-3.75 border rounded-xl text-body-lg font-semibold transition-all cursor-pointer disabled:pointer-events-none disabled:opacity-50 max-md:h-12 ${
                 isPrimary
                     ? "bg-primary-500 border-transparent text-white fill-white hover:bg-primary-600"
                     : ""
@@ -82,17 +86,26 @@ const Button: React.FC<ButtonProps> = ({
                 isSquare && isXSmall ? "!w-6 !h-6" : ""
             }
      ${className || ""}`}
-            {...(isLink ? (props as LinkProps) : props)}
+            {...(isLink ? (props as LinkProps) : { ...props, disabled })}
         >
-            {icon && (
-                <Icon
-                    className={`fill-inherit ${
-                        isMedium || isSmall || isXSmall ? "!size-4" : ""
-                    }`}
-                    name={icon}
+            {isLoading ? (
+                <Spinner
+                    size={isMedium || isSmall || isXSmall ? "small" : "medium"}
+                    className={isPrimary || isRed || isWhite ? "text-white" : "text-gray-900"}
                 />
+            ) : (
+                <>
+                    {icon && (
+                        <Icon
+                            className={`fill-inherit ${
+                                isMedium || isSmall || isXSmall ? "!size-4" : ""
+                            }`}
+                            name={icon}
+                        />
+                    )}
+                    {children}
+                </>
             )}
-            {children}
         </Component>
     );
 };

@@ -12,19 +12,19 @@ const allNavigation = [
             {
                 title: "Calendários",
                 icon: "calendar",
-                href: "/dashboard/calendars",
+                href: "/organizer",
                 roles: ["organizer", "admin"], // Apenas organizadores
             },
             {
                 title: "Promoções",
                 icon: "sale",
-                href: "/dashboard/promotions",
+                href: "/promotions",
                 roles: ["organizer", "admin"], // Apenas organizadores
             },
             {
                 title: "Pagamentos",
                 icon: "bank",
-                href: "/dashboard/payouts",
+                href: "/payouts",
                 roles: ["organizer", "admin"], // Apenas organizadores
             },
         ],
@@ -35,37 +35,37 @@ const allNavigation = [
             {
                 title: "Usuários",
                 icon: "user",
-                href: "/dashboard/users",
+                href: "/users",
                 roles: ["admin"], // Apenas admin
             },
             {
                 title: "Eventos",
                 icon: "music",
-                href: "/dashboard/events",
+                href: "/events",
                 roles: ["organizer", "admin"], // Apenas organizadores
             },
             {
                 title: "Ingressos",
                 icon: "ticket",
-                href: "/dashboard/tickets",
+                href: "/tickets",
                 roles: ["organizer", "admin"], // Apenas organizadores
             },
             {
                 title: "Meus Ingressos",
                 icon: "ticket",
-                href: "/dashboard/my-tickets",
+                href: "/my-tickets",
                 roles: ["buyer"], // Apenas compradores
             },
             {
                 title: "Ganhos",
                 icon: "coins",
-                href: "/dashboard/earnings",
+                href: "/earnings",
                 roles: ["organizer", "admin"], // Apenas organizadores
             },
             {
                 title: "Avaliações",
                 icon: "message",
-                href: "/dashboard/reviews",
+                href: "/reviews",
                 roles: ["organizer", "admin"], // Apenas organizadores
             },
         ],
@@ -76,13 +76,13 @@ const allNavigation = [
             {
                 title: "Relatórios",
                 icon: "chart",
-                href: "/dashboard/reports",
+                href: "/reports",
                 roles: ["organizer", "admin"], // Apenas organizadores
             },
             {
                 title: "Configurações",
                 icon: "gear",
-                href: "/dashboard/settings",
+                href: "/settings",
                 roles: ["buyer", "organizer", "admin"], // Todos podem ver
             },
         ],

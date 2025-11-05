@@ -1,268 +1,406 @@
-import Breadcrumbs from "@/components/Breadcrumbs";
-import SimpleCard from "@/components/SimpleCard";
 import Button from "@/components/Button";
 import Link from "next/link";
 
 const PrivacyPage = () => {
     return (
-        <div className="min-h-screen bg-gray-50">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                {/* Breadcrumbs */}
-                <Breadcrumbs
-                    items={["Home", "Política de Privacidade"]}
-                />
-
+        <div className="min-h-screen bg-white">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
                 {/* Header */}
-                <div className="text-center mb-12">
-                    <h1 className="text-4xl font-bold text-gray-900 mb-6">
+                <div className="mb-16">
+                    <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
                         Política de Privacidade
                     </h1>
-                    <p className="text-lg text-gray-600">
-                        Última atualização: {new Date().toLocaleDateString('pt-BR')}
+                    <p className="text-base text-gray-500">
+                        Última atualização: {new Date().toLocaleDateString('pt-BR', { 
+                            day: 'numeric', 
+                            month: 'long', 
+                            year: 'numeric' 
+                        })}
                     </p>
                 </div>
 
-                <div className="prose prose-lg max-w-none">
-                    <SimpleCard className="p-8 mb-8">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                {/* Content */}
+                <div className="space-y-12">
+                    {/* Section 1 */}
+                    <section className="space-y-4">
+                        <h2 className="text-2xl font-semibold text-gray-900">
                             1. Introdução
                         </h2>
-                        <p className="text-gray-700 leading-relaxed mb-4">
-                            A Tickety ("nós", "nosso" ou "empresa") está comprometida em proteger sua 
-                            privacidade e dados pessoais. Esta Política de Privacidade explica como 
-                            coletamos, usamos, armazenamos e protegemos suas informações pessoais.
-                        </p>
-                        <p className="text-gray-700 leading-relaxed">
-                            Esta política está em conformidade com a Lei Geral de Proteção de Dados 
-                            (LGPD - Lei nº 13.709/2018) e outras regulamentações aplicáveis.
-                        </p>
-                    </SimpleCard>
+                        <div className="space-y-4 text-gray-600 leading-relaxed">
+                            <p>
+                                A Tickety ("nós", "nosso" ou "empresa") está comprometida em proteger sua 
+                                privacidade e dados pessoais. Esta Política de Privacidade explica como 
+                                coletamos, usamos, armazenamos e protegemos suas informações pessoais.
+                            </p>
+                            <p>
+                                Esta política está em conformidade com a Lei Geral de Proteção de Dados 
+                                (LGPD - Lei nº 13.709/2018) e outras regulamentações aplicáveis.
+                            </p>
+                        </div>
+                    </section>
 
-                    <SimpleCard className="p-8 mb-8">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                    <div className="border-t border-gray-100"></div>
+
+                    {/* Section 2 */}
+                    <section className="space-y-6">
+                        <h2 className="text-2xl font-semibold text-gray-900">
                             2. Informações que Coletamos
                         </h2>
                         <div className="space-y-6">
                             <div>
-                                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                                <h3 className="text-lg font-medium text-gray-900 mb-3">
                                     2.1 Informações Fornecidas por Você
                                 </h3>
-                                <ul className="list-disc list-inside text-gray-700 space-y-2">
-                                    <li>Nome completo e dados de identificação</li>
-                                    <li>Endereço de email e telefone</li>
-                                    <li>Data de nascimento</li>
-                                    <li>Informações de pagamento (processadas de forma segura)</li>
-                                    <li>Preferências de eventos e interesses</li>
+                                <ul className="space-y-2 text-gray-600">
+                                    <li className="flex items-start">
+                                        <span className="mr-3 text-gray-400">•</span>
+                                        <span>Nome completo e dados de identificação</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="mr-3 text-gray-400">•</span>
+                                        <span>Endereço de email e telefone</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="mr-3 text-gray-400">•</span>
+                                        <span>Data de nascimento</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="mr-3 text-gray-400">•</span>
+                                        <span>Informações de pagamento (processadas de forma segura)</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="mr-3 text-gray-400">•</span>
+                                        <span>Preferências de eventos e interesses</span>
+                                    </li>
                                 </ul>
                             </div>
                             
                             <div>
-                                <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                                <h3 className="text-lg font-medium text-gray-900 mb-3">
                                     2.2 Informações Coletadas Automaticamente
                                 </h3>
-                                <ul className="list-disc list-inside text-gray-700 space-y-2">
-                                    <li>Endereço IP e localização aproximada</li>
-                                    <li>Dados de navegação e comportamento na plataforma</li>
-                                    <li>Informações do dispositivo e navegador</li>
-                                    <li>Cookies e tecnologias similares</li>
+                                <ul className="space-y-2 text-gray-600">
+                                    <li className="flex items-start">
+                                        <span className="mr-3 text-gray-400">•</span>
+                                        <span>Endereço IP e localização aproximada</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="mr-3 text-gray-400">•</span>
+                                        <span>Dados de navegação e comportamento na plataforma</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="mr-3 text-gray-400">•</span>
+                                        <span>Informações do dispositivo e navegador</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="mr-3 text-gray-400">•</span>
+                                        <span>Cookies e tecnologias similares</span>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
-                    </SimpleCard>
+                    </section>
 
-                    <SimpleCard className="p-8 mb-8">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                    <div className="border-t border-gray-100"></div>
+
+                    {/* Section 3 */}
+                    <section className="space-y-6">
+                        <h2 className="text-2xl font-semibold text-gray-900">
                             3. Como Usamos suas Informações
                         </h2>
-                        <div className="space-y-4">
+                        <div className="space-y-6">
                             <div>
-                                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                                <h3 className="text-lg font-medium text-gray-900 mb-3">
                                     3.1 Finalidades Principais
                                 </h3>
-                                <ul className="list-disc list-inside text-gray-700 space-y-2">
-                                    <li>Processar e gerenciar suas compras de ingressos</li>
-                                    <li>Fornecer suporte ao cliente</li>
-                                    <li>Enviar confirmações e atualizações sobre eventos</li>
-                                    <li>Melhorar nossos serviços e experiência do usuário</li>
+                                <ul className="space-y-2 text-gray-600">
+                                    <li className="flex items-start">
+                                        <span className="mr-3 text-gray-400">•</span>
+                                        <span>Processar e gerenciar suas compras de ingressos</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="mr-3 text-gray-400">•</span>
+                                        <span>Fornecer suporte ao cliente</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="mr-3 text-gray-400">•</span>
+                                        <span>Enviar confirmações e atualizações sobre eventos</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="mr-3 text-gray-400">•</span>
+                                        <span>Melhorar nossos serviços e experiência do usuário</span>
+                                    </li>
                                 </ul>
                             </div>
                             
                             <div>
-                                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                                <h3 className="text-lg font-medium text-gray-900 mb-3">
                                     3.2 Finalidades Secundárias
                                 </h3>
-                                <ul className="list-disc list-inside text-gray-700 space-y-2">
-                                    <li>Enviar comunicações de marketing (com seu consentimento)</li>
-                                    <li>Realizar análises e pesquisas de mercado</li>
-                                    <li>Detectar e prevenir fraudes</li>
-                                    <li>Cumprir obrigações legais</li>
+                                <ul className="space-y-2 text-gray-600">
+                                    <li className="flex items-start">
+                                        <span className="mr-3 text-gray-400">•</span>
+                                        <span>Enviar comunicações de marketing (com seu consentimento)</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="mr-3 text-gray-400">•</span>
+                                        <span>Realizar análises e pesquisas de mercado</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="mr-3 text-gray-400">•</span>
+                                        <span>Detectar e prevenir fraudes</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="mr-3 text-gray-400">•</span>
+                                        <span>Cumprir obrigações legais</span>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
-                    </SimpleCard>
+                    </section>
 
-                    <SimpleCard className="p-8 mb-8">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                    <div className="border-t border-gray-100"></div>
+
+                    {/* Section 4 */}
+                    <section className="space-y-4">
+                        <h2 className="text-2xl font-semibold text-gray-900">
                             4. Compartilhamento de Informações
                         </h2>
-                        <p className="text-gray-700 leading-relaxed mb-4">
+                        <p className="text-gray-600 leading-relaxed">
                             Não vendemos, alugamos ou compartilhamos suas informações pessoais com 
                             terceiros, exceto nas seguintes situações:
                         </p>
-                        <ul className="list-disc list-inside text-gray-700 space-y-2">
-                            <li>Com organizadores de eventos (apenas informações necessárias)</li>
-                            <li>Com prestadores de serviços que nos auxiliam (processadores de pagamento, etc.)</li>
-                            <li>Quando exigido por lei ou autoridades competentes</li>
-                            <li>Para proteger nossos direitos ou segurança</li>
+                        <ul className="space-y-2 text-gray-600">
+                            <li className="flex items-start">
+                                <span className="mr-3 text-gray-400">•</span>
+                                <span>Com organizadores de eventos (apenas informações necessárias)</span>
+                            </li>
+                            <li className="flex items-start">
+                                <span className="mr-3 text-gray-400">•</span>
+                                <span>Com prestadores de serviços que nos auxiliam (processadores de pagamento, etc.)</span>
+                            </li>
+                            <li className="flex items-start">
+                                <span className="mr-3 text-gray-400">•</span>
+                                <span>Quando exigido por lei ou autoridades competentes</span>
+                            </li>
+                            <li className="flex items-start">
+                                <span className="mr-3 text-gray-400">•</span>
+                                <span>Para proteger nossos direitos ou segurança</span>
+                            </li>
                         </ul>
-                    </SimpleCard>
+                    </section>
 
-                    <SimpleCard className="p-8 mb-8">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                    <div className="border-t border-gray-100"></div>
+
+                    {/* Section 5 */}
+                    <section className="space-y-4">
+                        <h2 className="text-2xl font-semibold text-gray-900">
                             5. Cookies e Tecnologias Similares
                         </h2>
-                        <div className="space-y-4">
-                            <p className="text-gray-700 leading-relaxed">
+                        <div className="space-y-4 text-gray-600 leading-relaxed">
+                            <p>
                                 Utilizamos cookies e tecnologias similares para melhorar sua experiência 
                                 na plataforma. Os cookies nos ajudam a:
                             </p>
-                            <ul className="list-disc list-inside text-gray-700 space-y-2">
-                                <li>Lembrar suas preferências</li>
-                                <li>Analisar o tráfego e uso da plataforma</li>
-                                <li>Personalizar conteúdo e anúncios</li>
-                                <li>Garantir a segurança da plataforma</li>
+                            <ul className="space-y-2">
+                                <li className="flex items-start">
+                                    <span className="mr-3 text-gray-400">•</span>
+                                    <span>Lembrar suas preferências</span>
+                                </li>
+                                <li className="flex items-start">
+                                    <span className="mr-3 text-gray-400">•</span>
+                                    <span>Analisar o tráfego e uso da plataforma</span>
+                                </li>
+                                <li className="flex items-start">
+                                    <span className="mr-3 text-gray-400">•</span>
+                                    <span>Personalizar conteúdo e anúncios</span>
+                                </li>
+                                <li className="flex items-start">
+                                    <span className="mr-3 text-gray-400">•</span>
+                                    <span>Garantir a segurança da plataforma</span>
+                                </li>
                             </ul>
-                            <p className="text-gray-700 leading-relaxed">
+                            <p>
                                 Você pode gerenciar suas preferências de cookies através das configurações 
                                 do seu navegador.
                             </p>
                         </div>
-                    </SimpleCard>
+                    </section>
 
-                    <SimpleCard className="p-8 mb-8">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                    <div className="border-t border-gray-100"></div>
+
+                    {/* Section 6 */}
+                    <section className="space-y-4">
+                        <h2 className="text-2xl font-semibold text-gray-900">
                             6. Segurança dos Dados
                         </h2>
-                        <p className="text-gray-700 leading-relaxed mb-4">
+                        <p className="text-gray-600 leading-relaxed">
                             Implementamos medidas de segurança técnicas e organizacionais para proteger 
                             suas informações pessoais contra acesso não autorizado, alteração, divulgação 
                             ou destruição.
                         </p>
-                        <div className="bg-blue-50 p-4 rounded-lg">
-                            <p className="text-gray-700">
-                                <strong>Medidas de Segurança:</strong><br />
-                                • Criptografia SSL/TLS para transmissão de dados<br />
-                                • Armazenamento seguro em servidores protegidos<br />
-                                • Acesso restrito a informações pessoais<br />
-                                • Monitoramento contínuo de segurança
+                        <div className="bg-gray-50 p-6 rounded-lg border border-gray-100">
+                            <p className="text-sm font-medium text-gray-900 mb-3">
+                                Medidas de Segurança:
                             </p>
+                            <ul className="space-y-2 text-sm text-gray-600">
+                                <li className="flex items-start">
+                                    <span className="mr-2 text-gray-400">•</span>
+                                    <span>Criptografia SSL/TLS para transmissão de dados</span>
+                                </li>
+                                <li className="flex items-start">
+                                    <span className="mr-2 text-gray-400">•</span>
+                                    <span>Armazenamento seguro em servidores protegidos</span>
+                                </li>
+                                <li className="flex items-start">
+                                    <span className="mr-2 text-gray-400">•</span>
+                                    <span>Acesso restrito a informações pessoais</span>
+                                </li>
+                                <li className="flex items-start">
+                                    <span className="mr-2 text-gray-400">•</span>
+                                    <span>Monitoramento contínuo de segurança</span>
+                                </li>
+                            </ul>
                         </div>
-                    </SimpleCard>
+                    </section>
 
-                    <SimpleCard className="p-8 mb-8">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                    <div className="border-t border-gray-100"></div>
+
+                    {/* Section 7 */}
+                    <section className="space-y-4">
+                        <h2 className="text-2xl font-semibold text-gray-900">
                             7. Seus Direitos (LGPD)
                         </h2>
-                        <p className="text-gray-700 leading-relaxed mb-4">
+                        <p className="text-gray-600 leading-relaxed">
                             Conforme a LGPD, você tem os seguintes direitos sobre seus dados pessoais:
                         </p>
-                        <div className="grid md:grid-cols-2 gap-4">
+                        <div className="grid md:grid-cols-2 gap-6">
                             <div className="space-y-2">
-                                <h4 className="font-semibold text-gray-900">Acesso</h4>
-                                <p className="text-sm text-gray-700">Solicitar informações sobre seus dados</p>
+                                <h4 className="font-medium text-gray-900">Acesso</h4>
+                                <p className="text-sm text-gray-600">Solicitar informações sobre seus dados</p>
                             </div>
                             <div className="space-y-2">
-                                <h4 className="font-semibold text-gray-900">Correção</h4>
-                                <p className="text-sm text-gray-700">Corrigir dados incorretos ou incompletos</p>
+                                <h4 className="font-medium text-gray-900">Correção</h4>
+                                <p className="text-sm text-gray-600">Corrigir dados incorretos ou incompletos</p>
                             </div>
                             <div className="space-y-2">
-                                <h4 className="font-semibold text-gray-900">Exclusão</h4>
-                                <p className="text-sm text-gray-700">Solicitar a exclusão de seus dados</p>
+                                <h4 className="font-medium text-gray-900">Exclusão</h4>
+                                <p className="text-sm text-gray-600">Solicitar a exclusão de seus dados</p>
                             </div>
                             <div className="space-y-2">
-                                <h4 className="font-semibold text-gray-900">Portabilidade</h4>
-                                <p className="text-sm text-gray-700">Transferir seus dados para outro serviço</p>
+                                <h4 className="font-medium text-gray-900">Portabilidade</h4>
+                                <p className="text-sm text-gray-600">Transferir seus dados para outro serviço</p>
                             </div>
                         </div>
-                    </SimpleCard>
+                    </section>
 
-                    <SimpleCard className="p-8 mb-8">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                    <div className="border-t border-gray-100"></div>
+
+                    {/* Section 8 */}
+                    <section className="space-y-4">
+                        <h2 className="text-2xl font-semibold text-gray-900">
                             8. Retenção de Dados
                         </h2>
-                        <p className="text-gray-700 leading-relaxed mb-4">
+                        <p className="text-gray-600 leading-relaxed">
                             Mantemos suas informações pessoais apenas pelo tempo necessário para cumprir 
                             as finalidades descritas nesta política, incluindo:
                         </p>
-                        <ul className="list-disc list-inside text-gray-700 space-y-2">
-                            <li>Dados de conta: enquanto sua conta estiver ativa</li>
-                            <li>Dados de transações: conforme exigido por lei (geralmente 5 anos)</li>
-                            <li>Dados de marketing: até você retirar o consentimento</li>
-                            <li>Dados de suporte: por 2 anos após o último contato</li>
+                        <ul className="space-y-2 text-gray-600">
+                            <li className="flex items-start">
+                                <span className="mr-3 text-gray-400">•</span>
+                                <span>Dados de conta: enquanto sua conta estiver ativa</span>
+                            </li>
+                            <li className="flex items-start">
+                                <span className="mr-3 text-gray-400">•</span>
+                                <span>Dados de transações: conforme exigido por lei (geralmente 5 anos)</span>
+                            </li>
+                            <li className="flex items-start">
+                                <span className="mr-3 text-gray-400">•</span>
+                                <span>Dados de marketing: até você retirar o consentimento</span>
+                            </li>
+                            <li className="flex items-start">
+                                <span className="mr-3 text-gray-400">•</span>
+                                <span>Dados de suporte: por 2 anos após o último contato</span>
+                            </li>
                         </ul>
-                    </SimpleCard>
+                    </section>
 
-                    <SimpleCard className="p-8 mb-8">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                    <div className="border-t border-gray-100"></div>
+
+                    {/* Section 9 */}
+                    <section className="space-y-4">
+                        <h2 className="text-2xl font-semibold text-gray-900">
                             9. Menores de Idade
                         </h2>
-                        <p className="text-gray-700 leading-relaxed mb-4">
-                            Nossa plataforma não é direcionada a menores de 18 anos. Não coletamos 
-                            intencionalmente informações pessoais de menores de idade.
-                        </p>
-                        <p className="text-gray-700 leading-relaxed">
-                            Se tomarmos conhecimento de que coletamos dados de um menor, tomaremos 
-                            medidas para excluir essas informações de nossos sistemas.
-                        </p>
-                    </SimpleCard>
+                        <div className="space-y-4 text-gray-600 leading-relaxed">
+                            <p>
+                                Nossa plataforma não é direcionada a menores de 18 anos. Não coletamos 
+                                intencionalmente informações pessoais de menores de idade.
+                            </p>
+                            <p>
+                                Se tomarmos conhecimento de que coletamos dados de um menor, tomaremos 
+                                medidas para excluir essas informações de nossos sistemas.
+                            </p>
+                        </div>
+                    </section>
 
-                    <SimpleCard className="p-8 mb-8">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                    <div className="border-t border-gray-100"></div>
+
+                    {/* Section 10 */}
+                    <section className="space-y-4">
+                        <h2 className="text-2xl font-semibold text-gray-900">
                             10. Alterações nesta Política
                         </h2>
-                        <p className="text-gray-700 leading-relaxed mb-4">
-                            Podemos atualizar esta Política de Privacidade periodicamente. Quando 
-                            fizermos alterações significativas, notificaremos você por email ou 
-                            através de um aviso em nossa plataforma.
-                        </p>
-                        <p className="text-gray-700 leading-relaxed">
-                            Recomendamos que você revise esta política regularmente para se manter 
-                            informado sobre como protegemos suas informações.
-                        </p>
-                    </SimpleCard>
+                        <div className="space-y-4 text-gray-600 leading-relaxed">
+                            <p>
+                                Podemos atualizar esta Política de Privacidade periodicamente. Quando 
+                                fizermos alterações significativas, notificaremos você por email ou 
+                                através de um aviso em nossa plataforma.
+                            </p>
+                            <p>
+                                Recomendamos que você revise esta política regularmente para se manter 
+                                informado sobre como protegemos suas informações.
+                            </p>
+                        </div>
+                    </section>
 
-                    <SimpleCard className="p-8 mb-8">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                    <div className="border-t border-gray-100"></div>
+
+                    {/* Section 11 */}
+                    <section className="space-y-4">
+                        <h2 className="text-2xl font-semibold text-gray-900">
                             11. Contato e DPO
                         </h2>
-                        <p className="text-gray-700 leading-relaxed mb-4">
+                        <p className="text-gray-600 leading-relaxed">
                             Para exercer seus direitos ou esclarecer dúvidas sobre esta política, 
                             entre em contato conosco:
                         </p>
-                        <div className="bg-gray-50 p-4 rounded-lg">
-                            <p className="text-gray-700">
-                                <strong>Encarregado de Dados (DPO):</strong><br />
-                                Email: dpo@tickety.com<br />
-                                Telefone: 0800-123-4567<br />
-                                Endereço: São Paulo, SP - Brasil
+                        <div className="bg-gray-50 p-6 rounded-lg border border-gray-100">
+                            <p className="text-sm font-medium text-gray-900 mb-2">
+                                Encarregado de Dados (DPO)
                             </p>
+                            <div className="space-y-1 text-sm text-gray-600">
+                                <p>Email: dpo@tickety.com</p>
+                                <p>Telefone: 0800-123-4567</p>
+                                <p>Endereço: São Paulo, SP - Brasil</p>
+                            </div>
                         </div>
-                        <p className="text-gray-700 leading-relaxed mt-4">
+                        <p className="text-gray-600 leading-relaxed">
                             Você também pode entrar em contato através de nossa página de contato 
                             ou enviar uma solicitação formal para exercer seus direitos.
                         </p>
-                    </SimpleCard>
+                    </section>
                 </div>
 
                 {/* Footer Actions */}
-                <div className="mt-12 text-center">
+                <div className="mt-16 pt-8 border-t border-gray-100">
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link href="/shop/terms">
+                        <Link href="/terms">
                             <Button isSecondary isLarge>
                                 Termos de Uso
                             </Button>
                         </Link>
-                        <Link href="/shop/contact">
+                        <Link href="/contact">
                             <Button isPrimary isLarge>
                                 Entrar em Contato
                             </Button>
