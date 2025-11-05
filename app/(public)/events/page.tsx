@@ -25,6 +25,7 @@ interface Event {
     category: {
         id: number;
         slug: string;
+        name: string;
         icon: string;
         color: string;
     };
@@ -32,6 +33,8 @@ interface Event {
         id: number;
         name: string;
         code: string;
+        currency_code?: string;
+        currency_symbol?: string;
     };
     state: {
         id: number;
@@ -43,6 +46,15 @@ interface Event {
         name: string;
         email: string;
     };
+    tickets?: Array<{
+        id: number;
+        name: string;
+        price: number;
+        currency?: string;
+        is_active: boolean;
+        quantity_available: number;
+        quantity_sold: number;
+    }>;
 }
 
 interface EventsResponse {
@@ -153,30 +165,60 @@ const EventsPage = () => {
         setCurrentPage(page);
     };
 
-    // Transform events to match EventCard interface
-    const transformedEvents = events.map(event => ({
-        id: event.slug,
-        title: event.title,
-        description: event.description,
-        image: event.image_url,
-        location: `${event.venue_name}, ${event.venue_address}`,
-        date: new Date(event.start_date).toLocaleDateString('pt-BR'),
-        time: new Date(event.start_date).toLocaleTimeString('pt-BR', { 
-            hour: '2-digit', 
-            minute: '2-digit' 
-        }),
-        price: {
-            min: 50,
-            max: 50,
-            currency: "BRL"
-        },
-        categorySlug: event.category.slug,
-        categoryName: event.category.name,
-        categoryIcon: event.category.icon,
-        organizer: event.user.name,
-        status: event.status === 'published' ? 'active' : event.status,
-        featured: event.featured
-    }));
+    // Transform events to match EventCard interface (igual à home)
+    const transformedEvents = events.map(event => {
+        const startDate = new Date(event.start_date);
+        const isValidDate = !isNaN(startDate.getTime());
+        
+        // Calcular preços mínimo e máximo dos tickets
+        const tickets = event.tickets || [];
+        const prices = tickets
+            .filter((ticket: any) => ticket.is_active && ticket.quantity_available > 0)
+            .map((ticket: any) => parseFloat(ticket.price) || 0)
+            .filter((price: number) => price > 0);
+        
+        const minPrice = prices.length > 0 ? Math.min(...prices) : 0;
+        const maxPrice = prices.length > 0 ? Math.max(...prices) : 0;
+        
+        // Obter moeda do país do evento
+        const currency = event.country?.currency_symbol || event.country?.currency_code || 'Kz';
+        const currencyCode = event.country?.currency_code || 'AOA';
+        
+        return {
+            id: event.slug,
+            title: event.title,
+            description: event.description,
+            shortDescription: event.description?.substring(0, 100) || '',
+            image: event.image_url || '/images/placeholder-event.jpg',
+            location: `${event.venue_name}, ${event.venue_address}`,
+            address: event.venue_address || '',
+            city: event.state?.name || event.country?.name || '',
+            date: isValidDate ? startDate.toLocaleDateString('pt-BR') : 'Data a definir',
+            time: isValidDate ? startDate.toLocaleTimeString('pt-BR', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            }) : '',
+            price: {
+                min: minPrice,
+                max: maxPrice,
+                currency: currency,
+                currencyCode: currencyCode
+            },
+            category: event.category.slug,
+            categorySlug: event.category.slug,
+            categoryName: event.category.name,
+            categoryIcon: event.category.icon || getCategoryIcon(event.category.slug),
+            organizer: event.user.name,
+            status: event.status === 'published' ? 'active' : event.status,
+            featured: event.featured,
+            rating: undefined, // Não definir rating se não houver avaliações
+            reviewsCount: undefined, // Não definir reviewsCount se não houver avaliações
+            tickets: [],
+            tags: [],
+            capacity: 0,
+            sold: 0
+        };
+    });
 
     const selectedCategoryData = transformedEvents.find(event => event.categorySlug === selectedCategory);
 

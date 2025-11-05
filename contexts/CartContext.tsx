@@ -249,8 +249,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
                 
                 // Se a resposta incluir o carrinho completo, recarregar
                 if (response.success && response.data?.cart) {
-                    const cartItems = response.data.cart.items.map(convertCartItemFromBackend);
-                    dispatch({ type: 'LOAD_CART', payload: cartItems });
+                    if (response.data.cart.items && Array.isArray(response.data.cart.items)) {
+                        const cartItems = response.data.cart.items.map(convertCartItemFromBackend);
+                        dispatch({ type: 'LOAD_CART', payload: cartItems });
+                    } else {
+                        dispatch({ type: 'LOAD_CART', payload: [] });
+                    }
                     
                     // Atualizar session_id apenas para visitantes
                     if (!isAuthenticated && response.data.session_id) {
@@ -279,8 +283,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
                 
                 // Recarregar carrinho completo do backend
                 if (response.success && response.data?.cart) {
-                    const cartItems = response.data.cart.items.map(convertCartItemFromBackend);
-                    dispatch({ type: 'LOAD_CART', payload: cartItems });
+                    if (response.data.cart.items && Array.isArray(response.data.cart.items)) {
+                        const cartItems = response.data.cart.items.map(convertCartItemFromBackend);
+                        dispatch({ type: 'LOAD_CART', payload: cartItems });
+                    } else {
+                        dispatch({ type: 'LOAD_CART', payload: [] });
+                    }
                 }
             }
         } catch (error) {
@@ -301,8 +309,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
                 
                 // Recarregar carrinho completo do backend
                 if (response.success && response.data?.cart) {
-                    const cartItems = response.data.cart.items.map(convertCartItemFromBackend);
-                    dispatch({ type: 'LOAD_CART', payload: cartItems });
+                    if (response.data.cart.items && Array.isArray(response.data.cart.items)) {
+                        const cartItems = response.data.cart.items.map(convertCartItemFromBackend);
+                        dispatch({ type: 'LOAD_CART', payload: cartItems });
+                    } else {
+                        dispatch({ type: 'LOAD_CART', payload: [] });
+                    }
                 }
             }
         } catch (error) {
@@ -321,12 +333,23 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
                 
                 // Recarregar carrinho vazio do backend
                 if (response.success && response.data?.cart) {
-                    const cartItems = response.data.cart.items.map(convertCartItemFromBackend);
-                    dispatch({ type: 'LOAD_CART', payload: cartItems });
+                    // Verificar se items existe e é um array antes de fazer map
+                    if (response.data.cart.items && Array.isArray(response.data.cart.items)) {
+                        const cartItems = response.data.cart.items.map(convertCartItemFromBackend);
+                        dispatch({ type: 'LOAD_CART', payload: cartItems });
+                    } else {
+                        // Se não houver items ou não for array, garantir que está vazio
+                        dispatch({ type: 'LOAD_CART', payload: [] });
+                    }
+                } else {
+                    // Se não houver resposta do backend, garantir que está vazio
+                    dispatch({ type: 'LOAD_CART', payload: [] });
                 }
             }
         } catch (error) {
             console.error('Error clearing cart in database:', error);
+            // Em caso de erro, garantir que está vazio
+            dispatch({ type: 'LOAD_CART', payload: [] });
         }
     };
 
