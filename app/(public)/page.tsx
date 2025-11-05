@@ -12,7 +12,8 @@ import CarouselSkeleton from "@/components/Skeleton/CarouselSkeleton";
 import EventCardSkeleton from "@/components/Skeleton/EventCardSkeleton";
 import CategoryCardSkeleton from "@/components/Skeleton/CategoryCardSkeleton";
 import apiClient from "@/lib/api";
-import { getCategoryIcon } from "@/utils/categoryIcons";
+import { getCategoryIcon as getCategoryIconUtil } from "@/utils/categoryIcons";
+import { getCurrentCountryId } from "@/utils/countryDetection";
 
 interface HomeData {
     featured_events: any[];
@@ -38,7 +39,9 @@ const HomePage = () => {
                 setLoading(true);
                 setError(null);
                 
-                const response = await apiClient.getHomeData();
+                // Detectar país atual e filtrar eventos por país
+                const countryId = getCurrentCountryId();
+                const response = await apiClient.getHomeData(countryId);
                 
                 if (response.success) {
                     setHomeData(response.data);
@@ -66,28 +69,53 @@ const HomePage = () => {
         const startDate = new Date(event.start_date);
         const isValidDate = !isNaN(startDate.getTime());
         
+        // Calcular preços mínimo e máximo dos tickets
+        const tickets = event.tickets || [];
+        const prices = tickets
+            .filter((ticket: any) => ticket.is_active && ticket.quantity_available > 0)
+            .map((ticket: any) => parseFloat(ticket.price) || 0)
+            .filter((price: number) => price > 0);
+        
+        const minPrice = prices.length > 0 ? Math.min(...prices) : 0;
+        const maxPrice = prices.length > 0 ? Math.max(...prices) : 0;
+        
+        // Obter moeda do país do evento
+        const currency = event.country?.currency_symbol || event.country?.currency_code || 'Kz';
+        const currencyCode = event.country?.currency_code || 'AOA';
+        
         return {
             id: event.slug,
             title: event.title,
             description: event.description,
+            shortDescription: event.description?.substring(0, 100) || '',
             image: event.image_url || '/images/placeholder-event.jpg',
             location: `${event.venue_name}, ${event.venue_address}`,
+            address: event.venue_address || '',
+            city: event.state?.name || event.country?.name || '',
             date: isValidDate ? startDate.toLocaleDateString('pt-BR') : 'Data a definir',
             time: isValidDate ? startDate.toLocaleTimeString('pt-BR', { 
                 hour: '2-digit', 
                 minute: '2-digit' 
             }) : '',
             price: {
-                min: 50,
-                max: 50,
-                currency: "BRL"
+                min: minPrice,
+                max: maxPrice,
+                currency: currency,
+                currencyCode: currencyCode
             },
+            category: event.category.slug,
             categorySlug: event.category.slug,
             categoryName: event.category.name,
-            categoryIcon: event.category.icon,
+            categoryIcon: event.category.icon || getCategoryIconUtil(event.category.slug),
             organizer: event.user.name,
             status: event.status === 'published' ? 'active' : event.status,
-            featured: event.featured
+            featured: event.featured,
+            rating: undefined, // Não definir rating se não houver avaliações
+            reviewsCount: undefined, // Não definir reviewsCount se não houver avaliações
+            tickets: [],
+            tags: [],
+            capacity: 0,
+            sold: 0
         };
     }) || [];
 

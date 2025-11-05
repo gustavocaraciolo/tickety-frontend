@@ -2,6 +2,7 @@ import { TicketType } from './event';
 
 export interface CartItem {
     id: string;
+    backendId?: number; // ID do item no banco de dados (cart_items.id)
     eventId: string;
     eventTitle: string;
     eventImage: string;
@@ -10,6 +11,8 @@ export interface CartItem {
     ticketType: TicketType;
     quantity: number;
     subtotal: number;
+    currency?: string; // Moeda do país do evento
+    price?: number; // Preço unitário
 }
 
 export interface CartContextType {

@@ -22,10 +22,11 @@ const EventCard = ({ event, className }: EventCardProps) => {
     };
 
     const formatPrice = (min: number, max: number, currency: string) => {
+        const currencySymbol = currency || 'Kz';
         if (min === max) {
-            return `R$ ${Number(min).toFixed(2)}`;
+            return `${currencySymbol} ${Number(min).toFixed(2)}`;
         }
-        return `R$ ${Number(min).toFixed(2)} - R$ ${Number(max).toFixed(2)}`;
+        return `${currencySymbol} ${Number(min).toFixed(2)} - ${currencySymbol} ${Number(max).toFixed(2)}`;
     };
 
     const getStatusColor = (status: string) => {
@@ -127,7 +128,7 @@ const EventCard = ({ event, className }: EventCardProps) => {
                     <div className="text-body-lg font-semibold text-gray-900">
                         {event.price ? formatPrice(event.price.min, event.price.max, event.price.currency) : 'Preço não disponível'}
                     </div>
-                    {event.rating && (
+                    {event.rating && event.rating > 0 && event.reviewsCount && event.reviewsCount > 0 && (
                         <div className="flex items-center gap-1">
                             <Icon name="star" className="w-4 h-4 fill-warning-100" />
                             <span className="text-body-sm text-gray-600">

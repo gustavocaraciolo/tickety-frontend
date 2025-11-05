@@ -14,8 +14,9 @@ type CartItemProps = {
 const CartItem = ({ item, className }: CartItemProps) => {
     const { updateQuantity, removeItem } = useCart();
 
-    const formatPrice = (price: number | string) => {
-        return `R$ ${Number(price).toFixed(2)}`;
+    const formatPrice = (price: number | string, currency?: string) => {
+        const currencySymbol = currency || 'Kz';
+        return `${currencySymbol} ${Number(price).toFixed(2)}`;
     };
 
     const formatDate = (dateString: string) => {
@@ -31,9 +32,20 @@ const CartItem = ({ item, className }: CartItemProps) => {
         if (newQuantity <= 0) {
             removeItem(item.id);
         } else {
+            // Validar se não excede a quantidade disponível
+            const maxAvailable = item.ticketType.available || 0;
+            if (newQuantity > maxAvailable) {
+                // Não permitir adicionar mais do que disponível
+                return;
+            }
             updateQuantity(item.id, newQuantity);
         }
     };
+
+    // Verificar quantidade disponível
+    const maxAvailable = item.ticketType.available || 0;
+    const canIncrease = item.quantity < maxAvailable;
+    const isOutOfStock = maxAvailable === 0;
 
     return (
         <div className={`flex gap-4 p-4 border border-gray-100 rounded-xl ${className || ""}`}>
@@ -98,32 +110,46 @@ const CartItem = ({ item, className }: CartItemProps) => {
             {/* Quantity and Price */}
             <div className="flex flex-col items-end justify-between">
                 {/* Quantity Controls */}
-                <div className="flex items-center gap-2 mb-2">
-                    <button
-                        onClick={() => handleQuantityChange(item.quantity - 1)}
-                        className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50"
-                    >
-                        -
-                    </button>
-                    <span className="w-8 text-center font-medium text-body-md">
-                        {item.quantity}
-                    </span>
-                    <button
-                        onClick={() => handleQuantityChange(item.quantity + 1)}
-                        disabled={item.quantity >= item.ticketType.available}
-                        className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                        +
-                    </button>
+                <div className="flex flex-col items-end gap-1 mb-2">
+                    <div className="flex items-center gap-2">
+                        <button
+                            onClick={() => handleQuantityChange(item.quantity - 1)}
+                            className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                            disabled={item.quantity <= 1}
+                        >
+                            -
+                        </button>
+                        <span className="w-8 text-center font-medium text-body-md">
+                            {item.quantity}
+                        </span>
+                        <button
+                            onClick={() => handleQuantityChange(item.quantity + 1)}
+                            disabled={!canIncrease || isOutOfStock}
+                            className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                            title={!canIncrease ? `Apenas ${maxAvailable} ingressos disponíveis` : isOutOfStock ? 'Ingressos esgotados' : 'Adicionar mais'}
+                        >
+                            +
+                        </button>
+                    </div>
+                    {!canIncrease && maxAvailable > 0 && (
+                        <span className="text-body-xs text-warning-600">
+                            Máximo: {maxAvailable} disponíveis
+                        </span>
+                    )}
+                    {isOutOfStock && (
+                        <span className="text-body-xs text-error-600">
+                            Esgotado
+                        </span>
+                    )}
                 </div>
 
                 {/* Price */}
                 <div className="text-right">
                     <div className="text-body-lg font-semibold text-gray-900">
-                        {formatPrice(item.subtotal)}
+                        {formatPrice(item.subtotal, item.currency)}
                     </div>
                     <div className="text-body-sm text-gray-500">
-                        {formatPrice(item.ticketType.price)} cada
+                        {formatPrice(item.ticketType.price, item.currency)} cada
                     </div>
                 </div>
 

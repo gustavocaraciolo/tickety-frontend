@@ -83,6 +83,19 @@ const EventDetailsPage = () => {
         }
     }, [eventId]);
 
+    // Funções auxiliares para calcular quantidade disponível
+    const getStandardTicketAvailable = () => {
+        if (!event) return 0;
+        const standardTicket = event.tickets.find(t => t.name === 'Pista');
+        return (standardTicket?.quantity_available || 0) - (standardTicket?.quantity_sold || 0);
+    };
+
+    const getVipTicketAvailable = () => {
+        if (!event) return 0;
+        const vipTicket = event.tickets.find(t => t.name === 'VIP');
+        return (vipTicket?.quantity_available || 0) - (vipTicket?.quantity_sold || 0);
+    };
+
     const handleAddToCart = () => {
         if (!event) return;
         
@@ -437,8 +450,15 @@ const EventDetailsPage = () => {
                                                     </button>
                                                     <span className="w-8 text-center font-medium">{standardQuantity}</span>
                                                     <button 
-                                                        className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50"
-                                                        onClick={() => setStandardQuantity(standardQuantity + 1)}
+                                                        className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                                                        onClick={() => {
+                                                            const maxAvailable = getStandardTicketAvailable();
+                                                            if (standardQuantity < maxAvailable) {
+                                                                setStandardQuantity(standardQuantity + 1);
+                                                            }
+                                                        }}
+                                                        disabled={standardQuantity >= getStandardTicketAvailable()}
+                                                        title={standardQuantity >= getStandardTicketAvailable() ? `Apenas ${getStandardTicketAvailable()} ingressos disponíveis` : 'Adicionar mais'}
                                                     >
                                                         +
                                                     </button>
@@ -484,8 +504,15 @@ const EventDetailsPage = () => {
                                                         </button>
                                                         <span className="w-8 text-center font-medium">{vipQuantity}</span>
                                                         <button 
-                                                            className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50"
-                                                            onClick={() => setVipQuantity(vipQuantity + 1)}
+                                                            className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                                                            onClick={() => {
+                                                                const maxAvailable = getVipTicketAvailable();
+                                                                if (vipQuantity < maxAvailable) {
+                                                                    setVipQuantity(vipQuantity + 1);
+                                                                }
+                                                            }}
+                                                            disabled={vipQuantity >= getVipTicketAvailable()}
+                                                            title={vipQuantity >= getVipTicketAvailable() ? `Apenas ${getVipTicketAvailable()} ingressos disponíveis` : 'Adicionar mais'}
                                                         >
                                                             +
                                                         </button>

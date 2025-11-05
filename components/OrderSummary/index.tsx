@@ -21,8 +21,14 @@ const OrderSummary = ({
     className,
     showCheckoutButton = true 
 }: OrderSummaryProps) => {
-    const formatPrice = (price: number) => {
-        return `R$ ${Number(price).toFixed(2)}`;
+    const getCurrency = () => {
+        // Usar a moeda do primeiro item ou Kz como padrão
+        return items.length > 0 && items[0].currency ? items[0].currency : 'Kz';
+    };
+
+    const formatPrice = (price: number, currency?: string) => {
+        const currencySymbol = currency || getCurrency();
+        return `${currencySymbol} ${Number(price).toFixed(2)}`;
     };
 
     const getTotalItems = () => {
@@ -48,7 +54,7 @@ const OrderSummary = ({
                             </div>
                         </div>
                         <div className="text-body-sm font-medium text-gray-900">
-                            {formatPrice(item.subtotal)}
+                            {formatPrice(item.subtotal, item.currency)}
                         </div>
                     </div>
                 ))}
@@ -61,7 +67,7 @@ const OrderSummary = ({
                         Subtotal ({getTotalItems()} item{getTotalItems() !== 1 ? 's' : ''})
                     </span>
                     <span className="text-body-md font-medium text-gray-900">
-                        {formatPrice(subtotal)}
+                        {formatPrice(subtotal, getCurrency())}
                     </span>
                 </div>
                 
@@ -71,7 +77,7 @@ const OrderSummary = ({
                             Taxas e impostos
                         </span>
                         <span className="text-body-md font-medium text-gray-900">
-                            {formatPrice(fees)}
+                            {formatPrice(fees, getCurrency())}
                         </span>
                     </div>
                 )}
@@ -81,14 +87,14 @@ const OrderSummary = ({
                         Total
                     </span>
                     <span className="text-body-lg font-semibold text-gray-900">
-                        {formatPrice(total)}
+                        {formatPrice(total, getCurrency())}
                     </span>
                 </div>
             </div>
 
             {/* Checkout Button */}
             {showCheckoutButton && items.length > 0 && (
-                <Link href="/shop/checkout">
+                <Link href="/checkout">
                     <Button 
                         className="w-full" 
                         isPrimary 

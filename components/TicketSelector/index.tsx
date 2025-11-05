@@ -28,9 +28,16 @@ const TicketSelector = ({
     const [selectedTickets, setSelectedTickets] = useState<Record<string, number>>({});
 
     const handleQuantityChange = (ticketId: string, quantity: number) => {
+        const ticket = tickets.find(t => t.id === ticketId);
+        if (!ticket) return;
+
+        // Validar quantidade máxima disponível
+        const maxAvailable = ticket.available || 0;
+        const newQuantity = Math.max(0, Math.min(quantity, maxAvailable));
+        
         setSelectedTickets(prev => ({
             ...prev,
-            [ticketId]: Math.max(0, quantity)
+            [ticketId]: newQuantity
         }));
     };
 
@@ -56,8 +63,9 @@ const TicketSelector = ({
         setSelectedTickets({});
     };
 
-    const formatPrice = (price: number, currency: string) => {
-        return `R$ ${Number(price).toFixed(2)}`;
+    const formatPrice = (price: number, currency?: string) => {
+        const currencySymbol = currency || 'Kz';
+        return `${currencySymbol} ${Number(price).toFixed(2)}`;
     };
 
     const getTotalPrice = () => {

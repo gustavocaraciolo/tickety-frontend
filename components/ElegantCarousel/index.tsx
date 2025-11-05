@@ -55,11 +55,12 @@ const ElegantCarousel = ({ events, className }: ElegantCarouselProps) => {
         });
     };
 
-    const formatPrice = (min: number, max: number) => {
+    const formatPrice = (min: number, max: number, currency?: string) => {
+        const currencySymbol = currency || 'Kz';
         if (min === max) {
-            return `R$ ${Number(min).toFixed(2)}`;
+            return `${currencySymbol} ${Number(min).toFixed(2)}`;
         }
-        return `R$ ${Number(min).toFixed(2)} - R$ ${Number(max).toFixed(2)}`;
+        return `${currencySymbol} ${Number(min).toFixed(2)} - ${currencySymbol} ${Number(max).toFixed(2)}`;
     };
 
     const getStatusColor = (status: string) => {
@@ -125,7 +126,7 @@ const ElegantCarousel = ({ events, className }: ElegantCarouselProps) => {
                                         height={16}
                                         className="w-4 h-4 object-cover"
                                     />
-                                    {currentEvent.categoryName || currentEvent.category}
+                                    {currentEvent.category || currentEvent.category}
                                 </span>
                             </div>
 
@@ -161,7 +162,7 @@ const ElegantCarousel = ({ events, className }: ElegantCarouselProps) => {
                                 <div className="flex items-center gap-2 text-white">
                                     <Icon name="dollar" className="w-5 h-5 fill-white" />
                                     <span className="text-body-lg font-semibold">
-                                        {formatPrice(currentEvent.price.min, currentEvent.price.max)}
+                                        {formatPrice(currentEvent.price.min, currentEvent.price.max, currentEvent.price.currency)}
                                     </span>
                                 </div>
                             </div>

@@ -189,8 +189,9 @@ class ApiClient {
   }
 
   // Home endpoints
-  async getHomeData() {
-    return this.request('/home');
+  async getHomeData(countryId?: number) {
+    const endpoint = countryId ? `/home?country_id=${countryId}` : '/home';
+    return this.request(endpoint);
   }
 
   // Categories endpoints
@@ -256,6 +257,63 @@ class ApiClient {
   async deleteEvent(slug: string) {
     return this.request(`/events/${slug}`, {
       method: 'DELETE',
+    });
+  }
+
+  // Cart endpoints
+  async getCart(sessionId?: string) {
+    const headers: Record<string, string> = {};
+    if (sessionId) {
+      headers['X-Session-Id'] = sessionId;
+    }
+    return this.request('/cart', {
+      headers,
+    });
+  }
+
+  async addCartItem(ticketId: number, quantity: number, sessionId?: string) {
+    const headers: Record<string, string> = {};
+    if (sessionId) {
+      headers['X-Session-Id'] = sessionId;
+    }
+    return this.request('/cart/items', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ ticket_id: ticketId, quantity }),
+    });
+  }
+
+  async updateCartItem(itemId: number, quantity: number, sessionId?: string) {
+    const headers: Record<string, string> = {};
+    if (sessionId) {
+      headers['X-Session-Id'] = sessionId;
+    }
+    return this.request(`/cart/items/${itemId}`, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify({ quantity }),
+    });
+  }
+
+  async removeCartItem(itemId: number, sessionId?: string) {
+    const headers: Record<string, string> = {};
+    if (sessionId) {
+      headers['X-Session-Id'] = sessionId;
+    }
+    return this.request(`/cart/items/${itemId}`, {
+      method: 'DELETE',
+      headers,
+    });
+  }
+
+  async clearCart(sessionId?: string) {
+    const headers: Record<string, string> = {};
+    if (sessionId) {
+      headers['X-Session-Id'] = sessionId;
+    }
+    return this.request('/cart', {
+      method: 'DELETE',
+      headers,
     });
   }
 
