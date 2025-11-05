@@ -7,7 +7,7 @@ import Button from '@/components/Button';
 import Icon from '@/components/Icon';
 
 export function AuthButtons() {
-  const { user, logout } = useAuth();
+  const { user, logout, loading } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -44,6 +44,19 @@ export function AuthButtons() {
       document.removeEventListener('keydown', handleEscape);
     };
   }, [isMenuOpen]);
+
+  // Skeleton durante o carregamento
+  if (loading) {
+    return (
+      <div className="flex items-center gap-2 px-3 py-2 rounded-xl border border-gray-200 animate-pulse">
+        <div className="w-10 h-10 rounded-full bg-gray-200"></div>
+        <div className="hidden md:flex flex-col items-start gap-1">
+          <div className="h-4 w-24 bg-gray-200 rounded"></div>
+          <div className="h-3 w-16 bg-gray-200 rounded"></div>
+        </div>
+      </div>
+    );
+  }
 
   if (user) {
     const userInitial = user.name.charAt(0).toUpperCase();
