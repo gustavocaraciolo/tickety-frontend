@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Button from "@/components/Button";
 import Field from "@/components/Field";
 import Select from "@/components/Select";
@@ -16,52 +16,60 @@ interface LocationFilterProps {
 
 const LocationFilter = ({ isOpen, onClose }: LocationFilterProps) => {
     const router = useRouter();
+    const searchParams = useSearchParams();
     const [selectedCountry, setSelectedCountry] = useState<SelectOption | null>(null);
     const [selectedState, setSelectedState] = useState<SelectOption | null>(null);
     const [selectedDate, setSelectedDate] = useState<SelectOption | null>(null);
 
     const countries = [
-        { id: 1, name: "Brasil" },
-        { id: 2, name: "Angola" },
+        { id: 1, name: "Angola" },
+        { id: 2, name: "Brasil" },
         { id: 3, name: "Moçambique" }
     ];
 
     const states = {
+        // Angola (country_id: 1) - estados com IDs 1-14
         1: [
-            { id: 1, name: "São Paulo" },
-            { id: 2, name: "Rio de Janeiro" },
-            { id: 3, name: "Minas Gerais" },
-            { id: 4, name: "Rio Grande do Sul" },
-            { id: 5, name: "Paraná" },
-            { id: 6, name: "Santa Catarina" },
-            { id: 7, name: "Bahia" },
-            { id: 8, name: "Goiás" },
-            { id: 9, name: "Pernambuco" },
-            { id: 10, name: "Ceará" }
+            { id: 1, name: "Luanda" },
+            { id: 2, name: "Benguela" },
+            { id: 3, name: "Huambo" },
+            { id: 4, name: "Cabinda" },
+            { id: 5, name: "Cunene" },
+            { id: 6, name: "Cuanza-Central" },
+            { id: 7, name: "Cuanza-Sul" },
+            { id: 9, name: "Huíla" },
+            { id: 10, name: "Malanje" },
+            { id: 11, name: "Moxico" },
+            { id: 12, name: "Namibe" },
+            { id: 13, name: "Uíge" },
+            { id: 14, name: "Zaire" }
         ],
+        // Brasil (country_id: 2) - estados com IDs 15-25
         2: [
-            { id: 11, name: "Luanda" },
-            { id: 12, name: "Huambo" },
-            { id: 13, name: "Lobito" },
-            { id: 14, name: "Benguela" },
-            { id: 15, name: "Lubango" },
-            { id: 16, name: "Malanje" },
-            { id: 17, name: "Namibe" },
-            { id: 18, name: "Cabinda" },
-            { id: 19, name: "Uíge" },
-            { id: 20, name: "Kuito" }
+            { id: 15, name: "São Paulo" },
+            { id: 16, name: "Rio de Janeiro" },
+            { id: 17, name: "Minas Gerais" },
+            { id: 18, name: "Rio Grande do Sul" },
+            { id: 19, name: "Paraná" },
+            { id: 20, name: "Santa Catarina" },
+            { id: 21, name: "Bahia" },
+            { id: 22, name: "Goiás" },
+            { id: 23, name: "Pernambuco" },
+            { id: 24, name: "Ceará" },
+            { id: 25, name: "Distrito Federal" }
         ],
+        // Moçambique (country_id: 3) - estados com IDs 26-35
         3: [
-            { id: 21, name: "Maputo" },
-            { id: 22, name: "Beira" },
-            { id: 23, name: "Nampula" },
-            { id: 24, name: "Chimoio" },
-            { id: 25, name: "Tete" },
-            { id: 26, name: "Quelimane" },
-            { id: 27, name: "Xai-Xai" },
+            { id: 26, name: "Maputo" },
+            { id: 27, name: "Gaza" },
             { id: 28, name: "Inhambane" },
-            { id: 29, name: "Lichinga" },
-            { id: 30, name: "Pemba" }
+            { id: 29, name: "Sofala" },
+            { id: 30, name: "Manica" },
+            { id: 31, name: "Tete" },
+            { id: 32, name: "Zambézia" },
+            { id: 33, name: "Nampula" },
+            { id: 34, name: "Cabo Delgado" },
+            { id: 35, name: "Niassa" }
         ]
     };
 
@@ -74,21 +82,70 @@ const LocationFilter = ({ isOpen, onClose }: LocationFilterProps) => {
         { id: 6, name: "Data Personalizada" }
     ];
 
+    // Inicializar valores do modal com base nos parâmetros da URL
+    useEffect(() => {
+        if (isOpen) {
+            const countryParam = searchParams.get('country');
+            const stateParam = searchParams.get('state');
+            const dateParam = searchParams.get('date');
+
+            // Inicializar país se presente na URL
+            if (countryParam) {
+                const countryId = parseInt(countryParam);
+                const country = countries.find(c => c.id === countryId);
+                setSelectedCountry(country || null);
+            } else {
+                setSelectedCountry(null);
+            }
+
+            // Inicializar estado se presente na URL
+            if (stateParam) {
+                const stateId = parseInt(stateParam);
+                const allStates = Object.values(states).flat();
+                const state = allStates.find(s => s.id === stateId);
+                setSelectedState(state || null);
+            } else {
+                setSelectedState(null);
+            }
+
+            // Inicializar data se presente na URL
+            if (dateParam) {
+                const dateId = parseInt(dateParam);
+                const date = dateOptions.find(d => d.id === dateId);
+                setSelectedDate(date || null);
+            } else {
+                setSelectedDate(null);
+            }
+        }
+    }, [isOpen, searchParams]);
+
     const handleApply = () => {
-        // Construir query string com os filtros
-        const params = new URLSearchParams();
+        // Construir query string preservando parâmetros existentes (search, category)
+        const params = new URLSearchParams(searchParams.toString());
         
+        // Atualizar ou remover filtros de localização
         if (selectedCountry) {
-            params.append('country', selectedCountry.id.toString());
-        }
-        if (selectedState) {
-            params.append('state', selectedState.id.toString());
-        }
-        if (selectedDate) {
-            params.append('date', selectedDate.id.toString());
+            params.set('country', selectedCountry.id.toString());
+        } else {
+            params.delete('country');
         }
         
-        // Redirecionar para página de eventos com filtros
+        if (selectedState) {
+            params.set('state', selectedState.id.toString());
+        } else {
+            params.delete('state');
+        }
+        
+        if (selectedDate) {
+            params.set('date', selectedDate.id.toString());
+        } else {
+            params.delete('date');
+        }
+        
+        // Resetar página para 1 quando aplicar filtros
+        params.set('page', '1');
+        
+        // Redirecionar para página de eventos com filtros atualizados
         const queryString = params.toString();
         const url = queryString ? `/events?${queryString}` : '/events';
         router.push(url);

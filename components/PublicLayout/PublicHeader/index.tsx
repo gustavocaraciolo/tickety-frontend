@@ -48,34 +48,45 @@ const PublicHeader = () => {
                     </button>
 
                     {/* Auth & Cart */}
-                    <div className="flex items-center space-x-4">
-                        {/* Auth Buttons */}
-                        <AuthButtons />
-
-                        {/* Cart */}
-                        <Link href="/cart" className="relative group">
-                            <div className="relative p-2 hover:bg-primary-50 rounded-lg transition-colors border border-gray-200 hover:border-primary-300">
+                    <div className="flex items-center gap-3">
+                        {/* Cart - Separado e destacado */}
+                        <Link 
+                            href="/cart" 
+                            className="relative group flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-primary-50 transition-all duration-200 border border-gray-200 hover:border-primary-300 hover:shadow-sm"
+                        >
+                            <div className="relative">
                                 <Image
                                     src="/images/icons/Activities Blueprint/Shopping and Retail _ discount tag, price tag, sale, shopping, Vector illustration.png"
                                     alt="Carrinho"
-                                    width={32}
-                                    height={32}
-                                    className="w-8 h-8 object-cover group-hover:opacity-80 transition-opacity"
+                                    width={24}
+                                    height={24}
+                                    className="w-6 h-6 object-cover group-hover:opacity-80 transition-opacity"
                                 />
-                                {totalItems > 0 && (
-                                    <span className="absolute -top-1 -right-1 bg-primary-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold animate-pulse">
-                                        {totalItems}
-                                    </span>
-                                )}
                             </div>
+                            {/* Label no desktop */}
+                            <span className="hidden lg:block text-sm font-semibold text-gray-700 group-hover:text-primary-600 transition-colors">
+                                Carrinho
+                            </span>
+                            {totalItems > 0 && (
+                                <span className="hidden lg:block text-xs text-gray-500">
+                                    ({totalItems} {totalItems === 1 ? 'item' : 'itens'})
+                                </span>
+                            )}
                         </Link>
+
+                        {/* Divisor visual */}
+                        <div className="h-6 w-px bg-gray-200"></div>
+
+                        {/* Auth Buttons - Menu de perfil */}
+                        <AuthButtons />
 
                         {/* Mobile menu button */}
                         <button
-                            className="md:hidden p-2"
+                            className="md:hidden p-2 rounded-lg hover:bg-gray-50 transition-colors"
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            aria-label="Menu"
                         >
-                            <Icon name="menu" />
+                            <Icon name="burger" />
                         </button>
                     </div>
                 </div>

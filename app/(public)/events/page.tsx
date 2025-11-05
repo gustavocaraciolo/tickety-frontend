@@ -70,11 +70,19 @@ interface EventsResponse {
 
 const EventsPageContent = () => {
     const searchParams = useSearchParams();
-    const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || "");
-    const [selectedCategory, setSelectedCategory] = useState<string | null>(
-        searchParams.get('category') || null
-    );
-    const [currentPage, setCurrentPage] = useState(1);
+    
+    // Ler parâmetros da URL e atualizar estado quando mudarem
+    const searchQueryFromUrl = searchParams.get('search') || "";
+    const categoryFromUrl = searchParams.get('category') || null;
+    const countryFromUrl = searchParams.get('country') ? parseInt(searchParams.get('country') || '0') : null;
+    const stateFromUrl = searchParams.get('state') ? parseInt(searchParams.get('state') || '0') : null;
+    const pageFromUrl = searchParams.get('page') ? parseInt(searchParams.get('page') || '1') : 1;
+    
+    const [searchQuery, setSearchQuery] = useState(searchQueryFromUrl);
+    const [selectedCategory, setSelectedCategory] = useState<string | null>(categoryFromUrl);
+    const [selectedCountryId, setSelectedCountryId] = useState<number | null>(countryFromUrl);
+    const [selectedStateId, setSelectedStateId] = useState<number | null>(stateFromUrl);
+    const [currentPage, setCurrentPage] = useState(pageFromUrl);
     const [events, setEvents] = useState<Event[]>([]);
     const [categories, setCategories] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
@@ -102,6 +110,15 @@ const EventsPageContent = () => {
         fetchCategories();
     }, []);
 
+    // Sincronizar estado com parâmetros da URL quando mudarem
+    useEffect(() => {
+        setSearchQuery(searchQueryFromUrl);
+        setSelectedCategory(categoryFromUrl);
+        setSelectedCountryId(countryFromUrl);
+        setSelectedStateId(stateFromUrl);
+        setCurrentPage(pageFromUrl);
+    }, [searchQueryFromUrl, categoryFromUrl, countryFromUrl, stateFromUrl, pageFromUrl]);
+
     // Fetch events from API
     useEffect(() => {
         const fetchEvents = async () => {
@@ -127,6 +144,16 @@ const EventsPageContent = () => {
                     }
                 }
 
+                // Adicionar filtro de país se presente
+                if (selectedCountryId) {
+                    params.append('country_id', selectedCountryId.toString());
+                }
+
+                // Adicionar filtro de estado se presente
+                if (selectedStateId) {
+                    params.append('state_id', selectedStateId.toString());
+                }
+
                 const response = await apiClient.getEvents(params.toString());
                 
                 if (response.success) {
@@ -150,7 +177,7 @@ const EventsPageContent = () => {
         };
 
         fetchEvents();
-    }, [currentPage, searchQuery, selectedCategory]);
+    }, [currentPage, searchQuery, selectedCategory, selectedCountryId, selectedStateId]);
 
     const handleSearch = () => {
         setCurrentPage(1);
@@ -338,7 +365,11 @@ const EventsPageContent = () => {
                                 onClick={() => {
                                     setSearchQuery("");
                                     setSelectedCategory(null);
+                                    setSelectedCountryId(null);
+                                    setSelectedStateId(null);
                                     setCurrentPage(1);
+                                    // Limpar URL params
+                                    window.history.pushState({}, '', '/events');
                                 }}
                                 className="px-6 py-3 bg-primary-500 text-white rounded-xl font-medium hover:bg-primary-600 transition-colors"
                             >
