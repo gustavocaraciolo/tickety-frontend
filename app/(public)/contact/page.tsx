@@ -74,14 +74,14 @@ const ContactPage = () => {
                     />
 
                     <div className="text-center">
-                        <SimpleCard className="p-12 max-w-2xl mx-auto">
-                            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <Icon name="check" className="w-8 h-8 text-green-600" />
+                        <SimpleCard className="p-12 max-w-2xl mx-auto hover:shadow-xl transition-shadow duration-300">
+                            <div className="w-16 h-16 bg-success-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <Icon name="check" className="w-8 h-8 text-success-600" />
                             </div>
                             <h1 className="text-3xl font-bold text-gray-900 mb-4">
                                 Mensagem Enviada!
                             </h1>
-                            <p className="text-gray-600 mb-8">
+                            <p className="text-body-lg text-gray-600 mb-8">
                                 Obrigado pelo seu contato! Nossa equipe responderá em até 24 horas.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -120,11 +120,11 @@ const ContactPage = () => {
 
                 {/* Header */}
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl font-bold text-gray-900 mb-6">
+                    <h1 className="text-4xl font-bold text-gray-900 mb-4">
                         Entre em Contato
                     </h1>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                        Estamos aqui para ajudar! Entre em contato conosco através do formulário 
+                    <p className="text-body-lg text-gray-600 max-w-2xl mx-auto">
+                        Estamos aqui para ajudar! Entre em contato conosco através do formulário
                         abaixo ou use uma de nossas outras formas de contato.
                     </p>
                 </div>
@@ -132,7 +132,7 @@ const ContactPage = () => {
                 <div className="grid lg:grid-cols-2 gap-12">
                     {/* Contact Form */}
                     <div>
-                        <SimpleCard className="p-8">
+                        <SimpleCard className="p-8 hover:shadow-lg transition-shadow duration-300">
                             <h2 className="text-2xl font-bold text-gray-900 mb-6">
                                 Envie sua Mensagem
                             </h2>
@@ -207,13 +207,13 @@ const ContactPage = () => {
                             
                             <div className="space-y-6">
                                 {contactInfo.map((info, index) => (
-                                    <SimpleCard key={index} className="p-6">
+                                    <SimpleCard key={index} className="p-6 hover:shadow-lg transition-all duration-300 hover:scale-105 group cursor-pointer">
                                         <div className="flex items-start">
-                                            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                                                <Icon name={info.icon} className="w-6 h-6 text-blue-600" />
+                                            <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 group-hover:bg-primary-600 transition-colors">
+                                                <Icon name={info.icon} className="w-6 h-6 text-primary-600 group-hover:text-white transition-colors" />
                                             </div>
                                             <div>
-                                                <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                                                <h3 className="text-lg font-semibold text-gray-900 mb-1 group-hover:text-primary-600 transition-colors">
                                                     {info.title}
                                                 </h3>
                                                 <p className="text-gray-900 font-medium mb-1">
@@ -230,18 +230,18 @@ const ContactPage = () => {
                         </div>
 
                         {/* FAQ Link */}
-                        <SimpleCard className="p-6 bg-blue-50 border-blue-200">
+                        <SimpleCard className="p-6 bg-primary-50 border-primary-200 hover:shadow-lg transition-all duration-300 hover:scale-105 group cursor-pointer">
                             <div className="flex items-center mb-4">
-                                <Icon name="help-circle" className="w-6 h-6 text-blue-600 mr-3" />
-                                <h3 className="text-lg font-semibold text-gray-900">
+                                <Icon name="help-circle" className="w-6 h-6 text-primary-600 mr-3 group-hover:text-primary-700 transition-colors" />
+                                <h3 className="text-lg font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
                                     Perguntas Frequentes
                                 </h3>
                             </div>
                             <p className="text-gray-600 mb-4">
                                 Muitas dúvidas já têm resposta em nossa seção de FAQ.
                             </p>
-                            <Button 
-                                isSecondary 
+                            <Button
+                                isPrimary
                                 isMedium
                                 onClick={() => window.location.href = "/shop/faq"}
                             >
@@ -250,20 +250,32 @@ const ContactPage = () => {
                         </SimpleCard>
 
                         {/* Social Media */}
-                        <SimpleCard className="p-6">
-                            <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                        <SimpleCard className="p-6 hover:shadow-lg transition-all duration-300 group">
+                            <h3 className="text-lg font-semibold text-gray-900 mb-6 group-hover:text-primary-600 transition-colors">
                                 Siga-nos nas Redes Sociais
                             </h3>
-                            <div className="flex space-x-4">
-                                <Button isSecondary isMedium>
+                            <div className="grid grid-cols-1 gap-4">
+                                <Button
+                                    isSecondary
+                                    isMedium
+                                    className="w-full hover:bg-primary-600 hover:text-white hover:border-primary-600"
+                                >
                                     <Icon name="facebook" className="w-5 h-5 mr-2" />
                                     Facebook
                                 </Button>
-                                <Button isSecondary isMedium>
+                                <Button
+                                    isSecondary
+                                    isMedium
+                                    className="w-full hover:bg-primary-600 hover:text-white hover:border-primary-600"
+                                >
                                     <Icon name="twitter" className="w-5 h-5 mr-2" />
                                     Twitter
                                 </Button>
-                                <Button isSecondary isMedium>
+                                <Button
+                                    isSecondary
+                                    isMedium
+                                    className="w-full hover:bg-primary-600 hover:text-white hover:border-primary-600"
+                                >
                                     <Icon name="instagram" className="w-5 h-5 mr-2" />
                                     Instagram
                                 </Button>
