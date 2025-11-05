@@ -1,4 +1,11 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+
+if (!API_BASE_URL) {
+  throw new Error(
+    'NEXT_PUBLIC_API_URL environment variable is required. ' +
+    'Please set it in your .env.local file or environment configuration.'
+  );
+}
 
 interface ApiResponse<T = any> {
   success: boolean;
