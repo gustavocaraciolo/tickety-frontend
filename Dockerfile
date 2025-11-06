@@ -14,12 +14,9 @@ RUN npm ci --legacy-peer-deps
 # Copy source code
 COPY . .
 
-# # Set build-time environment variables (using ARG for build-time only)
-# ARG NEXT_PUBLIC_API_URL=http://localhost:8001/api
-# ARG NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=
-
-# ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
-# ENV NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=${NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
+# Set build-time environment variables (required for Next.js build)
+ARG NEXT_PUBLIC_API_URL=http://138.201.244.103:8091/api
+ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 
 # Build the application
 RUN npm run build
@@ -33,9 +30,12 @@ RUN addgroup -g 1001 -S nodejs && \
     adduser -S nextjs -u 1001
 
 # Copy necessary files from builder
-COPY --from=builder /app/public ./public
+# Copy standalone first (contains server.js)
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+# Copy static files
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+# Copy public folder (must be at root level for Next.js standalone)
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 
 # Switch to non-root user
 USER nextjs
