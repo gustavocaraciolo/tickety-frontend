@@ -348,7 +348,7 @@ const EventsPageContent = () => {
                         <div className="text-center py-12">
                             <div className="w-16 h-16 flex items-center justify-center mx-auto mb-4">
                                 <Image
-                                    src="/images/icons/Activities Blueprint/Search _ binoculars, magnification, vision, seeing, Vector illustration.png"
+                                    src="/images/icons/activities-blueprint/search-binoculars-magnification-vision-seeing-vector-illustration.png"
                                     alt="Nenhum evento encontrado"
                                     width={64}
                                     height={64}

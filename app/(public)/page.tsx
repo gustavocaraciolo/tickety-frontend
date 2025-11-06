@@ -122,7 +122,10 @@ const HomePage = () => {
     // Transformar categorias para o formato esperado
     const popularCategories = homeData?.categories?.slice(0, 6).map(category => {
         // Encoding do caminho para lidar com espaços e caracteres especiais
-        const iconPath = category.icon ? encodeURI(category.icon) : getCategoryIconUtil(category.slug);
+        // Normalizar caminho do ícone (remover espaços se vier do banco)
+        const iconPath = category.icon 
+            ? category.icon.replace(/\s+/g, '-').replace(/,/g, '').replace(/_/g, '-').replace(/--+/g, '-').toLowerCase()
+            : getCategoryIconUtil(category.slug);
         
         return {
             id: category.id,
@@ -329,7 +332,7 @@ const HomePage = () => {
                         <div className="text-center">
                             <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 overflow-hidden">
                                 <Image
-                                    src="/images/icons/Activities Blueprint/Search _ binoculars, magnification, vision, seeing, Vector illustration.png"
+                                    src="/images/icons/activities-blueprint/search-binoculars-magnification-vision-seeing-vector-illustration.png"
                                     alt="Buscar Eventos"
                                     width={64}
                                     height={64}
@@ -347,7 +350,7 @@ const HomePage = () => {
                         <div className="text-center">
                             <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 overflow-hidden">
                                 <Image
-                                    src="/images/icons/Activities Blueprint/Shopping and Retail _ discount tag, price tag, sale, shopping, Vector illustration.png"
+                                    src="/images/icons/activities-blueprint/shopping-and-retail-discount-tag-price-tag-sale-shopping-vector-illustration.png"
                                     alt="Selecionar Ingressos"
                                     width={64}
                                     height={64}
@@ -365,7 +368,7 @@ const HomePage = () => {
                         <div className="text-center">
                             <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 overflow-hidden">
                                 <Image
-                                    src="/images/icons/Activities Blueprint/Achievement and Success _ celebration, happiness, motivation, success, Vector illustration.png"
+                                    src="/images/icons/activities-blueprint/achievement-and-success-celebration-happiness-motivation-success-vector-illustration.png"
                                     alt="Finalizar Compra"
                                     width={64}
                                     height={64}

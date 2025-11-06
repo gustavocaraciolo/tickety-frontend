@@ -56,7 +56,7 @@ const PublicHeader = () => {
                         >
                             <div className="relative">
                                 <Image
-                                    src="/images/icons/Activities Blueprint/Shopping and Retail _ discount tag, price tag, sale, shopping, Vector illustration.png"
+                                    src="/images/icons/activities-blueprint/shopping-and-retail-discount-tag-price-tag-sale-shopping-vector-illustration.png"
                                     alt="Carrinho"
                                     width={24}
                                     height={24}

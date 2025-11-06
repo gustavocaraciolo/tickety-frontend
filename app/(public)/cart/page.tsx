@@ -19,7 +19,7 @@ const CartPage = () => {
                 <div className="text-center">
                     <div className="w-24 h-24 flex items-center justify-center mx-auto mb-6">
                         <Image
-                            src="/images/icons/Activities Blueprint/Shopping and Retail _ discount tag, price tag, sale, shopping, Vector illustration.png"
+                            src="/images/icons/activities-blueprint/shopping-and-retail-discount-tag-price-tag-sale-shopping-vector-illustration.png"
                             alt="Carrinho vazio"
                             width={96}
                             height={96}
