@@ -120,14 +120,19 @@ const HomePage = () => {
     }) || [];
 
     // Transformar categorias para o formato esperado
-    const popularCategories = homeData?.categories?.slice(0, 6).map(category => ({
-        id: category.id,
-        slug: category.slug,
-        name: category.name,
-        description: category.description || getCategoryDescription(category.slug), // fallback
-        icon: category.icon, // Usar o ícone real da API
-        eventCount: category.events_count || 0
-    })) || [];
+    const popularCategories = homeData?.categories?.slice(0, 6).map(category => {
+        // Encoding do caminho para lidar com espaços e caracteres especiais
+        const iconPath = category.icon ? encodeURI(category.icon) : getCategoryIconUtil(category.slug);
+        
+        return {
+            id: category.id,
+            slug: category.slug,
+            name: category.name,
+            description: category.description || getCategoryDescription(category.slug), // fallback
+            icon: iconPath, // Usar o ícone com encoding para espaços
+            eventCount: category.events_count || 0
+        };
+    }) || [];
 
     // Funções auxiliares
     function getCategoryDescription(slug: string): string {
@@ -266,6 +271,7 @@ const HomePage = () => {
                                             width={64}
                                             height={64}
                                             className="w-16 h-16 object-cover"
+                                            unoptimized
                                         />
                                     </div>
                                     <div>
